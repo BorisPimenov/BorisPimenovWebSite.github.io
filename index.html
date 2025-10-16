@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nome Cognome - Video Artist & Regista</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Eleganti -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">Nome Cognome</a>
+            </div>
+            <div class="nav-menu">
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#news" class="nav-link">News</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <div class="language-switcher">
+                    <button class="lang-btn active">IT</button>
+                    <button class="lang-btn">EN</button>
+                    <button class="lang-btn">RU</button>
+                </div>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video -->
+    <section id="home" class="hero">
+        <div class="video-background">
+            <video autoplay muted loop playsinline poster="assets/hero-poster.jpg">
+                <source src="assets/hero-showreel.mp4" type="video/mp4">
+                <source src="assets/hero-showreel.webm" type="video/webm">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">Video Artist</span>
+                <span class="title-line">& Regista</span>
+            </h1>
+            <p class="hero-subtitle">
+                Esplorando il confine tra performance, tecnologia e narrazione visiva
+            </p>
+            <div class="hero-cta">
+                <a href="#portfolio" class="cta-button">Vedi il Lavoro</a>
+                <a href="#contact" class="cta-button secondary">Collabora</a>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="arrow"></div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Portfolio</h2>
+            <p class="section-subtitle">Una selezione dei miei progetti tra video arte, regia e performance</p>
+            
+            <div class="portfolio-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-media">
+                        <video muted loop playsinline poster="assets/project1-poster.jpg">
+                            <source src="assets/project1.mp4" type="video/mp4">
+                        </video>
+                        <div class="project-overlay">
+                            <h3 class="project-title">Nome
