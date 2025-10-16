@@ -1,12 +1,12 @@
 /* style.css - DARK MODE con Poppins */
 :root {
     --primary: #ffffff;
-    --secondary: #0a0a0a;
+    --secondary: #000000; 
     --accent: #8b4513;
     --text: #e0e0e0;
     --text-light: #a0a0a0;
-    --border: #333333;
-    --card-bg: #1a1a1a;
+    --border: #222222;
+    --card-bg: #111111;
     --transition: all 0.3s ease;
 }
 
@@ -20,7 +20,7 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: var(--text);
-    background: var(--secondary);
+    background: 000000;
     overflow-x: hidden;
 }
 
@@ -30,7 +30,7 @@ body {
     top: 0;
     width: 100%;
     padding: 1.5rem 0;
-    background: rgba(10, 10, 10, 0.95);
+    background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
     z-index: 1000;
@@ -567,7 +567,7 @@ section {
 
 /* Footer */
 .footer {
-    background: var(--card-bg);
+    background: #000000;
     color: var(--text);
     padding: 2rem 0;
     border-top: 1px solid var(--border);
