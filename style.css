@@ -82,7 +82,7 @@ body {
     color: var(--primary);
     text-decoration: none;
     letter-spacing: 1px;
-    text-transform: uppercase;
+    text-transform: lowercase;
 }
 
 .nav-menu {
@@ -98,7 +98,7 @@ body {
     font-size: 0.9rem;
     transition: var(--transition);
     letter-spacing: 1px;
-    text-transform: uppercase;
+    text-transform: lowercase;
     position: relative;
 }
 
@@ -204,7 +204,7 @@ body {
     margin-bottom: 2rem;
     line-height: 1.1;
     letter-spacing: 2px;
-    text-transform: uppercase;
+    text-transform: lowercase;
 }
 
 .title-line {
@@ -238,7 +238,7 @@ body {
     transition: var(--transition);
     font-size: 0.9rem;
     letter-spacing: 2px;
-    text-transform: uppercase;
+    text-transform: lowercase;
     background: transparent;
     position: relative;
     overflow: hidden;
@@ -280,7 +280,7 @@ body {
     opacity: 0.7;
     z-index: 2;
     letter-spacing: 2px;
-    text-transform: uppercase;
+    text-transform: lowercase;
 }
 
 .arrow {
@@ -324,7 +324,7 @@ body {
     margin-bottom: 1rem;
     color: var(--primary);
     letter-spacing: 2px;
-    text-transform: uppercase;
+    text-transform: lowercase;
 }
 
 .section-line {
@@ -427,7 +427,7 @@ section {
     opacity: 0.8;
     font-weight: 300;
     margin-bottom: 0.5rem;
-    text-transform: uppercase;
+    text-transform: lowercase;
 }
 
 .project-description {
@@ -451,7 +451,7 @@ section {
     color: var(--primary);
     margin-bottom: 1rem;
     letter-spacing: 1px;
-    text-transform: uppercase;
+    text-transform: lowercase;
 }
 
 .list-line {
@@ -523,7 +523,7 @@ section {
     font-size: 0.8rem;
     font-weight: 300;
     letter-spacing: 1px;
-    text-transform: uppercase;
+    text-transform: lowercase;
 }
 
 .about-text {
@@ -557,7 +557,7 @@ section {
     margin-bottom: 1.5rem;
     color: var(--primary);
     letter-spacing: 1px;
-    text-transform: uppercase;
+    text-transform: lowercase;
 }
 
 .tech-tags {
@@ -590,7 +590,7 @@ section {
     font-weight: 400;
     transition: var(--transition);
     letter-spacing: 1px;
-    text-transform: uppercase;
+    text-transform: lowercase;
     position: relative;
     overflow: hidden;
 }
@@ -681,7 +681,7 @@ section {
     font-weight: 400;
     font-size: 0.9rem;
     letter-spacing: 1px;
-    text-transform: uppercase;
+    text-transform: lowercase;
     position: relative;
     padding-bottom: 2px;
 }
@@ -714,7 +714,7 @@ section {
     margin-bottom: 1.5rem;
     color: var(--primary);
     letter-spacing: 1px;
-    text-transform: uppercase;
+    text-transform: lowercase;
 }
 
 .contact-description {
@@ -736,7 +736,7 @@ section {
     font-weight: 700;
     font-size: 0.9rem;
     letter-spacing: 1px;
-    text-transform: uppercase;
+    text-transform: lowercase;
 }
 
 .contact-item a {
@@ -769,7 +769,7 @@ section {
     transition: var(--transition);
     font-weight: 300;
     font-size: 0.9rem;
-    text-transform: uppercase;
+    text-transform: lowercase;
     letter-spacing: 1px;
 }
 
@@ -837,7 +837,7 @@ section {
     cursor: pointer;
     transition: var(--transition);
     letter-spacing: 2px;
-    text-transform: uppercase;
+    text-transform: lowercase;
     position: relative;
     overflow: hidden;
 }
