@@ -78,7 +78,7 @@ body {
 .nav-logo a {
     font-family: 'Courier Prime', monospace;
     font-size: 1.2rem;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--primary);
     text-decoration: none;
     letter-spacing: 1px;
@@ -200,7 +200,7 @@ body {
 .hero-title {
     font-family: 'Courier Prime', monospace;
     font-size: clamp(2rem, 6vw, 4rem);
-    font-weight: 700;
+    font-weight: 400;
     margin-bottom: 2rem;
     line-height: 1.1;
     letter-spacing: 2px;
@@ -319,7 +319,7 @@ body {
 .section-title {
     font-family: 'Courier Prime', monospace;
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 400;
     text-align: left;
     margin-bottom: 1rem;
     color: var(--primary);
@@ -416,7 +416,7 @@ section {
 
 .project-title {
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 400;
     margin-bottom: 0.5rem;
     color: var(--primary);
     letter-spacing: 1px;
@@ -447,7 +447,7 @@ section {
 
 .list-header h3 {
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--primary);
     margin-bottom: 1rem;
     letter-spacing: 1px;
@@ -539,7 +539,7 @@ section {
 
 .about-text strong {
     color: var(--primary);
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .about-text em {
@@ -553,7 +553,7 @@ section {
 
 .technologies h4 {
     font-size: 1.2rem;
-    font-weight: 700;
+    font-weight: 400;
     margin-bottom: 1.5rem;
     color: var(--primary);
     letter-spacing: 1px;
@@ -664,7 +664,7 @@ section {
     font-size: 1.3rem;
     margin-bottom: 1rem;
     color: var(--primary);
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 1px;
 }
 
@@ -710,7 +710,7 @@ section {
 
 .contact-info h3 {
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 400;
     margin-bottom: 1.5rem;
     color: var(--primary);
     letter-spacing: 1px;
