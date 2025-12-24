@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boris Pimenov - Video Artist & Regista</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Courier Prime -->
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Grain Overlay -->
+    <div class="film-grain"></div>
+    
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -34,92 +37,161 @@
         </div>
     </nav>
 
-    <!-- Alternativa con YouTube -->
-<!-- Hero Section with YouTube Video -->
-<!-- Hero Section with YouTube Video -->
-<section id="home" class="hero">
-    <div class="video-background">
-        <div class="youtube-container">
-            <iframe src="https://www.youtube.com/embed/GGmWUzWF4mk?autoplay=1&mute=1&controls=0&loop=1&playlist=GGmWUzWF4mk&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3"
-                    frameborder="0"
-                    allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-            </iframe>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="video-background">
+            <div class="youtube-container">
+                <iframe src="https://www.youtube.com/embed/GGmWUzWF4mk?autoplay=1&mute=1&controls=0&loop=1&playlist=GGmWUzWF4mk&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3"
+                        frameborder="0"
+                        allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <div class="video-overlay"></div>
         </div>
-        <div class="video-overlay"></div>
-    </div>
-    
-    <div class="hero-content">
-        <h1 class="hero-title">
-            <span class="title-line">Video Artist</span>
-            <span class="title-line">& Regista</span>
-        </h1>
-        <p class="hero-subtitle">
-            Esplorando il confine tra performance, tecnologia e narrazione visiva
-        </p>
-        <div class="hero-cta">
-            <a href="#portfolio" class="cta-button">Vedi il Lavoro</a>
-            <a href="#contact" class="cta-button secondary">Collabora</a>
-        </div>
-    </div>
-    
-    <div class="scroll-indicator">
-        <span>Scroll</span>
-        <div class="arrow"></div>
-    </div>
-</section>
         
-
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">Boris Pimenov</span>
+                <span class="title-line">Video Artist & Regista</span>
+            </h1>
+            <p class="hero-subtitle">
+                Esplorando il confine tra performance, tecnologia e narrazione visiva
+            </p>
+            <div class="hero-cta">
+                <a href="#portfolio" class="cta-button">Vedi Portfolio</a>
+                <a href="#contact" class="cta-button secondary">Collabora</a>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="arrow"></div>
+        </div>
+    </section>
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
         <div class="container">
-            <h2 class="section-title">Portfolio</h2>
-            <p class="section-subtitle">Una selezione dei miei progetti tra video arte, regia e performance</p>
+            <div class="section-header">
+                <h2 class="section-title">Portfolio</h2>
+                <div class="section-line"></div>
+            </div>
             
             <div class="portfolio-grid">
-                <!-- Project 1 -->
+                <!-- Eburnea -->
                 <div class="project-card">
                     <div class="project-media">
-                        <video muted loop playsinline poster="assets/project1-poster.jpg">
-                            <source src="assets/project1.mp4" type="video/mp4">
+                        <div class="project-number">01</div>
+                        <video muted loop playsinline poster="assets/eburnea-poster.jpg">
+                            <source src="assets/eburnea.mp4" type="video/mp4">
                         </video>
                         <div class="project-overlay">
-                            <h3 class="project-title">Nome Progetto 1</h3>
-                            <p class="project-category">Video Arte</p>
+                            <div class="project-info">
+                                <h3 class="project-title">Eburnea</h3>
+                                <p class="project-category">Performance multimediale interattiva</p>
+                                <p class="project-description">Vincitore bando Residenze Digitali 2025</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
+                <!-- Tosca -->
                 <div class="project-card">
                     <div class="project-media">
-                        <video muted loop playsinline poster="assets/project2-poster.jpg">
-                            <source src="assets/project2.mp4" type="video/mp4">
+                        <div class="project-number">02</div>
+                        <video muted loop playsinline poster="assets/tosca-poster.jpg">
+                            <source src="assets/tosca.mp4" type="video/mp4">
                         </video>
                         <div class="project-overlay">
-                            <h3 class="project-title">Nome Progetto 2</h3>
-                            <p class="project-category">Regia Teatrale</p>
+                            <div class="project-info">
+                                <h3 class="project-title">Tosca</h3>
+                                <p class="project-category">Scenografia virtuale per opera</p>
+                                <p class="project-description">Sezione Classica e Sezione Ubiqua</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 3 -->
+                <!-- Il libro dei dolori dell'infanzia -->
                 <div class="project-card">
                     <div class="project-media">
-                        <video muted loop playsinline poster="assets/project3-poster.jpg">
-                            <source src="assets/project3.mp4" type="video/mp4">
+                        <div class="project-number">03</div>
+                        <video muted loop playsinline poster="assets/libro-poster.jpg">
+                            <source src="assets/libro.mp4" type="video/mp4">
                         </video>
                         <div class="project-overlay">
-                            <h3 class="project-title">Nome Progetto 3</h3>
-                            <p class="project-category">Performance</p>
+                            <div class="project-info">
+                                <h3 class="project-title">Il libro dei dolori dell'infanzia</h3>
+                                <p class="project-category">Cortometraggio</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shinel' -->
+                <div class="project-card">
+                    <div class="project-media">
+                        <div class="project-number">04</div>
+                        <video muted loop playsinline poster="assets/shinel-poster.jpg">
+                            <source src="assets/shinel.mp4" type="video/mp4">
+                        </video>
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3 class="project-title">SHINEL'</h3>
+                                <p class="project-category">Performance in solo</p>
+                                <p class="project-description">Ispirato a Gogol'</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Il Matto e la Pesca -->
+                <div class="project-card">
+                    <div class="project-media">
+                        <div class="project-number">05</div>
+                        <video muted loop playsinline poster="assets/matto-poster.jpg">
+                            <source src="assets/matto.mp4" type="video/mp4">
+                        </video>
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3 class="project-title">The Peach and the Madman</h3>
+                                <p class="project-category">Cortometraggio di esordio</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arte Generativa / Touchdesigner -->
+                <div class="project-card">
+                    <div class="project-media">
+                        <div class="project-number">06</div>
+                        <video muted loop playsinline poster="assets/touchdesigner-poster.jpg">
+                            <source src="assets/touchdesigner.mp4" type="video/mp4">
+                        </video>
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3 class="project-title">Arte Generativa</h3>
+                                <p class="project-category">TouchDesigner & AI</p>
+                                <p class="project-description">Scenografie virtuali interattive</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="portfolio-cta">
-                <a href="portfolio.html" class="view-all-btn">Vedi Tutti i Progetti</a>
+            <div class="portfolio-list">
+                <div class="list-header">
+                    <h3>Tutti i progetti</h3>
+                    <div class="list-line"></div>
+                </div>
+                <ul class="projects-list">
+                    <li><span class="list-number">07</span> Bohème – La Povertà mi è lieta</li>
+                    <li><span class="list-number">08</span> Sillabe di Ennio Morricone</li>
+                    <li><span class="list-number">09</span> Rasi Al Suolo</li>
+                    <li><span class="list-number">10</span> Dialoghi Al Buio</li>
+                    <li><span class="list-number">11</span> Compagnia di Giro</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -127,47 +199,47 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About</h2>
+                <div class="section-line"></div>
+            </div>
+            
             <div class="about-grid">
                 <div class="about-image">
                     <img src="assets/profile.jpg" alt="Boris Pimenov" class="profile-img">
                     <div class="cultural-badge">
-                        <span class="flag it">IT</span>
-                        <span class="flag ru">RU</span>
+                        <span class="badge-item">Nato a Belgorod, Russia (2003)</span>
+                        <span class="badge-item">Vive e lavora in Italia</span>
                     </div>
                 </div>
                 
                 <div class="about-content">
-                    <h2 class="section-title">About</h2>
                     <div class="about-text">
                         <p>
-                            Video artist e regista italo-russo con una solida formazione teatrale, 
-                            opero nel campo delle arti performative creando linguaggi visivi ibridi 
-                            che uniscono tradizione e innovazione.
+                            <strong>Boris Pimenov</strong> (Belgorod, Russia, 2003) è un artista e regista italo-russo attivo nel campo delle arti performative e dell'audiovisivo. Trasferitosi in Italia all'età di 7 anni, intraprende un percorso teatrale a 17 sotto la guida di Loris Seghizzi.
                         </p>
                         <p>
-                            La mia doppia eredità culturale mi permette di navigare tra diverse 
-                            sensibilità artistiche, creando opere che esplorano l'identità, 
-                            la memoria e la trasformazione digitale del corpo performativo.
+                            La sua ricerca artistica, bilingue e politicamente orientata, si sviluppa tra teatro, video e sperimentazione. Esordisce con il cortometraggio <em>The Peach and the Madman</em>, a cui seguono collaborazioni teatrali, la realizzazione in solo di <em>SHINEL'</em>, ispirato a Gogol', e il cortometraggio <em>Il libro dei dolori dell'infanzia</em>.
+                        </p>
+                        <p>
+                            Parallelamente, sviluppa la performance interattiva multimediale <em>Eburnea</em> (vincitore del bando Residenze Digitali 2025), un'opera che indaga la memoria attraverso l'integrazione tra corpo performativo e spazio digitale e interazione in tempo reale di un pubblico remoto.
                         </p>
                     </div>
                     
-                    <div class="skills-grid">
-                        <div class="skill-category">
-                            <h4>Video Arte</h4>
-                            <p>Installazioni immersive, video mapping, experimental film</p>
-                        </div>
-                        <div class="skill-category">
-                            <h4>Regia</h4>
-                            <p>Teatro contemporaneo, opera, performance intermediali</p>
-                        </div>
-                        <div class="skill-category">
-                            <h4>Ricerca</h4>
-                            <p>Arti performative, studi visivi, cultura digitale</p>
+                    <div class="technologies">
+                        <h4>Tecnologie & Linguaggi</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">TouchDesigner</span>
+                            <span class="tech-tag">Generative AI</span>
+                            <span class="tech-tag">Real-time Rendering</span>
+                            <span class="tech-tag">Video Mapping</span>
+                            <span class="tech-tag">Interactive Scenography</span>
+                            <span class="tech-tag">Multimedia Performance</span>
                         </div>
                     </div>
 
                     <a href="assets/cv.pdf" download class="download-cv">
-                        📄 Scarica CV
+                        📄 Scarica CV Completo
                     </a>
                 </div>
             </div>
@@ -177,28 +249,31 @@
     <!-- News Section -->
     <section id="news" class="news">
         <div class="container">
-            <h2 class="section-title">News & Progetti</h2>
+            <div class="section-header">
+                <h2 class="section-title">News & Progetti</h2>
+                <div class="section-line"></div>
+            </div>
             
             <div class="news-grid">
                 <article class="news-card">
-                    <div class="news-date">Marzo 2024</div>
-                    <h3 class="news-title">Nuova Installazione al Festival Internazionale</h3>
-                    <p class="news-excerpt">Presentazione di "Nome Opera" al festival di video arte contemporanea...</p>
-                    <a href="#" class="news-link">Leggi di più →</a>
+                    <div class="news-date">2025</div>
+                    <h3 class="news-title">Eburnea - Residenze Digitali</h3>
+                    <p class="news-excerpt">Performance interattiva multimediale selezionata per il bando Residenze Digitali 2025. Sviluppo di scenografie virtuali in tempo reale con TouchDesigner e intelligenza artificiale.</p>
+                    <a href="#" class="news-link">Dettagli del progetto →</a>
                 </article>
 
                 <article class="news-card">
-                    <div class="news-date">Febbraio 2024</div>
-                    <h3 class="news-title">Residenza Artistica a Mosca</h3>
-                    <p class="news-excerpt">Tre mesi di ricerca e creazione tra tradizione russa e digitale...</p>
-                    <a href="#" class="news-link">Leggi di più →</a>
+                    <div class="news-date">2024</div>
+                    <h3 class="news-title">Tosca - Scenografia Virtuale</h3>
+                    <p class="news-excerpt">Nuova produzione per l'opera di Puccini con scenografia virtuale in due sezioni: classica e ubiqua. Sperimentazione tra tradizione lirica e tecnologia contemporanea.</p>
+                    <a href="#" class="news-link">Guarda il making of →</a>
                 </article>
 
                 <article class="news-card">
-                    <div class="news-date">Gennaio 2024</div>
-                    <h3 class="news-title">Collaborazione con Compagnia Teatrale</h3>
-                    <p class="news-excerpt">Nuova produzione per la stagione 2024 con regia e video design...</p>
-                    <a href="#" class="news-link">Leggi di più →</a>
+                    <div class="news-date">2023-24</div>
+                    <h3 class="news-title">Mostre & Festival</h3>
+                    <p class="news-excerpt">Presentazione di opere video e performance in festival internazionali di video arte e teatro tecnologico in Italia, Russia e Germania.</p>
+                    <a href="#" class="news-link">Calendario date →</a>
                 </article>
             </div>
         </div>
@@ -207,48 +282,65 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Collaboriamo</h2>
-            <p class="section-subtitle">Pronto per nuovi progetti tra arte, tecnologia e performance</p>
+            <div class="section-header">
+                <h2 class="section-title">Contact</h2>
+                <div class="section-line"></div>
+            </div>
             
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h3>Contatti</h3>
+                    <h3>Collaboriamo</h3>
+                    <p class="contact-description">Pronto per nuovi progetti tra arte, tecnologia e performance.</p>
+                    
                     <div class="contact-item">
                         <strong>Email</strong>
                         <a href="mailto:borispimenov.sc@gmail.com">borispimenov.sc@gmail.com</a>
                     </div>
+                    
                     <div class="contact-item">
+                        <strong>Disponibile per</strong>
+                        <p>Regia teatrale • Video design • Installazioni interattive • Scenografie virtuali • Residenze artistiche • Workshop</p>
                     </div>
+                    
                     <div class="contact-item">
-                        <strong>Social</strong>
+                        <strong>Social & Portfolio</strong>
                         <div class="social-links">
                             <a href="#" aria-label="Instagram">Instagram</a>
+                            <span class="divider">/</span>
                             <a href="#" aria-label="Vimeo">Vimeo</a>
+                            <span class="divider">/</span>
                             <a href="#" aria-label="LinkedIn">LinkedIn</a>
                         </div>
                     </div>
                 </div>
                 
                 <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Nome" required>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Nome" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Email" required>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Email" required>
-                    </div>
+                    
                     <div class="form-group">
                         <select name="project-type" required>
                             <option value="">Tipo di Progetto</option>
                             <option value="video-arte">Video Arte</option>
                             <option value="regia">Regia</option>
                             <option value="performance">Performance</option>
+                            <option value="scenografia">Scenografia Virtuale</option>
                             <option value="workshop">Workshop</option>
+                            <option value="residenza">Residenza Artistica</option>
                             <option value="altro">Altro</option>
                         </select>
                     </div>
+                    
                     <div class="form-group">
-                        <textarea name="message" placeholder="Raccontami il tuo progetto..." rows="5" required></textarea>
+                        <textarea name="message" placeholder="Raccontami il tuo progetto, idea o proposta di collaborazione..." rows="6" required></textarea>
                     </div>
+                    
                     <button type="submit" class="submit-btn">Invia Messaggio</button>
                 </form>
             </div>
@@ -260,10 +352,10 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-copyright">
-                    &copy; 2025 Boris Pimenov. Tutti i diritti riservati.
+                    &copy; 2025 Boris Pimenov — Artista e regista italo-russo
                 </div>
                 <div class="footer-credits">
-                    ci vuole orecchio...
+                    Esplorando l'ibrido tra corpo performativo e spazio digitale
                 </div>
             </div>
         </div>
