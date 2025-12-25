@@ -199,27 +199,38 @@ body {
 
 .hero-title {
     font-family: 'Courier Prime', monospace;
-    font-size: clamp(2rem, 6vw, 4rem);
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem); /* Ridotto da clamp(1.8rem, 4.5vw, 3.2rem) */
     font-weight: 400;
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
     line-height: 1.1;
-    letter-spacing: 2px;
-    text-transform: lowercase;
+    letter-spacing: 1px;
+    text-transform: lowercase; /* Tutto minuscolo */
+    white-space: nowrap; /* Previene andata a capo */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
-
+/* Separatore (–) con spazio diverso */
+.hero-title:before {
+    content: '';
+    margin: 0 0.5rem;
+}
 .title-line {
     display: block;
 }
 
 .hero-subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 3rem;
-    opacity: 0.9;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    opacity: 0.8;
     font-weight: 300;
-    letter-spacing: 2px;
-    max-width: 600px;
+    letter-spacing: 1.2px;
+    max-width: 450px;
     margin-left: auto;
     margin-right: auto;
+    line-height: 1,5;
 }
 
 .hero-cta {
