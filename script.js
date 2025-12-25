@@ -118,4 +118,16 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Dettaglio progetto - Pagina in sviluppo');
         });
     });
+
+    // Espansione/chiusura altri progetti
+    const expandBtn = document.getElementById('expandProjectsBtn');
+    const expandableGrid = document.getElementById('expandableProjectsGrid');
+    if (expandBtn && expandableGrid) {
+        expandBtn.addEventListener('click', function() {
+            const isOpen = expandableGrid.style.display === 'grid';
+            expandableGrid.style.display = isOpen ? 'none' : 'grid';
+            expandBtn.classList.toggle('active', !isOpen);
+            expandBtn.textContent = isOpen ? 'Clicca per visualizzare gli altri progetti;' : 'Nascondi altri progetti;';
+        });
+    }
 });

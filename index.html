@@ -12,6 +12,10 @@
     <!-- Grain Overlay -->
     <div class="film-grain"></div>
     
+    <div class="logo-fixed">
+        <img src="assets/logo/logo.png" alt="Logo Boris Pimenov" />
+    </div>
+    
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -19,6 +23,7 @@
                 <a href="#home">Boris Pimenov</a>
             </div>
             <div class="nav-menu">
+                <a href="#showreel" class="nav-link">Showreel</a>
                 <a href="#portfolio" class="nav-link">Portfolio</a>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#news" class="nav-link">News</a>
@@ -56,8 +61,8 @@
             Esplorando il confine tra performance, tecnologia e narrazione visiva
         </p>
         <div class="hero-cta">
-            <a href="#portfolio" class="cta-button">Vedi Portfolio</a>
-            <a href="#contact" class="cta-button secondary">Collabora</a>
+            <a href="#showreel" class="cta-button">Guarda lo Showreel</a>
+            <a href="#portfolio" class="cta-button secondary">Vedi Portfolio</a>
         </div>
     </div>
     
@@ -66,6 +71,42 @@
         <div class="arrow"></div>
     </div>
 </section>
+
+<!-- Showreel Section -->
+<section id="showreel" class="showreel">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Showreel</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="showreel-container">
+            <div class="vimeo-container showreel-video">
+                <iframe title="vimeo-player" src="https://player.vimeo.com/video/1130210277?h=d3ab82f067" width="640" height="360" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="showreel-description">
+                <p>Una raccolta dei miei lavori tra video arte, regia teatrale e performance. 
+                Un percorso attraverso la mia ricerca artistica che unisce tecnologia, 
+                corpo performativo e narrazione visiva.</p>
+                <div class="showreel-details">
+                    <div class="detail">
+                        <h4>Durata</h4>
+                        <p>3:45 minuti</p>
+                    </div>
+                    <div class="detail">
+                        <h4>Anno</h4>
+                        <p>2024</p>
+                    </div>
+                    <div class="detail">
+                        <h4>Contenuti</h4>
+                        <p>Eburnea, Tosca, SHINEL', Il libro dei dolori dell'infanzia, e altri</p>
+                    </div>
+                </div>
+                <a href="#portfolio" class="cta-button secondary">Vedi tutti i progetti</a>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://player.vimeo.com/api/player.js"></script>
 
   <!-- Portfolio Section -->
 <section id="portfolio" class="portfolio">
@@ -86,7 +127,7 @@
                             <h3 class="project-title">Eburnea</h3>
                             <p class="project-category">Performance multimediale interattiva</p>
                             <p class="project-description">Vincitore bando Residenze Digitali 2025</p>
-                            <span class="project-link">Vedi progetto →</span>
+                            <span class="project-link red-hover">Vedi progetto →</span>
                         </div>
                     </div>
                 </div>
@@ -102,7 +143,7 @@
                             <h3 class="project-title">Tosca</h3>
                             <p class="project-category">Scenografia virtuale per opera</p>
                             <p class="project-description">Sezione Classica e Sezione Ubiqua</p>
-                            <span class="project-link">Vedi progetto →</span>
+                            <span class="project-link red-hover">Vedi progetto →</span>
                         </div>
                     </div>
                 </div>
@@ -117,7 +158,7 @@
                         <div class="project-info">
                             <h3 class="project-title">Il libro dei dolori dell'infanzia</h3>
                             <p class="project-category">Cortometraggio</p>
-                            <span class="project-link">Vedi progetto →</span>
+                            <span class="project-link red-hover">Vedi progetto →</span>
                         </div>
                     </div>
                 </div>
@@ -133,7 +174,7 @@
                             <h3 class="project-title">SHINEL'</h3>
                             <p class="project-category">Performance in solo</p>
                             <p class="project-description">Ispirato a Gogol'</p>
-                            <span class="project-link">Vedi progetto →</span>
+                            <span class="project-link red-hover">Vedi progetto →</span>
                         </div>
                     </div>
                 </div>
@@ -148,7 +189,7 @@
                         <div class="project-info">
                             <h3 class="project-title">The Peach and the Madman</h3>
                             <p class="project-category">Cortometraggio di esordio</p>
-                            <span class="project-link">Vedi progetto →</span>
+                            <span class="project-link red-hover">Vedi progetto →</span>
                         </div>
                     </div>
                 </div>
@@ -164,26 +205,88 @@
                             <h3 class="project-title">Arte Generativa</h3>
                             <p class="project-category">TouchDesigner & AI</p>
                             <p class="project-description">Scenografie virtuali interattive</p>
-                            <span class="project-link">Vedi progetto →</span>
+                            <span class="project-link red-hover">Vedi progetto →</span>
                         </div>
                     </div>
                 </div>
             </a>
         </div>
 
-        <!-- Lista completa progetti (solo titoli) -->
-        <div class="portfolio-list">
-            <div class="list-header">
-                <h3>Tutti i progetti</h3>
-                <div class="list-line"></div>
+        <!-- Altri progetti espandibili -->
+        <div class="portfolio-list expandable-projects">
+            <button class="expand-btn" id="expandProjectsBtn">Clicca per visualizzare gli altri progetti;</button>
+            <div class="expandable-projects-grid" id="expandableProjectsGrid" style="display: none;">
+                <!-- Bohème -->
+                <a href="projects/boheme.html" class="project-card">
+                    <div class="project-media">
+                        <div class="project-number">07</div>
+                        <img src="assets/covers/boheme-cover.jpg" alt="Bohème" class="project-cover">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3 class="project-title">Bohème</h3>
+                                <p class="project-category">Opera video</p>
+                                <span class="project-link">Vedi progetto →</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <!-- Morricone -->
+                <a href="projects/morricone.html" class="project-card">
+                    <div class="project-media">
+                        <div class="project-number">08</div>
+                        <img src="assets/covers/morricone-cover.jpg" alt="Sillabe di Ennio Morricone" class="project-cover">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3 class="project-title">Sillabe di Ennio Morricone</h3>
+                                <p class="project-category">Video installazione</p>
+                                <span class="project-link">Vedi progetto →</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <!-- Rasi Al Suolo -->
+                <a href="projects/rasi-suolo.html" class="project-card">
+                    <div class="project-media">
+                        <div class="project-number">09</div>
+                        <img src="assets/covers/rasi-suolo-cover.jpg" alt="Rasi Al Suolo" class="project-cover">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3 class="project-title">Rasi Al Suolo</h3>
+                                <p class="project-category">Performance</p>
+                                <span class="project-link">Vedi progetto →</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <!-- Cinica Matrice -->
+                <a href="projects/cinica-matrice.html" class="project-card">
+                    <div class="project-media">
+                        <div class="project-number">10</div>
+                        <img src="assets/covers/cinicamatrice.png" alt="Cinica Matrice" class="project-cover">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3 class="project-title">Cinica Matrice</h3>
+                                <p class="project-category">Video arte</p>
+                                <span class="project-link">Vedi progetto →</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <!-- Compagnia di Giro -->
+                <a href="projects/compagnia-giro.html" class="project-card">
+                    <div class="project-media">
+                        <div class="project-number">11</div>
+                        <img src="assets/covers/placeholder.jpg" alt="Compagnia di Giro" class="project-cover">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3 class="project-title">Compagnia di Giro</h3>
+                                <p class="project-category">Progetto teatrale</p>
+                                <span class="project-link">Vedi progetto →</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
-            <ul class="projects-list">
-                <li><a href="projects/boheme.html"><span class="list-number">07</span> Bohème – La Povertà mi è lieta <span class="list-link">→</span></a></li>
-                <li><a href="projects/morricone.html"><span class="list-number">08</span> Sillabe di Ennio Morricone <span class="list-link">→</span></a></li>
-                <li><a href="projects/rasi-suolo.html"><span class="list-number">09</span> Rasi Al Suolo <span class="list-link">→</span></a></li>
-                <li><a href="projects/dialoghi-buio.html"><span class="list-number">10</span> Dialoghi Al Buio <span class="list-link">→</span></a></li>
-                <li><a href="projects/compagnia-giro.html"><span class="list-number">11</span> Compagnia di Giro <span class="list-link">→</span></a></li>
-            </ul>
         </div>
     </div>
 </section>
@@ -287,7 +390,10 @@
                         <strong>Email</strong>
                         <a href="mailto:borispimenov.sc@gmail.com">borispimenov.sc@gmail.com</a>
                     </div>
-                    
+                    <div class="contact-item">
+                        <strong>Cellulare</strong>
+                        <a href="tel:+393514571686">+39 3514571686</a>
+                    </div>
                     <div class="contact-item">
                         <strong>Disponibile per</strong>
                         <p>Regia teatrale • Video design • Installazioni interattive • Scenografie virtuali • Residenze artistiche • Workshop</p>
@@ -296,11 +402,13 @@
                     <div class="contact-item">
                         <strong>Social & Portfolio</strong>
                         <div class="social-links">
-                            <a href="#" aria-label="Instagram">Instagram</a>
+                            <a href="https://www.instagram.com/borisp.imenov/" aria-label="Instagram" target="_blank" rel="noopener">Instagram</a>
                             <span class="divider">/</span>
-                            <a href="#" aria-label="Vimeo">Vimeo</a>
+                            <a href="https://vimeo.com/borispimenov" aria-label="Vimeo" target="_blank" rel="noopener">Vimeo</a>
                             <span class="divider">/</span>
-                            <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                            <a href="https://www.youtube.com/@Borispimenov" aria-label="YouTube" target="_blank" rel="noopener">YouTube</a>
+                            <span class="divider">/</span>
+                            <a href="https://www.linkedin.com/in/boris-pimenov-6b6276329/" aria-label="LinkedIn" target="_blank" rel="noopener">LinkedIn</a>
                         </div>
                     </div>
                 </div>
