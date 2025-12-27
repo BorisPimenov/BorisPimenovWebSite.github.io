@@ -424,6 +424,16 @@ section {
     letter-spacing: 1px;
 }
 
+.project-container {
+    padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+}
+
+@media (max-width: 600px) {
+    .project-container {
+        padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+    }
+}
+
 /* About Section */
 .about-grid {
     display: grid;
@@ -1095,4 +1105,221 @@ section {
     margin: 0 auto;
     max-width: 100%;
     border-radius: 8px;
+}
+/* NEWS ARTICLE STYLES */
+.news-article {
+    padding: 120px 0 4rem;
+    background: #000;
+    color: var(--text);
+}
+
+.article-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.article-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.article-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.article-meta span {
+    padding: 0.3rem 0.8rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.article-title {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    color: var(--primary);
+}
+
+.article-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.article-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin: 2rem 0;
+}
+
+.article-text p {
+    margin-bottom: 1.5rem;
+}
+
+.article-text strong {
+    color: var(--primary);
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 3rem 0;
+}
+
+.link-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    transition: var(--transition);
+}
+
+.link-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.link-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+    font-weight: 400;
+}
+
+.link-card p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.link-card a {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.link-card a:hover {
+    text-decoration: underline;
+}
+
+.gallery-section {
+    margin: 4rem 0;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.gallery-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+    font-weight: 400;
+}
+
+.gallery-section > p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.gallery-item {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-caption {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+.article-navigation {
+    display: flex;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+}
+
+.nav-button {
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.nav-button:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.nav-button.secondary {
+    background: transparent;
+    border-color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+    .news-article {
+        padding: 100px 1rem 3rem;
+    }
+    
+    .article-title {
+        font-size: 2rem;
+    }
+    
+    .article-meta {
+        gap: 0.5rem;
+    }
+    
+    .links-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .article-navigation {
+        flex-direction: column;
+    }
+    
+    .nav-button {
+        text-align: center;
+    }
 }
