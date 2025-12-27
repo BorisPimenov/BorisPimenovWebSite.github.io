@@ -1080,3 +1080,19 @@ section {
         height: 26px;
     }
 }
+
+/* Video Containers */
+.vimeo-container, .youtube-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto 2.5rem auto;
+    padding: 0;
+}
+.vimeo-container iframe, .youtube-container iframe {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    border-radius: 8px;
+}
