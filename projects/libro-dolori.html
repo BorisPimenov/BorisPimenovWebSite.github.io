@@ -12,13 +12,27 @@
     <!-- Grain Overlay -->
     <div class="film-grain"></div>
     
-    <!-- Video background principale Libro dei Dolori -->
+    <!-- Video background con cover placeholder -->
     <div class="libro-bg-video" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;overflow:hidden;pointer-events:none;">
         <div style="padding:56.25% 0 0 0;position:absolute;top:0;left:0;width:100vw;height:100vh;">
-            <iframe src="https://player.vimeo.com/video/1147339473?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;" title="(Trailer) Il Libro dei Dolori dell'infanzia"></iframe>
+            <img id="libro-bg-cover" src="../assets/covers/libro-cover.jpg" alt="Libro dei Dolori Cover" style="position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:2;border-radius:0;transition:opacity 0.5s;">
+            <iframe id="libro-bg-vimeo" src="https://player.vimeo.com/video/1147339473?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;" title="(Trailer) Il Libro dei Dolori dell'infanzia"></iframe>
         </div>
     </div>
     <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var iframe = document.getElementById('libro-bg-vimeo');
+        var cover = document.getElementById('libro-bg-cover');
+        if (iframe && cover && window.Vimeo) {
+            var player = new Vimeo.Player(iframe);
+            player.on('play', function() {
+                cover.style.opacity = '0';
+                setTimeout(function(){ cover.style.display = 'none'; }, 600);
+            });
+        }
+    });
+    </script>
 
     <!-- Navigation (uguale a index.html) -->
     <nav class="navbar">
@@ -42,65 +56,98 @@
                 <div class="project-meta">
                     <span>2025</span>
                     <span>Cortometraggio indipendente</span>
-
+                    <span>Durata: 22 minuti</span>
                 </div>
                 <p class="section-subtitle">Cortometraggio indipendente che esplora la memoria e il trauma attraverso la lente dell'infanzia.</p>
             </header>
 
+            <!-- Titolo e riassunto con immagine affiancata -->
+            <section class="libro-summary-section reveal-section" style="display:flex;flex-wrap:wrap;align-items:stretch;gap:2.5rem;max-width:1100px;margin:0 auto 2.5rem auto;">
+                <div style="flex:1 1 400px;min-width:280px;max-width:550px;display:flex;flex-direction:column;justify-content:center;background:rgba(20,20,20,0.68);border-radius:18px;padding:2rem 1.5rem;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
+                    <h1 class="libro-title" style="font-size:2.2rem;margin-bottom:1.2rem;letter-spacing:0.01em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.18);">Il Libro dei Dolori dell'Infanzia</h1>
+                    <div class="libro-summary" style="font-size:1.15rem;line-height:1.6;color:#f7f7f7;text-shadow:0 2px 10px rgba(0,0,0,0.13);">
+                        <p><strong>Il libro dei dolori dell'infanzia</strong> è un poema visivo sulla memoria e la misericordia — una veglia senza tempo sospesa tra gelo e tenerezza. L'opera attraversa la materia come un rito funebre: terra, garza, patate, cenere — reliquie di un mondo infantile che si rifiuta di morire.</p>
+                    </div>
+                </div>
+                <img src="../assets/gallery/libro-dolori1.png" alt="Libro dei dolori gallery 1" style="flex:1 1 320px;max-width:420px;min-height:260px;border-radius:14px;box-shadow:0 6px 32px rgba(0,0,0,0.16);object-fit:cover;" />
+            </section>
+
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
+
             <!-- Video Vimeo -->
-            <div class="vimeo-container">
+            <div class="vimeo-container reveal-section">
                 <iframe title="vimeo-player" src="https://player.vimeo.com/video/1147339473?h=74595019d6" width="640" height="360" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>
             </div>
 
-            <!-- Script Vimeo -->
-            <script src="https://player.vimeo.com/api/player.js"></script>
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
 
-            <!-- Descrizione -->
-            <div class="project-description-full">
-                <p><em>Il libro dei dolori dell'infanzia</em> è un poema visivo sulla memoria e la misericordia — una veglia senza tempo sospesa tra gelo e tenerezza.<br>
-                L'opera attraversa la materia come un rito funebre: terra, garza, patate, cenere — reliquie di un mondo infantile che si rifiuta di morire.<br>
-                La luce è il vero personaggio: blu, tremante, che taglia il buio come una lama che non ferisce ma divide l'aria in due respiri.<br>
-                Il suono — crepitante, lontano — è quello di una ninna nanna russa dimenticata, come suonata dal grammofono di un sogno.<br>
-                Non c'è redenzione, solo il tentativo di afferrare la forma del dolore, toccarla senza nominarla, offrirle un corpo attraverso il rituale della fasciatura e della ripetizione.<br>
-                Ogni gesto è un atto di fede cieca.<br>
-                L'infanzia non è innocenza, ma una ferita luminosa che continua a pulsare in chi resta.<br>
-                <em>Il libro dei dolori dell'infanzia</em> non racconta una storia — ne evoca una.<br>
-                È un sogno d'inverno, una liturgia intima dove calore e morte si dissolvono l'uno nell'altra, dove il silenzio dei bambini parla più forte di qualsiasi parola.</p>
-            </div>
-                    <p>Durata: 22 minuti</p>
-                    <p>Formato: 4:3</p>
-                    <p>Fotografia: Bianco e Nero</p>
-
+            <!-- Descrizione completa -->
+            <section class="libro-description-section reveal-section" style="max-width:820px;margin:0 auto 2.5rem auto;text-align:center;background:rgba(20,20,20,0.68);border-radius:18px;padding:2.2rem 1.5rem;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
+                <div class="project-description-full">
+                    <p>La luce è il vero personaggio: blu, tremante, che taglia il buio come una lama che non ferisce ma divide l'aria in due respiri.</p>
+                    <p>Il suono — crepitante, lontano — è quello di una ninna nanna russa dimenticata, come suonata dal grammofono di un sogno.</p>
+                    <p>Non c'è redenzione, solo il tentativo di afferrare la forma del dolore, toccarla senza nominarla, offrirle un corpo attraverso il rituale della fasciatura e della ripetizione. Ogni gesto è un atto di fede cieca.</p>
+                    <p>L'infanzia non è innocenza, ma una ferita luminosa che continua a pulsare in chi resta.</p>
+                    <p><em>Il libro dei dolori dell'infanzia</em> non racconta una storia — ne evoca una. È un sogno d'inverno, una liturgia intima dove calore e morte si dissolvono l'uno nell'altra, dove il silenzio dei bambini parla più forte di qualsiasi parola.</p>
                 </div>
-                <div class="detail-item" style="border: 1.5px solid #e0e0e0; border-radius: 10px; padding: 1.2rem 1.5rem; margin-bottom: 1.5rem; background:transparent; box-shadow:0 2px 12px rgba(0,0,0,0.04);">
-                    <h4 style="font-size:1.25rem;font-weight:bold;">Team</h4>
-                    <p>Regia, scrittura, scene, montaggio, luci, fotografia; Boris Pimenov <br>Nel ruolo della ragazza: Ksenia Rotar'<br>Sound design: Grigorij Lavrov</p>
-                </div>
-            </div>
+            </section>
 
-            <!-- Call to action per il cortometraggio completo -->
-            <div class="cta-full-movie" style="text-align:center;margin:2.5rem 0 2.2rem 0;">
-                <a href="https://www.youtube.com/watch?v=0GXAWLAL9X0&t=742s" target="_blank" rel="noopener" style="display:inline-block;padding:1.1em 2.2em;font-size:1.18rem;font-family:'Courier Prime',monospace;font-weight:bold;background:#111;color:#fff;border-radius:32px;box-shadow:0 2px 16px rgba(0,0,0,0.10);letter-spacing:0.03em;text-decoration:none;transition:background 0.2s;">
-                    ▶ Guarda il cortometraggio completo su YouTube
-                </a>
-                <div style="font-size:0.98rem;color:#444;margin-top:0.5rem;">Durata: 22 minuti – Versione integrale</div>
-            </div>
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
+
+            <!-- Dettagli Tecnici + Info affiancati -->
+            <section class="libro-details-section reveal-section" style="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:center;gap:2.5rem;max-width:1100px;margin:0 auto 2.5rem auto;">
+                <div class="project-details" style="flex:1 1 400px;min-width:280px;max-width:550px;background:rgba(20,20,20,0.68);border-radius:18px;padding:2rem 1.5rem;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
+                    <div class="detail-item">
+                        <h4 style="font-size:1.25rem;font-weight:bold;">Formato</h4>
+                        <p>Durata: 22 minuti | Formato: 4:3 | Bianco e Nero</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4 style="font-size:1.25rem;font-weight:bold;">Team</h4>
+                        <p>Regia, scrittura, scene, montaggio, luci, fotografia: Boris Pimenov<br>Nel ruolo della ragazza: Ksenia Rotar'<br>Sound design: Grigorij Lavrov</p>
+                    </div>
+                </div>
+                <div style="flex:1 1 280px;max-width:400px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                    <a href="https://www.youtube.com/watch?v=0GXAWLAL9X0&t=742s" target="_blank" rel="noopener" style="display:inline-block;padding:1.1em 2.2em;font-size:1.18rem;font-family:'Courier Prime',monospace;font-weight:bold;background:#111;color:#fff;border-radius:32px;box-shadow:0 2px 16px rgba(0,0,0,0.10);letter-spacing:0.03em;text-decoration:none;transition:background 0.2s;">
+                        ▶ Guarda il cortometraggio completo su YouTube
+                    </a>
+                    <div style="font-size:0.98rem;color:#aaa;margin-top:0.5rem;">Durata: 22 minuti – Versione integrale</div>
+                </div>
+            </section>
+
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
+
+            <!-- Gallery finale: testo a sinistra, immagine grande a destra -->
+            <section class="libro-gallery-final reveal-section" style="display:flex;flex-wrap:wrap;align-items:stretch;justify-content:center;gap:2.5rem;max-width:1100px;margin:0 auto 2.5rem auto;">
+                <div class="libro-gallery-text" style="flex:1 1 340px;min-width:260px;max-width:480px;padding:1.5rem 1.2rem;display:flex;flex-direction:column;justify-content:center;background:rgba(20,20,20,0.68);border-radius:18px;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
+                    <p style="font-size:1.12rem;line-height:1.7;margin-bottom:1.2rem;">Un viaggio sensoriale attraverso la materia della memoria: terra, garza, cenere. La fotografia in bianco e nero cattura la fragilità dell'infanzia come una ferita luminosa.</p>
+                    <p style="font-size:1.12rem;line-height:1.7;">La dimensione onirica si mescola con il rito funebre, creando un paesaggio emotivo sospeso tra gelo e tenerezza.</p>
+                </div>
+                <img src="../assets/gallery/libro-dolori4.png" alt="Libro dei dolori gallery 4" style="flex:1 1 420px;max-width:560px;min-height:280px;border-radius:14px;box-shadow:0 6px 32px rgba(0,0,0,0.16);object-fit:cover;" />
+            </section>
+
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
 
             <!-- Gallery cinematografica creativa -->
-            <section class="libro-gallery-flex" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2.5vw 2vw;margin-bottom:2.5rem;">
-                <img src="../assets/gallery/libro-dolori1.png" alt="Libro dei dolori gallery 1" style="width:520px;max-width:98vw;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.13);object-fit:cover;flex:1 1 520px;align-self:center;" />
-                <img src="../assets/gallery/libro-dolori2.png" alt="Libro dei dolori gallery 2" style="width:340px;max-width:80vw;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.13);object-fit:cover;flex:1 1 340px;align-self:flex-end;" />
-                <img src="../assets/gallery/libro-dolori3.png" alt="Libro dei dolori gallery 3" style="width:420px;max-width:90vw;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.13);object-fit:cover;flex:1 1 420px;align-self:flex-start;" />
-                <img src="../assets/gallery/libro-dolori4.png" alt="Libro dei dolori gallery 4" style="width:600px;max-width:99vw;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.13);object-fit:cover;flex:2 1 600px;align-self:center;" />
-                <img src="../assets/gallery/libro-dolori5.png" alt="Libro dei dolori gallery 5" style="width:340px;max-width:80vw;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.13);object-fit:cover;flex:1 1 340px;align-self:flex-end;" />
-                <img src="../assets/gallery/libro-dolori6.png" alt="Libro dei dolori gallery 6" style="width:420px;max-width:90vw;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.13);object-fit:cover;flex:1 1 420px;align-self:flex-start;" />
+            <section class="libro-gallery-flex reveal-section" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2.5vw 2vw;margin-bottom:2.5rem;">
+                <img src="../assets/gallery/libro-dolori2.png" alt="Libro dei dolori gallery 2" style="width:340px;max-width:80vw;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.13);object-fit:cover;flex:1 1 340px;" />
+                <img src="../assets/gallery/libro-dolori3.png" alt="Libro dei dolori gallery 3" style="width:420px;max-width:90vw;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.13);object-fit:cover;flex:1 1 420px;" />
+                <img src="../assets/gallery/libro-dolori5.png" alt="Libro dei dolori gallery 5" style="width:340px;max-width:80vw;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.13);object-fit:cover;flex:1 1 340px;" />
+                <img src="../assets/gallery/libro-dolori6.png" alt="Libro dei dolori gallery 6" style="width:420px;max-width:90vw;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.13);object-fit:cover;flex:1 1 420px;" />
             </section>
+
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
 
             <!-- Navigazione tra progetti -->
             <nav class="project-navigation">
-                <a href="tosca.html" class="nav-link prev">Tosca</a>
+                <a href="eburnea.html" class="nav-link prev">Eburnea</a>
                 <a href="../index.html#portfolio" class="nav-link">Torna al Portfolio</a>
-                <a href="libro-dolori.html" class="nav-link next">Il Libro dei Dolori dell'Infanzia</a>
+                <a href="shinel.html" class="nav-link next">Shinel' (Il Cappotto)</a>
             </nav>
         </div>
     </main>
@@ -120,5 +167,33 @@
     </footer>
 
     <script src="../script.js"></script>
+    <!-- Script per animazione reveal on scroll -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const revealSections = document.querySelectorAll('.reveal-section');
+        const revealOnScroll = function() {
+            revealSections.forEach(function(section) {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (sectionTop < windowHeight - 80) {
+                    section.classList.add('revealed');
+                }
+            });
+        };
+        revealOnScroll();
+        window.addEventListener('scroll', revealOnScroll);
+    });
+    </script>
+    <style>
+    .reveal-section {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .reveal-section.revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    </style>
 </body>
 </html>

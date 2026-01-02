@@ -12,6 +12,28 @@
     <!-- Grain Overlay -->
     <div class="film-grain"></div>
     
+    <!-- Video background con cover placeholder -->
+    <div class="matto-bg-video" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;overflow:hidden;pointer-events:none;">
+        <div style="padding:75% 0 0 0;position:relative;">
+            <img id="matto-bg-cover" src="../assets/covers/cinicamatrice.jpg" alt="Matto Pesca Cover" style="position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:2;border-radius:0;transition:opacity 0.5s;">
+            <iframe id="matto-bg-vimeo" src="https://player.vimeo.com/video/1151089157?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;" title="Matto Pesca Show reel TD"></iframe>
+        </div>
+    </div>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var iframe = document.getElementById('matto-bg-vimeo');
+        var cover = document.getElementById('matto-bg-cover');
+        if (iframe && cover && window.Vimeo) {
+            var player = new Vimeo.Player(iframe);
+            player.on('play', function() {
+                cover.style.opacity = '0';
+                setTimeout(function(){ cover.style.display = 'none'; }, 600);
+            });
+        }
+    });
+    </script>
+
     <!-- Navigation (uguale a index.html) -->
     <nav class="navbar">
         <div class="nav-container">
@@ -48,11 +70,13 @@
             <script src="https://player.vimeo.com/api/player.js"></script>
 
             <!-- Descrizione -->
-            <div class="project-description-full">
-                <p>Il progetto si ispira liberamente al cortometraggio “Signò Belluscone” di Ciprì e Maresco e i personaggi sono ispirati dalla trilogia di opere “I Giochi dell’Eternità” di Antonio Moresco.</p>
-                <p><strong>Sinossi:</strong><br>
-                La Pesca, giovane sposa, Il Matto, giovane sposo russo. Questi due personaggi fuori dal tempo fanno molteplici appelli al “Signor Presidente” chiedendo un prestito per sfamare la famiglia. Il sempre-presente “figlio” è sul punto di nascere…</p>
-            </div>
+            <section class="matto-description-section" style="max-width:820px;margin:0 auto 2.5rem auto;text-align:center;background:rgba(20,20,20,0.68);border-radius:18px;padding:2.2rem 1.5rem;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
+                <div class="project-description-full">
+                    <p>Il progetto si ispira liberamente al cortometraggio “Signò Belluscone” di Ciprì e Maresco e i personaggi sono ispirati dalla trilogia di opere “I Giochi dell’Eternità” di Antonio Moresco.</p>
+                    <p><strong>Sinossi:</strong><br>
+                    La Pesca, giovane sposa, Il Matto, giovane sposo russo. Questi due personaggi fuori dal tempo fanno molteplici appelli al “Signor Presidente” chiedendo un prestito per sfamare la famiglia. Il sempre-presente “figlio” è sul punto di nascere…</p>
+                </div>
+            </section>
 
             <!-- Dettagli Tecnici -->
             <div class="project-details">

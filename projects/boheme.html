@@ -12,6 +12,28 @@
     <!-- Grain Overlay -->
     <div class="film-grain"></div>
     
+    <!-- Video background con cover placeholder -->
+    <div class="boheme-bg-video" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;overflow:hidden;pointer-events:none;">
+        <div style="padding:52.73% 0 0 0;position:relative;">
+            <img id="boheme-bg-cover" src="../assets/covers/boheme-cover.jpg" alt="Boheme Cover" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:2;border-radius:0;transition:opacity 0.5s;">
+            <iframe id="boheme-bg-vimeo" src="https://player.vimeo.com/video/1149350179?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Trailer Bohème 2025"></iframe>
+        </div>
+    </div>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var iframe = document.getElementById('boheme-bg-vimeo');
+        var cover = document.getElementById('boheme-bg-cover');
+        if (iframe && cover && window.Vimeo) {
+            var player = new Vimeo.Player(iframe);
+            player.on('play', function() {
+                cover.style.opacity = '0';
+                setTimeout(function(){ cover.style.display = 'none'; }, 600);
+            });
+        }
+    });
+    </script>
+
     <!-- Navigation (uguale a index.html) -->
     <nav class="navbar">
         <div class="nav-container">
@@ -32,32 +54,67 @@
         <div class="project-container">
             <header class="project-header">
                 <div class="project-meta">
-                    <span>Produzione Collinarea Festival 2024</span>
-                    <span>Regia: Loris Seghizzi</span>
+                    <span>2024</span>
+                    <span>Opera teatrale</span>
+                    <span>Collinarea Festival 2024</span>
                 </div>
+                <p class="section-subtitle">Produzione Collinarea Festival 2024 – Regia: Loris Seghizzi</p>
             </header>
-            <div class="vimeo-container" style="margin-bottom:2.5rem;">
-    <iframe title="vimeo-player" src="https://player.vimeo.com/video/1149350179?h=7198c66afa" width="640" height="360" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>
-</div>
-            <div class="project-description-full">
-                <p><strong>Bohème: La povertà mi è lieta</strong> è l’ultimo atto della trilogia dedicata a Puccini – dopo <em>Atroce Favola</em> (Madama Butterfly) messa in scena nel 2022 e <em>Turandot – ombra della luce</em>, messa in scena nel 2023 – nell’anno delle celebrazioni del centenario della morte del grande Maestro.</p>
-                <p>Bohème è per noi uno spunto autobiografico. Quegli anni rappresentati a Parigi sono molto somiglianti agli anni vissuti dai nostri predecessori a Napoli, o nei tanti luoghi di quell’Italia che si precipitava nella guerra, dove molti artisti continuarono il mestiere; e soprattutto dopo la guerra, quando nascevano le compagnie di giro, delle vere e proprie comuni viaggianti che riuscivano a campare grazie ad espedienti di ogni tipo, ma sempre spinti orgogliosamente dal “mestiere”, dei veri bohèmien.</p>
-                <p>In questa trasposizione contemporanea, La Bohème si tiene nel luogo di residenza di Dolores, un’anziana attrice che ha rivestito da giovane, nel 1954, il ruolo di Mimì, personaggio da lei particolarmente amato. Dolores non può muoversi ma può ascoltare e vedere dalla sua abitazione. Per l’occasione, vengono a farle visita i compagni di una vita, gli attori che composero quella storica compagnia teatrale. L’opera riunisce dunque il gruppo di artisti e compagni che visse quell’epoca fortunata, fatta di sacrifici, viaggi, amori, incontri, tanto teatro, miseria e nobiltà… attraversando insieme buona parte del ‘900.</p>
-                <p>Nella casa museo di Dolores, La Bohème spalanca la finestra sui ricordi degli anziani artisti, dei tempi in cui anche loro interpretarono l’opera di Puccini in prosa, insieme alle tante rivisitazioni di celebri autori, in mezzo alla messa in scena di una vita fatta di acrobazie…</p>
-                <p>Lo spettacolo segue dunque una linea realistica, intrecciata con quella surreale attraverso il tema del ricordo, frammenti di vita e d’arte di un tempo che fu.</p>
-                <p>La messa in scena è una cucitura tra musica colta, musica contemporanea, teatro, video; in una visione meta teatrale/musicale/cinematografica.</p>
-                <p style="margin-top:2.5rem;"><a href="https://www.sartoriacaronte.it/opera-ubiqua/" target="_blank" rel="noopener" style="color:#e74c3c;text-decoration:underline;">Scopri di più su Sartoria Caronte – Opera Ubiqua</a></p>
+
+            <!-- Titolo e riassunto con immagine affiancata -->
+            <section class="boheme-summary-section reveal-section" style="display:flex;flex-wrap:wrap;align-items:stretch;gap:2.5rem;max-width:1100px;margin:0 auto 2.5rem auto;">
+                <div style="flex:1 1 400px;min-width:280px;max-width:550px;display:flex;flex-direction:column;justify-content:center;background:rgba(20,20,20,0.68);border-radius:18px;padding:2rem 1.5rem;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
+                    <h1 class="boheme-title" style="font-size:2.2rem;margin-bottom:1.2rem;letter-spacing:0.01em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.18);">Bohème: La povertà mi è lieta</h1>
+                    <div class="boheme-summary" style="font-size:1.15rem;line-height:1.6;color:#f7f7f7;text-shadow:0 2px 10px rgba(0,0,0,0.13);">
+                        <p><strong>Bohème</strong> è l'ultimo atto della trilogia dedicata a Puccini – dopo <em>Atroce Favola</em> (Madama Butterfly) e <em>Turandot – ombra della luce</em> – nell'anno delle celebrazioni del centenario della morte del grande Maestro. In questa trasposizione contemporanea, l'opera si tiene nel luogo di residenza di Dolores, un'anziana attrice che interpretò Mimì nel 1954.</p>
+                    </div>
+                </div>
+                <img src="../assets/gallery/boheme1.jpg" alt="Bohème gallery 1" style="flex:1 1 320px;max-width:420px;min-height:260px;border-radius:14px;box-shadow:0 6px 32px rgba(0,0,0,0.16);object-fit:cover;" />
+            </section>
+
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
+
+            <!-- Video Vimeo player -->
+            <div class="vimeo-container reveal-section" style="margin-bottom:2.5rem;max-width:800px;margin-left:auto;margin-right:auto;">
+                <iframe title="vimeo-player" src="https://player.vimeo.com/video/1149350179?h=7198c66afa" width="640" height="360" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen style="width:100%;height:360px;max-width:800px;display:block;margin:0 auto;border-radius:8px;"></iframe>
             </div>
-            <!-- Gallery -->
-            <div class="project-gallery">
-                <img src="../assets/gallery/boheme1.jpg" alt="Bohème gallery 1" style="max-width: 600px; width: 100%; margin: 0 auto 1.5rem; display: block; border-radius: 6px;" />
-                <img src="../assets/gallery/boheme2.jpg" alt="Bohème gallery 2" style="max-width: 600px; width: 100%; margin: 0 auto 1.5rem; display: block; border-radius: 6px;" />
-                <img src="../assets/gallery/boheme3.jpg" alt="Bohème gallery 3" style="max-width: 600px; width: 100%; margin: 0 auto 1.5rem; display: block; border-radius: 6px;" />
-            </div>
-            <!-- Gallery (opzionale) -->
-            <div class="project-gallery">
-                <!-- Puoi aggiungere immagini aggiuntive qui -->
-            </div>
+
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
+
+            <!-- Descrizione completa -->
+            <section class="boheme-description-section reveal-section" style="max-width:820px;margin:0 auto 2.5rem auto;text-align:center;background:rgba(20,20,20,0.68);border-radius:18px;padding:2.2rem 1.5rem;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
+                <div class="project-description-full">
+                    <p>Bohème è per noi uno spunto autobiografico. Quegli anni rappresentati a Parigi sono molto somiglianti agli anni vissuti dai nostri predecessori a Napoli, o nei tanti luoghi di quell'Italia che si precipitava nella guerra, dove molti artisti continuarono il mestiere; e soprattutto dopo la guerra, quando nascevano le compagnie di giro, delle vere e proprie comuni viaggianti che riuscivano a campare grazie ad espedienti di ogni tipo, ma sempre spinti orgogliosamente dal "mestiere", dei veri bohèmien.</p>
+                    <p>Nella casa museo di Dolores, La Bohème spalanca la finestra sui ricordi degli anziani artisti, dei tempi in cui anche loro interpretarono l'opera di Puccini in prosa, insieme alle tante rivisitazioni di celebri autori, in mezzo alla messa in scena di una vita fatta di acrobazie…</p>
+                    <p>Lo spettacolo segue dunque una linea realistica, intrecciata con quella surreale attraverso il tema del ricordo, frammenti di vita e d'arte di un tempo che fu.</p>
+                    <p>La messa in scena è una cucitura tra musica colta, musica contemporanea, teatro, video; in una visione meta teatrale/musicale/cinematografica.</p>
+                </div>
+            </section>
+
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
+
+            <!-- Gallery finale: testo a sinistra, immagine grande a destra -->
+            <section class="boheme-gallery-final reveal-section" style="display:flex;flex-wrap:wrap;align-items:stretch;justify-content:center;gap:2.5rem;max-width:1100px;margin:0 auto 2.5rem auto;">
+                <div class="boheme-gallery-text" style="flex:1 1 340px;min-width:260px;max-width:480px;padding:1.5rem 1.2rem;display:flex;flex-direction:column;justify-content:center;background:rgba(20,20,20,0.68);border-radius:18px;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
+                    <p style="font-size:1.12rem;line-height:1.7;margin-bottom:1.2rem;">Per l'occasione, vengono a farle visita i compagni di una vita, gli attori che composero quella storica compagnia teatrale. L'opera riunisce dunque il gruppo di artisti e compagni che visse quell'epoca fortunata, fatta di sacrifici, viaggi, amori, incontri, tanto teatro, miseria e nobiltà…</p>
+                    <p style="font-size:1.12rem;line-height:1.7;"><a href="https://www.sartoriacaronte.it/opera-ubiqua/" target="_blank" rel="noopener" style="color:#e74c3c;text-decoration:underline;">Scopri di più su Sartoria Caronte – Opera Ubiqua</a></p>
+                </div>
+                <img src="../assets/gallery/boheme2.jpg" alt="Bohème gallery 2" style="flex:1 1 420px;max-width:560px;min-height:280px;border-radius:14px;box-shadow:0 6px 32px rgba(0,0,0,0.16);object-fit:cover;" />
+            </section>
+
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
+
+            <!-- Gallery aggiuntiva -->
+            <section class="boheme-gallery-flex reveal-section" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2vw 2vw;margin-bottom:2.5rem;">
+                <img src="../assets/gallery/boheme3.jpg" alt="Bohème gallery 3" style="width:520px;max-width:98vw;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.13);object-fit:cover;flex:1 1 520px;" />
+            </section>
+
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
 
             <!-- Navigazione tra progetti -->
             <nav class="project-navigation">
@@ -83,5 +140,33 @@
     </footer>
 
     <script src="../script.js"></script>
+    <!-- Script per animazione reveal on scroll -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const revealSections = document.querySelectorAll('.reveal-section');
+        const revealOnScroll = function() {
+            revealSections.forEach(function(section) {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (sectionTop < windowHeight - 80) {
+                    section.classList.add('revealed');
+                }
+            });
+        };
+        revealOnScroll();
+        window.addEventListener('scroll', revealOnScroll);
+    });
+    </script>
+    <style>
+    .reveal-section {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .reveal-section.revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    </style>
 </body>
 </html>

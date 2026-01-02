@@ -3,20 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eburnea - Boris Pimenov</title>
+    <title>Tosca - Boris Pimenov</title>
     <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 </head>
 <body style="padding-top: 4.5rem;">
-    <!-- Video background principale Tosca -->
+    <!-- Video background con cover placeholder -->
     <div class="tosca-bg-video" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;overflow:hidden;pointer-events:none;">
         <div style="padding:56.25% 0 0 0;position:absolute;top:0;left:0;width:100vw;height:100vh;">
-            <iframe src="https://player.vimeo.com/video/1149244867?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;" title="Tosca a Video Scenography"></iframe>
+            <img id="tosca-bg-cover" src="../assets/covers/tosca-cover.jpg" alt="Tosca Cover" style="position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:2;border-radius:0;transition:opacity 0.5s;">
+            <iframe id="tosca-bg-vimeo" src="https://player.vimeo.com/video/1149244867?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;" title="Tosca a Video Scenography"></iframe>
         </div>
     </div>
     <script src="https://player.vimeo.com/api/player.js"></script>
-    <!-- Maschera nera trasparente sopra i testi -->
-    <div class="tosca-text-mask" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;background:rgba(10,10,10,0.54);pointer-events:none;"></div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var iframe = document.getElementById('tosca-bg-vimeo');
+        var cover = document.getElementById('tosca-bg-cover');
+        if (iframe && cover && window.Vimeo) {
+            var player = new Vimeo.Player(iframe);
+            player.on('play', function() {
+                cover.style.opacity = '0';
+                setTimeout(function(){ cover.style.display = 'none'; }, 600);
+            });
+        }
+    });
+    </script>
     
     <div class="page-title-left">Tosca</div>
     <!-- Grain Overlay -->
@@ -46,53 +58,84 @@
                     <span>Scenografia Virtuale</span>
                     <span>Festival dell'opera di San Gimignano 2025</span>
                 </div>
-                <p class="section-subtitle"> Scenografia Virtuale per l'opera Tosca di Giacomo Puccini</p>
+                <p class="section-subtitle">Scenografia Virtuale per l'opera Tosca di Giacomo Puccini</p>
             </header>
 
+            <!-- Titolo e riassunto con immagine affiancata -->
+            <section class="tosca-summary-section reveal-section" style="display:flex;flex-wrap:wrap;align-items:stretch;gap:2.5rem;max-width:1100px;margin:0 auto 2.5rem auto;">
+                <div style="flex:1 1 400px;min-width:280px;max-width:550px;display:flex;flex-direction:column;justify-content:center;background:rgba(20,20,20,0.68);border-radius:18px;padding:2rem 1.5rem;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
+                    <h1 class="tosca-title" style="font-size:2.2rem;margin-bottom:1.2rem;letter-spacing:0.01em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.18);">Tosca – Scenografia Virtuale</h1>
+                    <div class="tosca-summary" style="font-size:1.15rem;line-height:1.6;color:#f7f7f7;text-shadow:0 2px 10px rgba(0,0,0,0.13);">
+                        <p><strong>Tosca</strong>, attesissimo dopo otto anni di assenza, torna con la regia di Loris Seghizzi (supportata dalle proiezioni e dall'assistenza scenica di Boris Pimenov) e la direzione di Mario Menicagli. Tratta dal dramma di Victorien Sardou, Tosca è un'opera di intensità assoluta, caratterizzata da una grande ricchezza melodica e armonica.</p>
+                    </div>
+                </div>
+                <img src="../assets/gallery/boheme1.jpg" alt="Tosca gallery 1" style="flex:1 1 320px;max-width:420px;min-height:260px;border-radius:14px;box-shadow:0 6px 32px rgba(0,0,0,0.16);object-fit:cover;" />
+            </section>
+
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
+
             <!-- Sezione Classica -->
-            <section class="tosca-section">
-                <h2 class="section-title">Tosca – Sezione Classica</h2>
-                <div class="vimeo-container" style="margin-bottom:2.5rem;">
-                    <iframe src="https://player.vimeo.com/video/1149244867?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Tosca a Video Scenography"></iframe>
+            <section class="tosca-section reveal-section">
+                <h2 class="section-title" style="text-align:center;margin-bottom:1.5rem;font-size:1.6rem;">Tosca – Sezione Classica</h2>
+                <div class="vimeo-container" style="margin-bottom:2.5rem;max-width:800px;margin-left:auto;margin-right:auto;">
+                    <iframe src="https://player.vimeo.com/video/1149244867?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="width:100%;aspect-ratio:16/9;border-radius:8px;" title="Tosca a Video Scenography"></iframe>
                 </div>
-                <div class="project-description-full">
-                    <p><strong>Tosca</strong>, attesissimo dopo otto anni di assenza, torna con la regia di Loris Seghizzi (supportata dalle proiezioni e dall’assistenza scenica di Boris Pimenov) e la direzione di Mario Menicagli. Tratta dal dramma di Victorien Sardou, Tosca è un’opera di intensità assoluta, caratterizzata da una grande ricchezza melodica e armonica e da un uso efficace del leitmotiv per rappresentare i personaggi e le loro emozioni. L’appuntamento è per domenica 27 luglio in piazza Sant’Agostino.</p>
-                </div>
-                <div class="project-gallery" style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 2.5rem;">
-                    <img src="../assets/gallery/boheme1.jpg" alt="Tosca classica gallery 1" style="max-width: 260px; width: 100%; border-radius: 6px;" />
-                    <img src="../assets/gallery/boheme2.jpg" alt="Tosca classica gallery 2" style="max-width: 260px; width: 100%; border-radius: 6px;" />
-                    <img src="../assets/gallery/boheme3.jpg" alt="Tosca classica gallery 3" style="max-width: 260px; width: 100%; border-radius: 6px;" />
+                <div class="project-description-full" style="max-width:820px;margin:0 auto 2.5rem auto;text-align:center;background:rgba(20,20,20,0.68);border-radius:18px;padding:2.2rem 1.5rem;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
+                    <p>L'appuntamento è per domenica 27 luglio in piazza Sant'Agostino. Un uso efficace del leitmotiv per rappresentare i personaggi e le loro emozioni, in una serata che unisce tradizione operistica e innovazione visiva.</p>
                 </div>
             </section>
+
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
+
             <!-- Sezione Ubiqua -->
-            <section class="tosca-section">
-                <h2 class="section-title">Tosca – Sezione Ubiqua</h2>
-                <div style="padding:56.25% 0 0 0;position:relative;margin-bottom:2.5rem; max-width: 640px; margin-left:auto; margin-right:auto;">
-                    <iframe src="https://player.vimeo.com/video/1149661577?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:8px;" title="TOSCA D’ESSAI  Opera ubiqua nel borgo di Lari 1 e 2 agosto 2025  Collinarea Festival XXVII"></iframe>
-                </div>
-                <div class="project-description-full">
-                    <p><strong>“Tosca d’essai”</strong> è un’opera ubiqua, immersiva e site-specific, che coinvolge i luoghi del borgo di Lari grazie all’infrastruttura Connessioni© ideata da Loris Seghizzi e Mirco Mencacci. Tra musica, teatro e realtà aumentata, lo spettacolo riscrive Puccini in una forma inedita. Un’esperienza unica in Italia. Un esperimento artistico radicale narrato da una drammaturgia multistrato, distribuita nello spazio e nel tempo.</p>
-                    <p>Dopo il triennio dedicato a Butterfly, Turandot e Bohème, Tosca d’essai rappresenta il consolidamento di un format originale, capace di connettere in tempo reale più luoghi, suoni, immagini, corpi e prospettive.</p>
-                    <p>Il pubblico abiterà tre spazi principali – Piazza Matteotti, il Giardino del Comune, Piazza Vittorio Emanuele – in un’esperienza performativa che si sviluppa simultaneamente su più livelli.</p>
-                    <p>Scarpia, Cavaradossi e Tosca rivivono la tragedia in tempo reale, mentre una troupe gira il film dell’opera: questo duplice registro è il cuore pulsante di Tosca d’essai. Da un lato, il pubblico assiste alla messa in scena dal vivo della vicenda pucciniana; dall’altro, gli stessi gesti, le stesse emozioni e le stesse parole vengono catturate dalle telecamere e trasformate in film.</p>
-                    <p>La narrazione si svolge nell’intreccio tra la trasposizione teatrale del libretto, i testi delle musiche contemporanee, le arie dell’opera, la diffusione incrociata di due mondi, attraverso il suono e il video.</p>
-                    <p>Tosca si trasforma in una lente per osservare il potere, l’arte, la violenza e l’amore; in una tensione continua tra memoria e riscrittura.</p>
-                    <p>A Lari, Tosca diventa una riflessione sul potere, la violenza, l’amore; sull’arte e sul tempo: ciò che è vivo accade una volta sola. Ma forse può rinascere… se diventa film.</p>
-                    <p><strong>Tosca d’essai</strong> non è un’opera solo da guardare. È un’opera da abitare.</p>
-                    <p style="margin-top:2rem;"><a href="https://www.sartoriacaronte.it/opera-ubiqua/" target="_blank" rel="noopener" style="color:#e74c3c;text-decoration:underline;">Scopri di più su Sartoria Caronte – Opera Ubiqua</a></p>
-                </div>
-                <div class="project-gallery" style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 2.5rem;">
-                    <img src="../assets/gallery/boheme1.jpg" alt="Tosca ubiqua gallery 1" style="max-width: 260px; width: 100%; border-radius: 6px;" />
-                    <img src="../assets/gallery/boheme2.jpg" alt="Tosca ubiqua gallery 2" style="max-width: 260px; width: 100%; border-radius: 6px;" />
-                    <img src="../assets/gallery/boheme3.jpg" alt="Tosca ubiqua gallery 3" style="max-width: 260px; width: 100%; border-radius: 6px;" />
+            <section class="tosca-section reveal-section">
+                <h2 class="section-title" style="text-align:center;margin-bottom:1.5rem;font-size:1.6rem;">Tosca d'essai – Sezione Ubiqua</h2>
+                <div class="vimeo-container" style="margin-bottom:2.5rem;max-width:800px;margin-left:auto;margin-right:auto;">
+                    <iframe src="https://player.vimeo.com/video/1149661577?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="width:100%;aspect-ratio:16/9;border-radius:8px;" title="TOSCA D'ESSAI Opera ubiqua nel borgo di Lari"></iframe>
                 </div>
             </section>
+
+            <!-- Descrizione Ubiqua -->
+            <section class="tosca-description-section reveal-section" style="max-width:820px;margin:0 auto 2.5rem auto;text-align:center;background:rgba(20,20,20,0.68);border-radius:18px;padding:2.2rem 1.5rem;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
+                <div class="project-description-full">
+                    <p><strong>"Tosca d'essai"</strong> è un'opera ubiqua, immersiva e site-specific, che coinvolge i luoghi del borgo di Lari grazie all'infrastruttura Connessioni© ideata da Loris Seghizzi e Mirco Mencacci. Tra musica, teatro e realtà aumentata, lo spettacolo riscrive Puccini in una forma inedita.</p>
+                    <p>Il pubblico abiterà tre spazi principali – Piazza Matteotti, il Giardino del Comune, Piazza Vittorio Emanuele – in un'esperienza performativa che si sviluppa simultaneamente su più livelli.</p>
+                    <p>Scarpia, Cavaradossi e Tosca rivivono la tragedia in tempo reale, mentre una troupe gira il film dell'opera: questo duplice registro è il cuore pulsante di Tosca d'essai.</p>
+                    <p>Tosca si trasforma in una lente per osservare il potere, l'arte, la violenza e l'amore; in una tensione continua tra memoria e riscrittura.</p>
+                    <p><strong>Tosca d'essai</strong> non è un'opera solo da guardare. È un'opera da abitare.</p>
+                </div>
+            </section>
+
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
+
+            <!-- Gallery finale: testo a sinistra, immagine grande a destra -->
+            <section class="tosca-gallery-final reveal-section" style="display:flex;flex-wrap:wrap;align-items:stretch;justify-content:center;gap:2.5rem;max-width:1100px;margin:0 auto 2.5rem auto;">
+                <div class="tosca-gallery-text" style="flex:1 1 340px;min-width:260px;max-width:480px;padding:1.5rem 1.2rem;display:flex;flex-direction:column;justify-content:center;background:rgba(20,20,20,0.68);border-radius:18px;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
+                    <p style="font-size:1.12rem;line-height:1.7;margin-bottom:1.2rem;">A Lari, Tosca diventa una riflessione sul potere, la violenza, l'amore; sull'arte e sul tempo: ciò che è vivo accade una volta sola. Ma forse può rinascere… se diventa film.</p>
+                    <p style="font-size:1.12rem;line-height:1.7;"><a href="https://www.sartoriacaronte.it/opera-ubiqua/" target="_blank" rel="noopener" style="color:#e74c3c;text-decoration:underline;">Scopri di più su Sartoria Caronte – Opera Ubiqua</a></p>
+                </div>
+                <img src="../assets/gallery/boheme2.jpg" alt="Tosca gallery 2" style="flex:1 1 420px;max-width:560px;min-height:280px;border-radius:14px;box-shadow:0 6px 32px rgba(0,0,0,0.16);object-fit:cover;" />
+            </section>
+
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
+
+            <!-- Gallery aggiuntiva -->
+            <section class="tosca-gallery-flex reveal-section" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2vw 2vw;margin-bottom:2.5rem;">
+                <img src="../assets/gallery/boheme3.jpg" alt="Tosca gallery 3" style="width:420px;max-width:95vw;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.10);object-fit:cover;flex:1 1 420px;" />
+            </section>
+
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
 
             <!-- Navigazione tra progetti -->
             <nav class="project-navigation">
-                <a href="tosca.html" class="nav-link prev">Tosca</a>
+                <a href="boheme.html" class="nav-link prev">Bohème</a>
                 <a href="../index.html#portfolio" class="nav-link">Torna al Portfolio</a>
-                <a href="libro-dolori.html" class="nav-link next">Il libro dei dolori dell'infanzia</a>
+                <a href="eburnea.html" class="nav-link next">Eburnea</a>
             </nav>
         </div>
     </main>
@@ -112,5 +155,33 @@
     </footer>
 
     <script src="../script.js"></script>
+    <!-- Script per animazione reveal on scroll -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const revealSections = document.querySelectorAll('.reveal-section');
+        const revealOnScroll = function() {
+            revealSections.forEach(function(section) {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (sectionTop < windowHeight - 80) {
+                    section.classList.add('revealed');
+                }
+            });
+        };
+        revealOnScroll();
+        window.addEventListener('scroll', revealOnScroll);
+    });
+    </script>
+    <style>
+    .reveal-section {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .reveal-section.revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    </style>
 </body>
 </html>

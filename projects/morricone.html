@@ -9,13 +9,27 @@
 </head>
 <body style="padding-top: 4.5rem;">
 
-    <!-- Video background principale Sillabe di Morricone -->
+    <!-- Video background con cover placeholder -->
     <div class="morricone-bg-video" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;overflow:hidden;pointer-events:none;">
         <div style="padding:56.25% 0 0 0;position:absolute;top:0;left:0;width:100vw;height:100vh;">
-            <iframe src="https://player.vimeo.com/video/1118195214?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;" title="'C'era una volta in America' for Concert Sillabe di...Ennio Morricone"></iframe>
+            <img id="morricone-bg-cover" src="../assets/covers/morricone-cover.jpg" alt="Morricone Cover" style="position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:2;border-radius:0;transition:opacity 0.5s;">
+            <iframe id="morricone-bg-vimeo" src="https://player.vimeo.com/video/1118195214?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;" title="'C'era una volta in America' for Concert Sillabe di...Ennio Morricone"></iframe>
         </div>
     </div>
     <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var iframe = document.getElementById('morricone-bg-vimeo');
+        var cover = document.getElementById('morricone-bg-cover');
+        if (iframe && cover && window.Vimeo) {
+            var player = new Vimeo.Player(iframe);
+            player.on('play', function() {
+                cover.style.opacity = '0';
+                setTimeout(function(){ cover.style.display = 'none'; }, 600);
+            });
+        }
+    });
+    </script>
 
     <div class="page-title-left">Sillabe di Ennio Morricone</div>
     <!-- Grain Overlay -->
@@ -42,45 +56,71 @@
             <header class="project-header">
                 <div class="project-meta">
                     <span>2025</span>
-                    <span>Progetto di video arte </span>
-                    <span>Festival ...</span>
+                    <span>Progetto di video arte</span>
+                    <span>Concerto-spettacolo</span>
                 </div>
-                <p class="section-subtitle">commento video a concerto</p>
+                <p class="section-subtitle">Commento video a concerto orchestrale dedicato a Ennio Morricone</p>
             </header>
 
-            <!-- Sintesi chiara dello spettacolo -->
-            <section class="morricone-summary-section" style="max-width:820px;margin:0 auto 2.5rem auto;text-align:center;">
-                <h1 class="morricone-title" style="font-size:2rem;margin-bottom:1.1rem;letter-spacing:0.01em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.18);">Sillabe di... Ennio Morricone</h1>
-                <div class="morricone-summary" style="font-size:1.13rem;line-height:1.6;color:#f7f7f7;max-width:650px;margin:0 auto;text-shadow:0 2px 10px rgba(0,0,0,0.13);">
-                    <p><strong>Sillabe di... Ennio Morricone</strong> è uno spettacolo-concerto che rende omaggio al celebre compositore attraverso le sue musiche da film più iconiche. Diretto dal Maestro <strong>Mario Menicagli</strong>, che guida l'Orchestra Massimo De Bernart e il coro Springtime & Monday Girls, l'evento alterna esecuzioni dal vivo a racconti e aneddoti sui brani e sui film di Morricone. La narrazione di Menicagli accompagna il pubblico in un viaggio tra musica e cinema, offrendo un'esperienza immersiva dove la potenza evocativa delle colonne sonore si intreccia con la storia del grande Maestro.</p>
-                    <p style="margin-top:1.2rem;"><strong>Tecnica:</strong> TouchDesigner, arte generativa, video arte, supporto LED screen. Il progetto integra scenografie digitali e visual generativi che dialogano con la musica dal vivo, creando un ambiente immersivo e multisensoriale. La video arte si fonde con la performance orchestrale, amplificando la dimensione emotiva e cinematografica dello spettacolo.</p>
-                    <p style="margin-top:1.2rem;color:#e74c3c;font-size:1.05rem;">La sfida è stata quella di tradurre la potenza evocativa delle musiche di Morricone in paesaggi visivi che non illustrano, ma amplificano il senso e la memoria collettiva. Il risultato è un viaggio sinestetico dove ogni nota trova una forma, ogni racconto una luce, ogni emozione un colore.</p>
+            <!-- Titolo e riassunto con immagine affiancata -->
+            <section class="morricone-summary-section reveal-section" style="display:flex;flex-wrap:wrap;align-items:stretch;gap:2.5rem;max-width:1100px;margin:0 auto 2.5rem auto;">
+                <div style="flex:1 1 400px;min-width:280px;max-width:550px;display:flex;flex-direction:column;justify-content:center;background:rgba(20,20,20,0.68);border-radius:18px;padding:2rem 1.5rem;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
+                    <h1 class="morricone-title" style="font-size:2.2rem;margin-bottom:1.2rem;letter-spacing:0.01em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.18);">Sillabe di... Ennio Morricone</h1>
+                    <div class="morricone-summary" style="font-size:1.15rem;line-height:1.6;color:#f7f7f7;text-shadow:0 2px 10px rgba(0,0,0,0.13);">
+                        <p><strong>Sillabe di... Ennio Morricone</strong> è uno spettacolo-concerto che rende omaggio al celebre compositore attraverso le sue musiche da film più iconiche. Diretto dal Maestro <strong>Mario Menicagli</strong>, che guida l'Orchestra Massimo De Bernart e il coro Springtime & Monday Girls.</p>
+                    </div>
+                </div>
+                <img src="../assets/gallery/morricone1.png" alt="Morricone gallery 1" style="flex:1 1 320px;max-width:420px;min-height:260px;border-radius:14px;box-shadow:0 6px 32px rgba(0,0,0,0.16);object-fit:cover;" />
+            </section>
+
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
+
+            <!-- Video Vimeo aggiornato -->
+            <div class="vimeo-container reveal-section" style="margin-bottom:2.5rem;max-width:800px;margin-left:auto;margin-right:auto;">
+                <iframe src="https://player.vimeo.com/video/1151008206?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="width:100%;aspect-ratio:16/9;border-radius:8px;" title="Sillabe Di Ennio Morricone (Reportage)"></iframe>
+            </div>
+
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
+
+            <!-- Descrizione -->
+            <section class="morricone-description-section reveal-section" style="max-width:820px;margin:0 auto 2.5rem auto;text-align:center;background:rgba(20,20,20,0.68);border-radius:18px;padding:2.2rem 1.5rem;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
+                <div class="project-description-full">
+                    <p>L'evento alterna esecuzioni dal vivo a racconti e aneddoti sui brani e sui film di Morricone. La narrazione di Menicagli accompagna il pubblico in un viaggio tra musica e cinema, offrendo un'esperienza immersiva dove la potenza evocativa delle colonne sonore si intreccia con la storia del grande Maestro.</p>
+                    <p><strong>Tecnica:</strong> TouchDesigner, arte generativa, video arte, supporto LED screen. Il progetto integra scenografie digitali e visual generativi che dialogano con la musica dal vivo, creando un ambiente immersivo e multisensoriale.</p>
+                    <p style="color:#e74c3c;">La sfida è stata quella di tradurre la potenza evocativa delle musiche di Morricone in paesaggi visivi che non illustrano, ma amplificano il senso e la memoria collettiva. Il risultato è un viaggio sinestetico dove ogni nota trova una forma, ogni racconto una luce, ogni emozione un colore.</p>
                 </div>
             </section>
 
-            <!-- Video Vimeo aggiornato -->
-            <div style="padding:56.25% 0 0 0;position:relative;margin-bottom:2.5rem;max-width:800px;margin-left:auto;margin-right:auto;">
-                <iframe src="https://player.vimeo.com/video/1151008206?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:8px;" title="Sillabe Di Ennio Morricone (Reportage)"></iframe>
-            </div>
-            <script src="https://player.vimeo.com/api/player.js"></script>
-            
-            <!-- Gallery immagini morricone -->
-            <section class="morricone-gallery-flex" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2vw 2vw;margin-bottom:2.5rem;">
-                <img src="../assets/gallery/morricone1.png" alt="Morricone gallery 1" style="width:420px;max-width:95vw;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.10);object-fit:cover;flex:1 1 420px;align-self:center;" />
-                <img src="../assets/gallery/morricone2.png" alt="Morricone gallery 2" style="width:340px;max-width:80vw;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.10);object-fit:cover;flex:1 1 340px;align-self:flex-end;" />
-                <img src="../assets/gallery/morricone3.png" alt="Morricone gallery 3" style="width:520px;max-width:98vw;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.10);object-fit:cover;flex:1 1 520px;align-self:flex-start;" />
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
+
+            <!-- Gallery finale: testo a sinistra, immagine grande a destra -->
+            <section class="morricone-gallery-final reveal-section" style="display:flex;flex-wrap:wrap;align-items:stretch;justify-content:center;gap:2.5rem;max-width:1100px;margin:0 auto 2.5rem auto;">
+                <div class="morricone-gallery-text" style="flex:1 1 340px;min-width:260px;max-width:480px;padding:1.5rem 1.2rem;display:flex;flex-direction:column;justify-content:center;background:rgba(20,20,20,0.68);border-radius:18px;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
+                    <p style="font-size:1.12rem;line-height:1.7;margin-bottom:1.2rem;">La video arte si fonde con la performance orchestrale, amplificando la dimensione emotiva e cinematografica dello spettacolo.</p>
+                    <p style="font-size:1.12rem;line-height:1.7;">Un'esperienza multisensoriale dove le scenografie digitali generative dialogano in tempo reale con le note immortali del Maestro.</p>
+                </div>
+                <img src="../assets/gallery/morricone2.png" alt="Morricone gallery 2" style="flex:1 1 420px;max-width:560px;min-height:280px;border-radius:14px;box-shadow:0 6px 32px rgba(0,0,0,0.16);object-fit:cover;" />
             </section>
 
-            <!-- Gallery (opzionale) -->
-            <div class="project-gallery">
-                <!-- Puoi aggiungere immagini aggiuntive qui -->
-            </div>
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
+
+            <!-- Gallery immagini morricone -->
+            <section class="morricone-gallery-flex reveal-section" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2vw 2vw;margin-bottom:2.5rem;">
+                <img src="../assets/gallery/morricone3.png" alt="Morricone gallery 3" style="width:520px;max-width:98vw;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.10);object-fit:cover;flex:1 1 520px;" />
+            </section>
+
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
 
             <!-- Navigazione tra progetti -->
             <nav class="project-navigation">
-                <a href="tosca.html" class="nav-link prev">Tosca</a>
+                <a href="rasi-suolo.html" class="nav-link prev">Rasi al Suolo</a>
                 <a href="../index.html#portfolio" class="nav-link">Torna al Portfolio</a>
-                <a href="libro-dolori.html" class="nav-link next">Il libro dei dolori dell'infanzia</a>
+                <a href="matto-pesca.html" class="nav-link next">Il Matto e La Pesca</a>
             </nav>
         </div>
     </main>
@@ -100,5 +140,33 @@
     </footer>
 
     <script src="../script.js"></script>
+    <!-- Script per animazione reveal on scroll -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const revealSections = document.querySelectorAll('.reveal-section');
+        const revealOnScroll = function() {
+            revealSections.forEach(function(section) {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (sectionTop < windowHeight - 80) {
+                    section.classList.add('revealed');
+                }
+            });
+        };
+        revealOnScroll();
+        window.addEventListener('scroll', revealOnScroll);
+    });
+    </script>
+    <style>
+    .reveal-section {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .reveal-section.revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    </style>
 </body>
 </html>

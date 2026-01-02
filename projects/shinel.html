@@ -3,11 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eburnea - Boris Pimenov</title>
+    <title>Shinel' (Il Cappotto) - Boris Pimenov</title>
     <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 </head>
 <body style="padding-top: 4.5rem;">
+    <!-- Video background con cover placeholder -->
+    <div class="shinel-bg-video" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;overflow:hidden;pointer-events:none;">
+        <div style="padding:56.25% 0 0 0;position:absolute;top:0;left:0;width:100vw;height:100vh;">
+            <img id="shinel-bg-cover" src="../assets/covers/shinel-cover.jpg" alt="Shinel Cover" style="position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:2;border-radius:0;transition:opacity 0.5s;">
+            <iframe id="shinel-bg-vimeo" src="https://player.vimeo.com/video/1149349313?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;" title="Trailer Shinel' (Il Cappotto)"></iframe>
+        </div>
+    </div>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var iframe = document.getElementById('shinel-bg-vimeo');
+        var cover = document.getElementById('shinel-bg-cover');
+        if (iframe && cover && window.Vimeo) {
+            var player = new Vimeo.Player(iframe);
+            player.on('play', function() {
+                cover.style.opacity = '0';
+                setTimeout(function(){ cover.style.display = 'none'; }, 600);
+            });
+        }
+    });
+    </script>
+
     <div class="page-title-left">Shinel' (Il Cappotto)</div>
     <!-- Grain Overlay -->
     <div class="film-grain"></div>
@@ -32,98 +54,87 @@
         <div class="project-container">
             <header class="project-header">
                 <div class="project-meta">
-                    <span>2025</span>
+                    <span>2024</span>
                     <span>Cortometraggio</span>
                     <span>Progetto indipendente</span>
                 </div>
-                <p class="section-subtitle"> cortometraggio bi-lingue</p>
+                <p class="section-subtitle">Cortometraggio bi-lingue ispirato a "Il Cappotto" di Gogol'</p>
             </header>
 
-            <!-- Video Vimeo -->
-            <div class="vimeo-container">
-                <iframe src="https://player.vimeo.com/video/TUO_ID_VIDEO_VIMEO?h=HASH&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-                        frameborder="0" 
-                        allow="autoplay; fullscreen; picture-in-picture" 
-                        allowfullscreen 
-                        title="Shinel' (Il Cappotto) - Boris Pimenov">
-                </iframe>
+            <!-- Video Vimeo Player -->
+            <div class="vimeo-container reveal-section" style="margin-bottom:2.5rem;max-width:800px;margin-left:auto;margin-right:auto;">
+                <iframe title="vimeo-player" src="https://player.vimeo.com/video/1149349313?h=b5fc57f39b" width="640" height="360" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen style="width:100%;aspect-ratio:16/9;border-radius:8px;"></iframe>
             </div>
 
-            <!-- Script Vimeo -->
-            <script src="https://player.vimeo.com/api/player.js"></script>
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
 
-            <!-- Descrizione -->
-            <div class="project-description-full">
-                <h3>Logline</h3>
-                <p>Questo cortometraggio è un esperimento inquieto, un bambino perverso che non sa stare fermo, che sfugge al controllo, ambiguo e inafferrabile nel senso e nell’intenzione. L’immagine filmica si fonde con il suo creatore, in un processo di continua cucitura di un organismo ormai morto.<br><br>
-Akakij Akakievic è un bambino folle che rincorre un’infanzia sepolta, un’ombra che non smette di ripetere il suo destino. Perché Akakij? Perché Il Cappotto? Non c’è una spiegazione univoca, se non quella di collocarlo all’interno di un archetipo, un tipo psicologico ben preciso. Un archetipo sfruttato per mettere in scena un atto psicomagico, in cui tutto si dissolve, si confonde, si sfalda. Il rischio è concreto: dare corpo ai fantasmi quotidiani, lasciare che prendano forma, che infestino lo spazio visivo e mentale.<br><br>
-E la bambina sui tacchi? Un angelo custode, una presenza che veglia su una dimensione fragile, bisognosa di cura. Lei è spettatrice e testimone, colei che accoglie e comprende, la redentrice di un mondo al limite del crollo.<br><br>
-Shinel’ è un viaggio intimo e inquieto attraverso lo spazio sospeso tra due culture, quella russa e quella italiana, e il vuoto che ne deriva. È il tentativo di ricomporre una memoria impossibile, di riannodare i fili di un’infanzia sepolta, di un’identità che sfugge e si ricostruisce nei frammenti di un passato che non appartiene interamente né al presente né al futuro. Questa ricerca si materializza in un teatro oscuro, un parallelepipedo immerso nel silenzio delle colline pisane, luogo di isolamento e di rivelazione. Qui, nell’oscurità, il protagonista si muove in solitudine, sospeso tra il ricordo e l’incubo, tra euforia e terrore. Come un bambino che gioca con il proibito, attraversa la soglia tra il reale e il fantastico, lasciandosi sedurre dalla possibilità di perdersi.<br><br>
-L’opera prende ispirazione da Il Cappotto di Gogol’, non come semplice adattamento, ma come evocazione di un sentimento profondo: la dissoluzione dell’identità, l’ossessione per un oggetto che diventa simbolo di salvezza e condanna. Il protagonista è un uomo anziano, consumato dalla sua solitudine e dalla sua fragilità mentale, immerso in un rito che oscilla tra il gioco e la follia. La sua ricerca notturna è il tentativo disperato di afferrare un senso che continuamente gli sfugge, un contatto con ciò che ha perduto e che forse non è mai esistito.<br><br>
-Il cappotto diventa il ponte tra mondi diversi, tra ciò che si è e ciò che si vorrebbe essere, tra la cultura di origine e quella acquisita, tra il passato e il presente. È un’ossessione che parla di identità negate, di sradicamento, di ricordi che si confondono nella nebbia del tempo.</p>
-                <h3>Scheda Tecnica</h3>
-                <ul>
-                    <li><strong>Titolo originale:</strong> SHINEL’ (pronuncia: Scinel) Il Cappotto</li>
-                    <li><strong>Anno di produzione:</strong> 2024</li>
-                    <li><strong>Durata:</strong> 24”</li>
-                    <li><strong>Paese di produzione:</strong> Italia</li>
-                    <li><strong>Lingua originale:</strong> Russo e Italiano</li>
-                    <li><strong>Sottotitoli:</strong> Italiano e Russo</li>
-                    <li><strong>Formato di proiezione:</strong> H.264</li>
-                    <li><strong>Aspect Ratio:</strong> 16:9</li>
-                    <li><strong>Colore / Bianco e Nero:</strong> Bianco e Nero</li>
-                    <li><strong>Genere:</strong> Grottesco-politico-sperimentale</li>
-                </ul>
-                <h3>Informazioni artistiche</h3>
-                <ul>
-                    <li><strong>Regia:</strong> Boris Pimenov</li>
-                    <li><strong>Sceneggiatura:</strong> Boris Pimenov</li>
-                    <li><strong>Soggetto:</strong> Il Cappotto - Nikolaj Gogol’</li>
-                    <li><strong>Montaggio:</strong> Boris Pimenov</li>
-                    <li><strong>Direzione della fotografia:</strong> Boris Pimenov</li>
-                    <li><strong>Musica:</strong> Rodolfo de Angelis, Chesnokov, Leonid Utesov, Ludwig Van Beethoven</li>
-                    <li><strong>Scenografia:</strong> Boris Pimenov</li>
-                    <li><strong>Costumi:</strong> Boris Pimenov</li>
-                    <li><strong>Suono:</strong> Boris Pimenov</li>
-                </ul>
-                <h3>Cast principale</h3>
-                <ul>
-                    <li><strong>Akakij Akakevic:</strong> Boris Pimenov</li>
-                    <li><strong>La Bambina sui tacchi:</strong> Egle Spaccarelli</li>
-                </ul>
-            </div>
-            <!-- Video embedding -->
-            <div class="vimeo-container" style="margin-bottom:2rem;">
-                <iframe title="vimeo-player" src="https://player.vimeo.com/video/1149349313?h=b5fc57f39b" width="640" height="360" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>
-            </div>
-            
-            <!-- Dettagli Tecnici -->
-            <div class="project-details">
-                <div class="detail-item">
-                    <h4>Formato</h4>
-                    <p>Bianco e Nero, </p>
+            <!-- Titolo e riassunto con descrizione -->
+            <section class="shinel-summary-section reveal-section" style="display:flex;flex-wrap:wrap;align-items:stretch;gap:2.5rem;max-width:1100px;margin:0 auto 2.5rem auto;">
+                <div style="flex:1 1 100%;display:flex;flex-direction:column;justify-content:center;background:rgba(20,20,20,0.68);border-radius:18px;padding:2rem 1.5rem;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
+                    <h1 class="shinel-title" style="font-size:2.2rem;margin-bottom:1.2rem;letter-spacing:0.01em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.18);">SHINEL' | Il Cappotto</h1>
+                    <div class="shinel-summary" style="font-size:1.15rem;line-height:1.6;color:#f7f7f7;text-shadow:0 2px 10px rgba(0,0,0,0.13);">
+                        <p>Questo cortometraggio è un esperimento inquieto, un bambino perverso che non sa stare fermo, che sfugge al controllo, ambiguo e inafferrabile nel senso e nell'intenzione. L'immagine filmica si fonde con il suo creatore, in un processo di continua cucitura di un organismo ormai morto.</p>
+                        <p>Akakij Akakievic è un bambino folle che rincorre un'infanzia sepolta, un'ombra che non smette di ripetere il suo destino. Un archetipo sfruttato per mettere in scena un atto psicomagico, in cui tutto si dissolve, si confonde, si sfalda.</p>
+                    </div>
                 </div>
-                <div class="detail-item">
-                    <h4>Dimensioni</h4>
-                    <p>durata: 25 minuti<br>Risoluzionei: 1920x1080</p>
-                </div>
-                <div class="detail-item">
-                    <h4>Team</h4>
-                    <p>Concept, regia, costumi, scene e sviluppo: Boris Pimenov<br>Performer: [Boris Pimenov]<br>Sound design: [Nome sound designer]</p>
-                </div>
-                <div class="detail-item">
-            </div
+            </section>
 
-            <!-- Gallery (opzionale) -->
-            <div class="project-gallery">
-                <!-- Puoi aggiungere immagini aggiuntive qui -->
-            </div>
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
+
+            <!-- Descrizione approfondita -->
+            <section class="shinel-description-section reveal-section" style="max-width:820px;margin:0 auto 2.5rem auto;text-align:center;background:rgba(20,20,20,0.68);border-radius:18px;padding:2.2rem 1.5rem;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
+                <div class="project-description-full">
+                    <p>E la bambina sui tacchi? Un angelo custode, una presenza che veglia su una dimensione fragile, bisognosa di cura. Lei è spettatrice e testimone, colei che accoglie e comprende, la redentrice di un mondo al limite del crollo.</p>
+                    <p><strong>Shinel'</strong> è un viaggio intimo e inquieto attraverso lo spazio sospeso tra due culture, quella russa e quella italiana, e il vuoto che ne deriva. È il tentativo di ricomporre una memoria impossibile, di riannodare i fili di un'infanzia sepolta.</p>
+                    <p>L'opera prende ispirazione da Il Cappotto di Gogol', non come semplice adattamento, ma come evocazione di un sentimento profondo: la dissoluzione dell'identità, l'ossessione per un oggetto che diventa simbolo di salvezza e condanna.</p>
+                    <p>Il cappotto diventa il ponte tra mondi diversi, tra ciò che si è e ciò che si vorrebbe essere, tra la cultura di origine e quella acquisita, tra il passato e il presente.</p>
+                </div>
+            </section>
+
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
+
+            <!-- Dettagli Tecnici + Scheda affiancati -->
+            <section class="shinel-details-section reveal-section" style="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:center;gap:2.5rem;max-width:1100px;margin:0 auto 2.5rem auto;">
+                <!-- Scheda Tecnica -->
+                <div class="project-details" style="flex:1 1 400px;min-width:280px;max-width:500px;background:rgba(20,20,20,0.68);border-radius:18px;padding:2rem 1.5rem;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
+                    <h4 style="font-size:1.25rem;font-weight:bold;margin-bottom:1rem;">Scheda Tecnica</h4>
+                    <ul style="list-style:none;padding:0;margin:0;font-size:1rem;line-height:1.8;">
+                        <li><strong>Titolo originale:</strong> SHINEL' (Il Cappotto)</li>
+                        <li><strong>Anno:</strong> 2024</li>
+                        <li><strong>Durata:</strong> 24 minuti</li>
+                        <li><strong>Paese:</strong> Italia</li>
+                        <li><strong>Lingua:</strong> Russo e Italiano</li>
+                        <li><strong>Formato:</strong> 16:9, Bianco e Nero</li>
+                        <li><strong>Genere:</strong> Grottesco-politico-sperimentale</li>
+                    </ul>
+                </div>
+                <!-- Info Artistiche -->
+                <div class="project-details" style="flex:1 1 400px;min-width:280px;max-width:500px;background:rgba(20,20,20,0.68);border-radius:18px;padding:2rem 1.5rem;box-shadow:0 4px 32px rgba(0,0,0,0.13);">
+                    <h4 style="font-size:1.25rem;font-weight:bold;margin-bottom:1rem;">Team</h4>
+                    <ul style="list-style:none;padding:0;margin:0;font-size:1rem;line-height:1.8;">
+                        <li><strong>Regia, sceneggiatura, montaggio:</strong> Boris Pimenov</li>
+                        <li><strong>Fotografia, scenografia, costumi:</strong> Boris Pimenov</li>
+                        <li><strong>Musica:</strong> Rodolfo de Angelis, Chesnokov, Leonid Utesov, Beethoven</li>
+                    </ul>
+                    <h4 style="font-size:1.25rem;font-weight:bold;margin-top:1.5rem;margin-bottom:0.8rem;">Cast</h4>
+                    <ul style="list-style:none;padding:0;margin:0;font-size:1rem;line-height:1.8;">
+                        <li><strong>Akakij Akakevic:</strong> Boris Pimenov</li>
+                        <li><strong>La Bambina sui tacchi:</strong> Egle Spaccarelli</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Separatore -->
+            <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
 
             <!-- Navigazione tra progetti -->
             <nav class="project-navigation">
-                <a href="tosca.html" class="nav-link prev">Tosca</a>
+                <a href="libro-dolori.html" class="nav-link prev">Il Libro dei Dolori</a>
                 <a href="../index.html#portfolio" class="nav-link">Torna al Portfolio</a>
-                <a href="libro-dolori.html" class="nav-link next">Il libro dei dolori dell'infanzia</a>
+                <a href="matto-pesca.html" class="nav-link next">Il Matto e La Pesca</a>
             </nav>
         </div>
     </main>
@@ -143,5 +154,33 @@ Il cappotto diventa il ponte tra mondi diversi, tra ciò che si è e ciò che si
     </footer>
 
     <script src="../script.js"></script>
+    <!-- Script per animazione reveal on scroll -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const revealSections = document.querySelectorAll('.reveal-section');
+        const revealOnScroll = function() {
+            revealSections.forEach(function(section) {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (sectionTop < windowHeight - 80) {
+                    section.classList.add('revealed');
+                }
+            });
+        };
+        revealOnScroll();
+        window.addEventListener('scroll', revealOnScroll);
+    });
+    </script>
+    <style>
+    .reveal-section {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .reveal-section.revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    </style>
 </body>
 </html>

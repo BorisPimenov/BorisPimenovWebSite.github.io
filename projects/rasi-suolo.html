@@ -9,13 +9,27 @@
 </head>
 <body style="padding-top: 4.5rem;">
 
-    <!-- Video background principale -->
+    <!-- Video background con cover placeholder -->
     <div class="rasi-bg-video" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;overflow:hidden;pointer-events:none;">
         <div style="padding:56.25% 0 0 0;position:relative;">
-            <iframe src="https://player.vimeo.com/video/1151012815?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Contributo per Rasi al Suolo visione Luomo con il Sorriso."></iframe>
+            <img id="rasi-bg-cover" src="../assets/covers/rasi-suolo-cover.jpg" alt="Rasi al Suolo Cover" style="position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:2;border-radius:0;transition:opacity 0.5s;">
+            <iframe id="rasi-bg-vimeo" src="https://player.vimeo.com/video/1151012815?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;" title="Contributo per Rasi al Suolo visione Luomo con il Sorriso."></iframe>
         </div>
     </div>
     <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var iframe = document.getElementById('rasi-bg-vimeo');
+        var cover = document.getElementById('rasi-bg-cover');
+        if (iframe && cover && window.Vimeo) {
+            var player = new Vimeo.Player(iframe);
+            player.on('play', function() {
+                cover.style.opacity = '0';
+                setTimeout(function(){ cover.style.display = 'none'; }, 600);
+            });
+        }
+    });
+    </script>
 
     <div class="page-title-left">Rasi al Suolo</div>
     <!-- Grain Overlay -->
