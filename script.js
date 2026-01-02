@@ -130,4 +130,26 @@ document.addEventListener('DOMContentLoaded', function() {
             expandBtn.textContent = isOpen ? 'Clicca per visualizzare gli altri progetti;' : 'Nascondi altri progetti;';
         });
     }
+
+    // Animazione sezione progetti e immagini gallery
+    function animateOnScroll() {
+        var elements = document.querySelectorAll('.project-container, .project-header, .project-description-full, .project-gallery, .project-navigation');
+        var images = document.querySelectorAll('.project-gallery img');
+        var windowHeight = window.innerHeight;
+        elements.forEach(function(el) {
+            var position = el.getBoundingClientRect().top;
+            if(position < windowHeight - 60) {
+                el.classList.add('visible');
+            }
+        });
+        images.forEach(function(img) {
+            var position = img.getBoundingClientRect().top;
+            if(position < windowHeight - 40) {
+                img.classList.add('visible');
+            }
+        });
+    }
+
+    animateOnScroll();
+    window.addEventListener('scroll', animateOnScroll);
 });

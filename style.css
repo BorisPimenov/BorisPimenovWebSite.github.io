@@ -1323,3 +1323,30 @@ section {
         text-align: center;
     }
 }
+
+/* Animazioni per le sezioni progetto */
+.project-container, .project-header, .project-description-full, .project-gallery, .project-navigation {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(.77,0,.18,1), transform 0.8s cubic-bezier(.77,0,.18,1);
+}
+.project-container.visible, .project-header.visible, .project-description-full.visible, .project-gallery.visible, .project-navigation.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Per evitare che la gallery appaia troppo tardi */
+.project-gallery {
+    transition-delay: 0.2s;
+}
+
+/* Animazione fade-in per immagini gallery */
+.project-gallery img {
+    opacity: 0;
+    transform: scale(0.97);
+    transition: opacity 0.7s cubic-bezier(.77,0,.18,1), transform 0.7s cubic-bezier(.77,0,.18,1);
+}
+.project-gallery img.visible {
+    opacity: 1;
+    transform: scale(1);
+}
