@@ -69,8 +69,13 @@
                         <p><strong>Tosca</strong>, attesissimo dopo otto anni di assenza, torna con la regia di Loris Seghizzi (supportata dalle proiezioni e dall'assistenza scenica di Boris Pimenov) e la direzione di Mario Menicagli. Tratta dal dramma di Victorien Sardou, Tosca è un'opera di intensità assoluta, caratterizzata da una grande ricchezza melodica e armonica.</p>
                     </div>
                 </div>
-                <img src="../assets/gallery/boheme1.jpg" alt="Tosca gallery 1" style="flex:1 1 320px;max-width:420px;min-height:260px;border-radius:14px;box-shadow:0 6px 32px rgba(0,0,0,0.16);object-fit:cover;" />
+                <img src="../assets/gallery/tosca3.png" alt="Tosca gallery 1" style="flex:1 1 320px;max-width:420px;min-height:260px;border-radius:14px;box-shadow:0 6px 32px rgba(0,0,0,0.16);object-fit:cover;" />
             </section>
+            <!-- Scroll Indicator (come in index.html) -->
+            <div class="scroll-indicator" style="z-index:11; position: static; margin-top:2.5rem;"></div>
+                <span style="font-size:1.05rem;letter-spacing:2px;color:#fff;opacity:0.92;">scroll</span>
+                <span class="arrow"></span>
+            </div>
 
             <!-- Separatore -->
             <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
@@ -117,15 +122,31 @@
                     <p style="font-size:1.12rem;line-height:1.7;margin-bottom:1.2rem;">A Lari, Tosca diventa una riflessione sul potere, la violenza, l'amore; sull'arte e sul tempo: ciò che è vivo accade una volta sola. Ma forse può rinascere… se diventa film.</p>
                     <p style="font-size:1.12rem;line-height:1.7;"><a href="https://www.sartoriacaronte.it/opera-ubiqua/" target="_blank" rel="noopener" style="color:#e74c3c;text-decoration:underline;">Scopri di più su Sartoria Caronte – Opera Ubiqua</a></p>
                 </div>
-                <img src="../assets/gallery/boheme2.jpg" alt="Tosca gallery 2" style="flex:1 1 420px;max-width:560px;min-height:280px;border-radius:14px;box-shadow:0 6px 32px rgba(0,0,0,0.16);object-fit:cover;" />
+                <img src="../assets/gallery/tosca2.png" alt="Tosca gallery 2" style="flex:1 1 420px;max-width:560px;min-height:280px;border-radius:14px;box-shadow:0 6px 32px rgba(0,0,0,0.16);object-fit:cover;" />
             </section>
 
             <!-- Separatore -->
             <div class="section-divider" style="width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);margin:3rem auto;"></div>
 
             <!-- Gallery aggiuntiva -->
-            <section class="tosca-gallery-flex reveal-section" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2vw 2vw;margin-bottom:2.5rem;">
-                <img src="../assets/gallery/boheme3.jpg" alt="Tosca gallery 3" style="width:420px;max-width:95vw;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.10);object-fit:cover;flex:1 1 420px;" />
+            <h2 class="section-title" style="text-align:center;margin-bottom:1.7rem;font-size:2rem;color:#fff;font-family:'Courier Prime', 'Courier New', Courier, monospace;letter-spacing:0.01em;">Ecco alcune immagini:</h2>
+            <section class="tosca-gallery-flex reveal-section grid-layout" style="display:grid;gap:2vw;max-width:900px;margin:0 auto 2.5rem auto;">
+                <figure style="margin:0;">
+                    <img src="../assets/gallery/tosca1.png" alt="Tosca gallery 1" style="width:100%;aspect-ratio:4/3;max-width:100%;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.10);object-fit:cover;" />
+                    <figcaption style="margin-top:0.5rem;font-size:1rem;color:#f7f7f7;text-align:center;">Un frame da Tosca Ubiqua</figcaption>
+                </figure>
+                <figure style="margin:0;">
+                    <img src="../assets/gallery/tosca4.png" alt="Tosca gallery 2" style="width:100%;aspect-ratio:4/3;max-width:100%;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.10);object-fit:cover;" />
+                    <figcaption style="margin-top:0.5rem;font-size:1rem;color:#f7f7f7;text-align:center;">La scenografia virtuale del Primo Atto</figcaption>
+                </figure>
+                <figure style="margin:0;">
+                    <img src="../assets/gallery/tosca5.png" alt="Tosca gallery 3" style="width:100%;aspect-ratio:4/3;max-width:100%;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.10);object-fit:cover;" />
+                    <figcaption style="margin-top:0.5rem;font-size:1rem;color:#f7f7f7;text-align:center;">La Sala dei bottoni della regia video della Tosca ubiqua</figcaption>
+                </figure>
+                <figure style="margin:0;">
+                    <img src="../assets/gallery/tosca6.png" alt="Tosca gallery 4" style="width:100%;aspect-ratio:4/3;max-width:100%;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.10);object-fit:cover;" />
+                    <figcaption style="margin-top:0.5rem;font-size:1rem;color:#f7f7f7;text-align:center;">Cavaradossi nel Terzo Atto</figcaption>
+                </figure>
             </section>
 
             <!-- Separatore -->
@@ -182,6 +203,55 @@
         opacity: 1;
         transform: translateY(0);
     }
+    .scroll-indicator {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        color: var(--primary);
+        font-size: 1rem;
+        text-align: center;
+        opacity: 0.95;
+        z-index: 11;
+        letter-spacing: 2px;
+        text-transform: lowercase;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        pointer-events: none;
+    }
+    .scroll-indicator .arrow {
+        width: 2px;
+        height: 38px;
+        background: var(--accent);
+        margin: 0.5rem auto 0 auto;
+        position: relative;
+        opacity: 0.85;
+        border-radius: 2px;
+        animation: bounce-arrow 1.2s infinite cubic-bezier(.77,0,.18,1);
+    }
+    .scroll-indicator .arrow::after {
+        content: '';
+        position: absolute;
+        bottom: -7px;
+        left: -6px;
+        width: 14px;
+        height: 14px;
+        border-right: 2px solid var(--accent);
+        border-bottom: 2px solid var(--accent);
+        transform: rotate(45deg);
+        border-radius: 2px;
+    }
+    @keyframes bounce-arrow {
+        0%, 100% { transform: translateY(0); }
+        30% { transform: translateY(8px); }
+        60% { transform: translateY(-4px); }
+        80% { transform: translateY(4px); }
+    }
+        .grid-layout {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+        }
     </style>
 </body>
 </html>

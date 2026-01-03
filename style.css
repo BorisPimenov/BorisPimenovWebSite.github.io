@@ -170,8 +170,28 @@ body {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
 }
 
-.video-background {
+.hero::before {
+    content: '';
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.15) 0%,
+        rgba(0, 0, 0, 0.35) 20%,
+        rgba(0, 0, 0, 0.55) 40%,
+        rgba(0, 0, 0, 0.75) 60%,
+        rgba(0, 0, 0, 0.85) 80%,
+        rgba(0, 0, 0, 0.9) 100%
+    );
+    z-index: 2; /* Sopra il video, sotto il testo */
+    pointer-events: none;
+}
+
+.video-background {
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -210,7 +230,7 @@ body {
 
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     max-width: 900px;
     padding: 0 2rem;
 }
@@ -1487,52 +1507,6 @@ p, .project-description, .project-category, .about-text, .showreel-description, 
     margin-right: auto !important;
     padding-left: 0 !important;
     max-width: calc(100% - 4rem);
-    position: relative;
-}
-.project-header::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        to bottom,
-        rgba(10, 10, 10, 0.3) 0%,
-        rgba(10, 10, 10, 0.6) 50%,
-        rgba(10, 10, 10, 0.85) 100%
-    );
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.8s ease;
-}
-.project-header.loaded::after {
-    opacity: 1;
-}
-.project-header .hero-content {
-    position: relative;
-    z-index: 2;
-}
-/* Variante per immagini chiare - gradiente più intenso */
-.project-header.light-bg::after {
-    background: linear-gradient(
-        to bottom,
-        rgba(10, 10, 10, 0.4) 0%,
-        rgba(10, 10, 10, 0.7) 50%,
-        rgba(10, 10, 10, 0.95) 100%
-    );
-}
-/* Mobile: gradiente leggermente più intenso */
-@media (max-width: 768px) {
-    .project-header::after {
-        background: linear-gradient(
-            to bottom,
-            rgba(10, 10, 10, 0.4) 0%,
-            rgba(10, 10, 10, 0.75) 50%,
-            rgba(10, 10, 10, 0.95) 100%
-        );
-    }
 }
 
 .project-meta {
@@ -1562,4 +1536,93 @@ p, .project-description, .project-category, .about-text, .showreel-description, 
         margin-left: 1.5rem !important;
         margin-right: 1.5rem !important;
     }
+}
+
+/* ======================== */
+/* OVERLAY GRADIENTE PER LEGGIBILITÀ */
+/* ======================== */
+
+/* Overlay per Hero principale (index.html) */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.15) 0%,
+        rgba(0, 0, 0, 0.35) 20%,
+        rgba(0, 0, 0, 0.55) 40%,
+        rgba(0, 0, 0, 0.75) 60%,
+        rgba(0, 0, 0, 0.85) 80%,
+        rgba(0, 0, 0, 0.9) 100%
+    );
+    z-index: 2; /* Sopra il video, sotto il testo */
+    pointer-events: none;
+}
+
+/* Assicurati che il video-background sia posizionato relativamente */
+.hero .video-background {
+    position: relative;
+}
+
+/* Posiziona il contenuto sopra il gradiente */
+.hero .hero-content {
+    position: relative;
+    z-index: 3;
+}
+
+/* Overlay per pagine di progetto (es: eburnea.html, tosca.html) */
+.project-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0.4) 25%,
+        rgba(0, 0, 0, 0.65) 50%,
+        rgba(0, 0, 0, 0.85) 75%,
+        rgba(0, 0, 0, 0.95) 100%
+    );
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Per background immagini nelle pagine progetto */
+.project-hero .image-background,
+.project-hero .video-background {
+    position: relative;
+}
+
+.project-hero .hero-content {
+    position: relative;
+    z-index: 3;
+}
+
+/* Overlay alternativo più intenso per immagini chiare */
+.project-hero.light-background::before {
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.55) 30%,
+        rgba(0, 0, 0, 0.8) 60%,
+        rgba(0, 0, 0, 0.95) 100%
+    );
+}
+
+/* Gradiente diagonale (opzione moderna) */
+.project-hero.diagonal-gradient::before {
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.15) 0%,
+        rgba(0, 0, 0, 0.4) 30%,
+        rgba(0, 0, 0, 0.7) 70%,
+        rgba(0, 0, 0, 0.95) 100%
+    );
 }
