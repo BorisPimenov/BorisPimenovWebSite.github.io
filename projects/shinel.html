@@ -9,12 +9,12 @@
 </head>
 <body style="padding-top: 4.5rem;">
     <!-- Video background con cover placeholder -->
-    <div class="shinel-bg-video" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;overflow:hidden;pointer-events:none;">
-        <div style="padding:56.25% 0 0 0;position:absolute;top:0;left:0;width:100vw;height:100vh;">
-            <img id="shinel-bg-cover" src="../assets/covers/shinel-cover.jpg" alt="Shinel Cover" style="position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:2;border-radius:0;transition:opacity 0.5s;">
-            <iframe id="shinel-bg-vimeo" src="https://player.vimeo.com/video/1149349313?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;" title="Trailer Shinel' (Il Cappotto)"></iframe>
+    <section class="shinel-bg-video-section" style="position:relative;width:100vw;height:100vh;overflow:hidden;">
+        <div style="padding:52.73% 0 0 0;position:relative;width:100vw;height:100vh;">
+            <img id="shinel-bg-cover" src="../assets/covers/shinel-cover.jpg" alt="Shinel Cover" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:2;border-radius:0;transition:opacity 0.5s;" />
+            <iframe id="shinel-bg-vimeo" src="https://player.vimeo.com/video/1130210277?autoplay=1&muted=1&loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Trailer Shinel"></iframe>
         </div>
-    </div>
+    </section>
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -50,7 +50,7 @@
     </nav>
 
     <!-- Project Content -->
-    <main class="project-page">
+    <main class="project-page" style="background:#0a0a0a;">
         <div class="project-container">
             <header class="project-header">
                 <div class="project-meta">
@@ -58,7 +58,7 @@
                     <span>Cortometraggio</span>
                     <span>Progetto indipendente</span>
                 </div>
-                <p class="section-subtitle">Cortometraggio bi-lingue ispirato a "Il Cappotto" di Gogol'</p>
+                <p class="section-subtitle" style="margin-left:0;margin-right:auto;max-width:700px;text-align:left;padding-left:0.5rem;">Cortometraggio bi-lingue ispirato a "Il Cappotto" di Gogol'</p>
             </header>
 
             <!-- Video Vimeo Player -->

@@ -21,7 +21,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
 body {
-    font-family: 'Inter', 'DM Sans', 'Space Grotesk', Arial, Helvetica, sans-serif;
+    font-family: 'Courier Prime', monospace;
     font-size: 1.125rem;
     line-height: 1.6;
     color: var(--text);
@@ -217,9 +217,9 @@ body {
 
 .hero-title {
     font-family: 'Courier Prime', monospace;
-    font-size: 3rem;
+    font-size: 2.2rem; /* ridotto rispetto a 3rem */
     font-weight: 400;
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.7rem;
     line-height: 1.2;
     letter-spacing: 0.02em;
     text-transform: lowercase;
@@ -243,7 +243,7 @@ body {
 }
 
 .hero-subtitle {
-    font-size: 0.76rem; /* ridotto del 20% rispetto a 0.95rem */
+    font-size: 0.95rem; /* torna a dimensione normale, non ridotta */
     margin-bottom: 2rem;
     opacity: 0.8;
     font-weight: 300;
@@ -293,6 +293,28 @@ body {
     border: 1.5px solid var(--accent);
 }
 
+.hero-cta .cta-button {
+    background: rgba(255,255,255,0.92);
+    color: var(--secondary);
+    border: 1.5px solid var(--primary);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    transition: background 0.4s cubic-bezier(.77,0,.18,1), color 0.4s cubic-bezier(.77,0,.18,1), border 0.4s cubic-bezier(.77,0,.18,1);
+    font-family: 'Courier Prime', monospace; /* bottoni hero in Courier Prime */
+    font-size: 1.05rem; /* leggermente più grande per impatto */
+    font-weight: 400;
+}
+.hero-cta .cta-button.secondary {
+    background: transparent;
+    color: var(--primary);
+    border: 1.5px solid var(--primary);
+}
+.hero-cta .cta-button:hover,
+.hero-cta .cta-button.secondary:hover {
+    background: rgba(255,255,255,0.18);
+    color: var(--primary);
+    border: 1.5px solid var(--primary);
+}
+
 .scroll-indicator {
     position: absolute;
     bottom: 2rem;
@@ -330,7 +352,7 @@ body {
     width: 14px;
     height: 14px;
     border-right: 2px solid var(--accent);
-    border-bottom: 2px solid var (--accent);
+    border-bottom: 2px solid var(--accent);
     transform: rotate(45deg);
     border-radius: 2px;
 }
@@ -1433,4 +1455,111 @@ p, .project-description, .project-category, .about-text, .showreel-description, 
 }
 .nav-link:hover::after, .project-link:hover::after, .news-link:hover::after, .footer a:hover::after, .social-links a:hover::after {
     width: 100%;
+}
+
+/* Section Subtitle */
+.section-subtitle {
+    /* Allinea i sottotitoli con i titoli dei progetti (stesso offset della .container)
+       Usa !important per sovrascrivere eventuali stili inline nelle pagine progetto */
+    margin-left: 2rem !important;
+    margin-right: auto !important;
+    max-width: 72ch !important; /* limita la larghezza per una lettura migliore */
+    text-align: left !important;
+    padding-left: 0 !important;
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Quando la pagina usa una .container più stretta, manteniamo coerenza */
+@media (max-width: 768px) {
+    .section-subtitle {
+        margin-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+        font-size: 0.95rem;
+    }
+}
+
+/* Allineamento header progetto e parole chiave (project-meta) */
+.project-header {
+    /* stesso offset dei titoli (.container padding) */
+    margin-left: 2rem !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    max-width: calc(100% - 4rem);
+    position: relative;
+}
+.project-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(10, 10, 10, 0.3) 0%,
+        rgba(10, 10, 10, 0.6) 50%,
+        rgba(10, 10, 10, 0.85) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+.project-header.loaded::after {
+    opacity: 1;
+}
+.project-header .hero-content {
+    position: relative;
+    z-index: 2;
+}
+/* Variante per immagini chiare - gradiente più intenso */
+.project-header.light-bg::after {
+    background: linear-gradient(
+        to bottom,
+        rgba(10, 10, 10, 0.4) 0%,
+        rgba(10, 10, 10, 0.7) 50%,
+        rgba(10, 10, 10, 0.95) 100%
+    );
+}
+/* Mobile: gradiente leggermente più intenso */
+@media (max-width: 768px) {
+    .project-header::after {
+        background: linear-gradient(
+            to bottom,
+            rgba(10, 10, 10, 0.4) 0%,
+            rgba(10, 10, 10, 0.75) 50%,
+            rgba(10, 10, 10, 0.95) 100%
+        );
+    }
+}
+
+.project-meta {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.project-meta span {
+    background: rgba(255,255,255,0.02);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.03);
+    font-weight: 300;
+}
+
+/* Forziamo corrispondenza tra header e subtitle su mobile */
+@media (max-width: 768px) {
+    .project-header,
+    .section-subtitle {
+        margin-left: 1.5rem !important;
+        margin-right: 1.5rem !important;
+    }
 }
