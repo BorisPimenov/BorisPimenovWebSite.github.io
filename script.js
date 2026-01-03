@@ -83,6 +83,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         lastScroll = currentScroll;
+
+        // Navbar: aggiungi classe .scrolled su scroll > 10px
+        if (navbar) {
+            if (currentScroll > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
     });
     
     // Aggiungi classe active alla sezione corrente
@@ -152,4 +161,72 @@ document.addEventListener('DOMContentLoaded', function() {
 
     animateOnScroll();
     window.addEventListener('scroll', animateOnScroll);
+
+    // Reveal on scroll per le sezioni della homepage
+    function revealSectionsOnScroll() {
+        var sections = document.querySelectorAll('.reveal-on-scroll, .project-card');
+        var windowHeight = window.innerHeight;
+        sections.forEach(function(section) {
+            var position = section.getBoundingClientRect().top;
+            if(position < windowHeight - 60) {
+                section.classList.add('visible');
+            }
+        });
+    }
+    revealSectionsOnScroll();
+    window.addEventListener('scroll', revealSectionsOnScroll);
+
+    
+    // --- Intersection Observer Scroll Reveal ---
+    function scrollRevealInit() {
+        const revealEls = document.querySelectorAll('.reveal-on-scroll');
+        if (!('IntersectionObserver' in window)) {
+            // fallback: show all
+            revealEls.forEach(el => el.classList.add('visible'));
+            return;
+        }
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.18
+        });
+        revealEls.forEach(el => {
+            observer.observe(el);
+        });
+    }
+
+    // --- Smooth scroll con offset per navbar fissa ---
+    function smoothScrollInit() {
+        const navbar = document.querySelector('.navbar');
+        const offset = navbar ? navbar.offsetHeight : 80;
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (!targetId || targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({
+                        top,
+                        behavior: 'smooth'
+                    });
+                    // Transizione fade per la sezione
+                    target.style.transition = 'opacity 0.7s cubic-bezier(.77,0,.18,1)';
+                    target.style.opacity = 0.2;
+                    setTimeout(() => {
+                        target.style.opacity = 1;
+                    }, 200);
+                }
+            });
+        });
+    }
+
+    scrollRevealInit();
+    smoothScrollInit();
 });
