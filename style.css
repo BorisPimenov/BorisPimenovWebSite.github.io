@@ -955,7 +955,16 @@ section {
         font-size: 3rem;
         margin-left: 1.5rem;
         margin-top: 3.5rem;
-        margin-bottom: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+    .project-meta,
+    .section-subtitle {
+        margin-left: 1.5rem !important;
+        margin-right: 1.5rem !important;
+        max-width: 98vw !important;
+    }
+    .section-subtitle {
+        font-size: 0.95rem;
     }
 }
 
@@ -977,16 +986,44 @@ section {
     position: relative;
     display: block;
     margin-top: 4.5rem; /* Sposta il titolo sotto la navbar */
-    margin-left: 2rem;
+    margin-left: 2.5rem !important;
     font-family: 'Courier Prime', monospace;
-    font-size: 2.7rem;
+    font-size: 5rem;
     font-weight: 700;
     color: var(--primary);
     letter-spacing: 2px;
     z-index: 1100;
     text-transform: none;
     pointer-events: none;
-    margin-bottom: 2rem; /* Spazio sotto il titolo */
+    margin-bottom: 0.5rem; /* meno spazio sotto il titolo */
+}
+
+.project-meta {
+    margin-left: 2.5rem !important;
+    margin-top: 0;
+    margin-bottom: 0.2rem;
+    padding-left: 0 !important;
+    max-width: calc(100% - 5rem);
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+    flex-wrap: wrap;
+}
+
+.section-subtitle {
+    margin-left: 2.5rem !important;
+    margin-right: auto !important;
+    max-width: 72ch !important;
+    text-align: left !important;
+    padding-left: 0 !important;
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 2.2rem;
 }
 
 /* Showreel Section */
@@ -1481,7 +1518,7 @@ p, .project-description, .project-category, .about-text, .showreel-description, 
 .section-subtitle {
     /* Allinea i sottotitoli con i titoli dei progetti (stesso offset della .container)
        Usa !important per sovrascrivere eventuali stili inline nelle pagine progetto */
-    margin-left: 2rem !important;
+    margin-left: 2.5rem !important;
     margin-right: auto !important;
     max-width: 72ch !important; /* limita la larghezza per una lettura migliore */
     text-align: left !important;
@@ -1489,6 +1526,7 @@ p, .project-description, .project-category, .about-text, .showreel-description, 
     color: var(--text-light);
     font-size: 1rem;
     line-height: 1.5;
+    margin-bottom: 2.2rem;
 }
 
 /* Quando la pagina usa una .container più stretta, manteniamo coerenza */
@@ -1625,4 +1663,44 @@ p, .project-description, .project-category, .about-text, .showreel-description, 
         rgba(0, 0, 0, 0.7) 70%,
         rgba(0, 0, 0, 0.95) 100%
     );
+}
+
+/* Project Header Mask */
+.project-header-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: auto;
+    min-height: 7.5rem; /* copre almeno il titolo, meta e subtitle */
+    background: linear-gradient(90deg, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.92) 60%, rgba(10,10,10,0.82) 100%);
+    z-index: 100;
+    pointer-events: none;
+    border-radius: 0 0 18px 18px;
+}
+
+.project-header-block {
+    position: relative;
+    width: 100vw;
+    padding-top: 4.5rem;
+    padding-bottom: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-title-left,
+.project-meta,
+.section-subtitle {
+    position: relative;
+    z-index: 101;
+}
+
+@media (max-width: 768px) {
+    .project-header-mask {
+        min-height: 6.2rem;
+        border-radius: 0 0 12px 12px;
+    }
+    .project-header-block {
+        padding-top: 3.5rem;
+        padding-bottom: 1.2rem;
+    }
 }
