@@ -229,4 +229,52 @@ document.addEventListener('DOMContentLoaded', function() {
 
     scrollRevealInit();
     smoothScrollInit();
+    
+    // ANIMAZIONE ON SCROLL PER LE CARD
+    function animatePortfolioItems() {
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        portfolioItems.forEach(item => {
+            observer.observe(item);
+        });
+    }
+
+    // EFFETTO PARALLAX LEGGERO SU HOVER
+    function addPortfolioHoverEffects() {
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        portfolioItems.forEach(item => {
+            item.addEventListener('mousemove', (e) => {
+                const { left, top, width, height } = item.getBoundingClientRect();
+                const x = (e.clientX - left) / width - 0.5;
+                const y = (e.clientY - top) / height - 0.5;
+                const image = item.querySelector('.portfolio-image');
+                image.style.transform = `scale(1.05) translate(${x * 10}px, ${y * 10}px)`;
+            });
+            item.addEventListener('mouseleave', () => {
+                const image = item.querySelector('.portfolio-image');
+                image.style.transform = 'scale(1.05)';
+            });
+        });
+    }
+
+    // INIZIALIZZARE AL CARICAMENTO
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            animatePortfolioItems();
+            addPortfolioHoverEffects();
+        });
+    } else {
+        animatePortfolioItems();
+        addPortfolioHoverEffects();
+    }
 });
