@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arte Generativa Touchdesigner</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+</head>
+<body style="padding-top: 4.5rem;">
+    <div id="touchdesigner-alert" style="position:fixed;top:0;left:0;width:100vw;z-index:9999;background:rgba(30,30,30,0.98);color:#fff;padding:1.2rem 0;text-align:center;font-size:1.1rem;letter-spacing:0.02em;font-family:'Courier Prime', monospace;box-shadow:0 2px 12px rgba(0,0,0,0.12);transition:top 0.4s;">
+         Questa pagina è in fase di progettazione
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var alert = document.getElementById('touchdesigner-alert');
+        if(alert) {
+            setTimeout(function(){
+                alert.style.top = '-80px';
+                setTimeout(function(){
+                    alert.style.display = 'none';
+                }, 400);
+            }, 6000); // Nasconde dopo 6 secondi
+        }
+    });
+    </script>
+    <div class="page-title-left">Touchdesigner e Arte Generativa</div>
+    <!-- Grain Overlay -->
+    <div class="film-grain"></div>
+    
+    <!-- Navigation (uguale a index.html) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">Boris Pimenov</a>
+            </div>
+            <div class="nav-menu">
+                <a href="../index.html#portfolio" class="nav-link">Portfolio</a>
+                <a href="../index.html#about" class="nav-link">About</a>
+                <a href="../index.html#news" class="nav-link">News</a>
+                <a href="../index.html#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Content -->
+    <main class="project-page">
+        <div class="project-container">
+            <header class="project-header">
+                <div class="project-meta">
+                    <span>presente</span>
+                    <span>Arte generativa</span>
+                    <span>Live visuals</span>
+                </div>
+                <h1 class="section-title" style="margin-left:0;margin-right:auto;max-width:700px;text-align:left;padding-left:0.5rem;">Touchdesigner | Arte Generativa e Performatività</h1>
+            </header>
+
+            <!-- Descrizione aggiornata -->
+            <div class="project-description-full">
+                <p>Questa sezione è dedicata all’arte generativa concepita per la scena performativa. Attraverso Touchdesigner, do vita a sistemi visivi dinamici e reattivi, pensati per evolvere in tempo reale in risposta a suono, movimento e interazione. Ogni performance diventa così un evento unico e irripetibile, dove l'immagine non è un semplice accompagnamento, ma un performer attivo in dialogo costante con la musica e lo spazio.</p>
+                <p>Il cuore della mia ricerca è la filosofia generativa: un approccio che privilegia il processo sul prodotto definitivo. Non creo opere statiche, ma sistemi, "semi" logici capaci di generare infinite variazioni. L'artista diventa un architetto di possibilità, definendo regole e relazioni, per poi osservare e guidare la complessità che ne emerge spontaneamente.</p>
+                <p>In questo spazio, tecnologia e intuizione si fondono. L'obiettivo è costruire ambienti audiovisivi immersivi ed emotivi, dove il controllo algoritmico incontra l'imprevisto, dando forma a un linguaggio visivo vivo e in costante divenire.</p>
+                <div class="instagram-link" style="margin:1.5rem 0 2.5rem 0;">
+                  <a href="https://www.instagram.com/borisp.imenov/" target="_blank" rel="noopener" style="font-size:1.1rem;color:#e1306c;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:0.5em;">
+                    <img src="../assets/logo/instagram.svg" alt="Instagram" style="width:22px;height:22px;vertical-align:middle;"> Seguimi su Instagram
+                  </a>
+                </div>
+            </div>
+
+            <!-- Galleria immagini -->
+            <div class="project-gallery">
+                <img src="../assets/gallery/touch1.jpg" alt="Touchdesigner generative 1" class="gallery-img">
+                <img src="../assets/gallery/touch2.jpg" alt="Touchdesigner generative 2" class="gallery-img">
+                <img src="../assets/gallery/touch3.jpg" alt="Touchdesigner generative 3" class="gallery-img">
+                <img src="../assets/gallery/touch4.jpg" alt="Touchdesigner generative 4" class="gallery-img">
+                <img src="../assets/gallery/touch5.jpg" alt="Touchdesigner generative 5" class="gallery-img">
+                <img src="../assets/gallery/touch6.jpg" alt="Touchdesigner generative 6" class="gallery-img">
+                <img src="../assets/gallery/..png" alt="Touchdesigner generative 7" class="gallery-img">
+                <img src="../assets/gallery/eburnea2.png" alt="Touchdesigner generative 8" class="gallery-img">
+            </div>
+
+            <!-- Navigazione tra progetti -->
+            <nav class="project-navigation">
+                <a href="tosca.html" class="nav-link prev">Tosca</a>
+                <a href="../index.html#portfolio" class="nav-link">Torna al Portfolio</a>
+                <a href="libro-dolori.html" class="nav-link next">Il libro dei dolori dell'infanzia</a>
+            </nav>
+        </div>
+    </main>
+
+    <!-- Footer (uguale a index.html) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-copyright">
+                    &copy; 2025 Boris Pimenov — Artista e regista italo-russo
+                </div>
+                <div class="footer-credits">
+                    Esplorando l'ibrido tra corpo performativo e spazio digitale
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
