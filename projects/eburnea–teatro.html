@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sito in manutenzione – Boris Pimenov</title>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            background: #0e0e0e;
+            color: #e8e4de;
+            font-family: 'Cormorant Garamond', serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 2rem;
+        }
+        .grain {
+            position: fixed; inset:0; z-index:-1; pointer-events:none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            opacity: 0.25;
+            animation: grainShift 0.5s steps(1) infinite;
+        }
+        @keyframes grainShift {
+            0%,100% { transform:translate(0,0); }
+            10% { transform:translate(-1%,-1%); }
+            20% { transform:translate(1%,1%); }
+            30% { transform:translate(-1%,0); }
+            40% { transform:translate(0,-1%); }
+            50% { transform:translate(1%,1%); }
+            60% { transform:translate(-1%,-1%); }
+            70% { transform:translate(1%,0); }
+            80% { transform:translate(0,1%); }
+            90% { transform:translate(-1%,1%); }
+        }
+        h1 {
+            font-family: 'Courier Prime', monospace;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            margin-bottom: 1.5rem;
+        }
+        p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #aaa;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .accent {
+            width: 60px;
+            height: 3px;
+            background: #ff3b30;
+            margin: 2rem auto;
+            border-radius: 2px;
+        }
+        .signature {
+            margin-top: 3rem;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    <div>
+        <h1>Sito in manutenzione</h1>
+        <div class="accent"></div>
+        <p>
+            Il portfolio di Boris Pimenov è momentaneamente offline per aggiornamenti.
+            Tornerà online a breve con nuovi progetti.
+        </p>
+        <div class="signature">Boris Pimenov — Artista e regista italo‑russo</div>
+    </div>
+</body>
+</html>
