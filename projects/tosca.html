@@ -3,21 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eburnea - Boris Pimenov</title>
+    <title>Tosca · Boris Pimenov</title>
     <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        .eb-page { max-width:900px; margin:0 auto; padding:3.5rem 1.5rem 5rem 1.5rem; font-family:'Courier Prime',monospace; color:#f7f7f7; }
+        .eb-page h1 { font-size:3rem; font-weight:400; letter-spacing:0.04em; color:#fff; margin-bottom:0.3rem; }
+        .eb-page h2 { font-size:1.6rem; font-weight:400; letter-spacing:0.03em; color:#fff; margin:3.5rem 0 1rem; padding-top:2.5rem; border-top:1px solid rgba(255,255,255,0.08); }
+        .eb-meta { font-size:0.85rem; color:#888; margin-bottom:1.8rem; letter-spacing:0.14em; text-transform:uppercase; }
+        .eb-label { font-size:0.75rem; letter-spacing:0.16em; text-transform:uppercase; color:#666; margin-bottom:0.7rem; }
+        .eb-block { font-size:1.08rem; line-height:1.85; color:#e8e8e8; margin-bottom:2.5rem; }
+        .eb-block p { margin-bottom:1.2rem; }
+        .eb-block em { font-style:italic; color:#ccc; }
+        .eb-block strong { color:#fff; }
+        .eb-video { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px; margin-bottom:2.8rem; }
+        .eb-video iframe { position:absolute; top:0; left:0; width:100%; height:100%; }
+        .eb-gallery-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0.55rem; margin-bottom:3rem; }
+        @media(max-width:700px){ .eb-gallery-grid{ grid-template-columns:repeat(2,1fr); } }
+        .eb-thumb { position:relative; aspect-ratio:1; overflow:hidden; border-radius:6px; cursor:pointer; background:#111; }
+        .eb-thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.35s ease,filter 0.35s ease; }
+        .eb-thumb:hover img { transform:scale(1.07); filter:brightness(0.7); }
+        .eb-thumb-overlay { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity 0.3s ease; }
+        .eb-thumb:hover .eb-thumb-overlay { opacity:1; }
+        .eb-thumb-overlay svg { width:32px; height:32px; fill:none; stroke:#fff; stroke-width:1.5; }
+        #lb-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:9999; align-items:center; justify-content:center; }
+        #lb-overlay.active { display:flex; }
+        #lb-img { max-width:88vw; max-height:85vh; object-fit:contain; border-radius:6px; box-shadow:0 8px 60px rgba(0,0,0,0.8); display:block; }
+        @keyframes lb-in { from{opacity:0;transform:scale(0.93)} to{opacity:1;transform:scale(1)} }
+        #lb-close { position:fixed; top:1.2rem; right:1.6rem; color:#fff; font-size:2rem; cursor:pointer; opacity:0.6; transition:opacity 0.2s; line-height:1; }
+        #lb-close:hover { opacity:1; }
+        .lb-arrow { position:fixed; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:#fff; font-size:1.8rem; cursor:pointer; padding:0.6rem 1rem; border-radius:4px; transition:background 0.2s; user-select:none; line-height:1; }
+        .lb-arrow:hover { background:rgba(255,255,255,0.18); }
+        #lb-prev { left:1.2rem; } #lb-next { right:1.2rem; }
+        #lb-counter { position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.45); font-size:0.8rem; font-family:'Courier Prime',monospace; letter-spacing:0.1em; }
+    </style>
 </head>
-<body style="padding-top: 4.5rem;">
-    <div class="page-title-left">Tosca</div>
-    <!-- Grain Overlay -->
+<body style="padding-top:4.5rem;">
     <div class="film-grain"></div>
-    
-    <!-- Navigation (uguale a index.html) -->
+
+    <!-- LIGHTBOX -->
+    <div id="lb-overlay">
+        <span id="lb-close" onclick="closeLB()">&#x2715;</span>
+        <span class="lb-arrow" id="lb-prev" onclick="lbNav(-1)">&#8592;</span>
+        <img id="lb-img" src="" alt="">
+        <span class="lb-arrow" id="lb-next" onclick="lbNav(1)">&#8594;</span>
+        <div id="lb-counter"></div>
+    </div>
+
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <a href="../index.html">Boris Pimenov</a>
-            </div>
+            <div class="nav-logo"><a href="../index.html">Boris Pimenov</a></div>
             <div class="nav-menu">
                 <a href="../index.html#portfolio" class="nav-link">Portfolio</a>
                 <a href="../index.html#about" class="nav-link">About</a>
@@ -27,88 +62,102 @@
         </div>
     </nav>
 
-    <!-- Project Content -->
-    <main class="project-page">
-        <div class="project-container">
-            <header class="project-header">
-                <div class="project-meta">
-                    <span>2025</span>
-                    <span>Scenografia Virtuale</span>
-                    <span>Festival dell'opera di San Gimignano 2025</span>
-                </div>
-                <p class="section-subtitle"> Scenografia Virtuale per l'opera Tosca di Giacomo Puccini</p>
-            </header>
+    <main>
+        <div class="eb-page">
+            <p class="eb-meta">Scenografia virtuale &nbsp;/&nbsp; Opera ubiqua</p>
+            <h1>Tosca</h1>
 
-            <!-- Video Vimeo -->
-            <div class="vimeo-container">
-                <iframe src="https://player.vimeo.com/video/TUO_ID_VIDEO_VIMEO?h=HASH&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-                        frameborder="0" 
-                        allow="autoplay; fullscreen; picture-in-picture" 
-                        allowfullscreen 
-                        title="Tosca 2025 - Boris Pimenov">
-                </iframe>
+            <!-- ── SEZIONE CLASSICA ─────────────────────────────── -->
+            <h2>Sezione Classica</h2>
+            <p class="eb-meta" style="margin-top:-0.8rem;">Festival dell&rsquo;Opera di San Gimignano &mdash; 90&ordf; edizione</p>
+
+            <p class="eb-label">Video</p>
+            <div class="eb-video">
+                <iframe title="vimeo-player" src="https://player.vimeo.com/video/1149244867?h=ecaa3b478b" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>
             </div>
 
-            <!-- Script Vimeo -->
-            <script src="https://player.vimeo.com/api/player.js"></script>
-
-            <!-- Descrizione -->
-            <div class="project-description-full">
-                <p><em>Tosca 2025</em> è una performance che esplora i concetti di memoria e materia attraverso un dialogo costante tra il corpo del performer e uno spazio digitale generativo.</p>
-
-                <p>Il progetto, vincitore del bando Residenze Digitali 2025, utilizza <strong>TouchDesigner</strong> come nucleo creativo per costruire ambienti virtuali renderizzati in tempo reale che rispondono ai input del performer e del pubblico remoto.</p>
-                
-                <p>La metodologia integra modelli di intelligenza artificiale per la generazione e trasformazione di contenuti visivi e testuali, creando una drammaturgia in continua evoluzione. Questa sinergia tra algoritmi, spazi digitali e azione scenica dal vivo posiziona il lavoro all'avanguardia della ricerca sul teatro immersivo e della performance tecnologicamente ibrida.</p>
+            <p class="eb-label">Note</p>
+            <div class="eb-block">
+                <p>Per la <strong>90&ordf; edizione del Festival dell&rsquo;Opera di San Gimignano</strong>, Boris Pimenov ha progettato e realizzato la scenografia virtuale per l&rsquo;opera <em>Tosca</em> di Giacomo Puccini. L&rsquo;intervento ridisegna lo spazio scenico attraverso ambienti digitali generati in tempo reale con TouchDesigner, che avvolgono il palcoscenico storico con architetture luminose, texture pittoriche e proiezioni volumetriche.</p>
+                <p>Il progetto affronta la sfida di far coesistere la tradizione lirica con il linguaggio dell&rsquo;immagine interattiva: ogni atto possiede una palette visiva distinta, capace di amplificare la drammaturgia pucciniana senza sovrastarla. La scenografia virtuale dialoga con le scene fisiche creando un doppio registro &mdash; reale e digitale &mdash; che espande la percezione dello spazio e del tempo narrativo dell&rsquo;opera.</p>
             </div>
 
-            <!-- Dettagli Tecnici -->
-            <div class="project-details">
-                <div class="detail-item">
-                    <h4>Tecnologie</h4>
-                    <p>TouchDesigner, Python, OpenGL, Real-time Rendering, WebSockets</p>
+            <!-- ── SEZIONE UBIQUA ───────────────────────────────── -->
+            <h2>Sezione Ubiqua</h2>
+            <p class="eb-meta" style="margin-top:-0.8rem;">Tosca d&rsquo;essai &mdash; Opera site-specific &mdash; Borgo di Lari</p>
+
+            <p class="eb-label">Galleria</p>
+            <div class="eb-gallery-grid" id="gallery">
+                <div class="eb-thumb" onclick="openLB(0)">
+                    <img src="../assets/gallery/tosca1.png" alt="Tosca 1">
+                    <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
                 </div>
-                <div class="detail-item">
-                    <h4>Dimensioni</h4>
-                    <p>Performance: 45 minuti<br>Installazione: variabile</p>
+                <div class="eb-thumb" onclick="openLB(1)">
+                    <img src="../assets/gallery/tosca2.png" alt="Tosca 2">
+                    <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
                 </div>
-                <div class="detail-item">
-                    <h4>Team</h4>
-                    <p>Concept, regia e sviluppo: Boris Pimenov<br>Performer: [Nome performer]<br>Sound design: [Nome sound designer]</p>
+                <div class="eb-thumb" onclick="openLB(2)">
+                    <img src="../assets/gallery/tosca3.png" alt="Tosca 3">
+                    <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
                 </div>
-                <div class="detail-item">
-                    <h4>Presentazioni</h4>
-                    <p>Residenze Digitali 2025<br>[Festival dell'opera di San Gimignano], [Luogo, Data]<br>[Altro Festival], [Luogo, Data]</p>
+                <div class="eb-thumb" onclick="openLB(3)">
+                    <img src="../assets/gallery/tosca4.png" alt="Tosca 4">
+                    <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+                </div>
+                <div class="eb-thumb" onclick="openLB(4)">
+                    <img src="../assets/gallery/tosca5.png" alt="Tosca 5">
+                    <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+                </div>
+                <div class="eb-thumb" onclick="openLB(5)">
+                    <img src="../assets/gallery/tosca6.png" alt="Tosca 6">
+                    <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
                 </div>
             </div>
 
-            <!-- Gallery (opzionale) -->
-            <div class="project-gallery">
-                <!-- Puoi aggiungere immagini aggiuntive qui -->
+            <p class="eb-label">Video</p>
+            <div class="eb-video">
+                <iframe title="vimeo-player" src="https://player.vimeo.com/video/1149661577?h=5c0c56776c" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>
             </div>
 
-            <!-- Navigazione tra progetti -->
+            <p class="eb-label">Note</p>
+            <div class="eb-block">
+                <p><em>Tosca d&rsquo;essai</em> &egrave; un&rsquo;opera ubiqua, immersiva e site-specific, che coinvolge i luoghi del borgo di Lari grazie all&rsquo;infrastruttura <strong>Connessioni</strong> ideata da Loris Seghizzi e Mirco Mencacci. Tra musica, teatro e realt&agrave; aumentata, lo spettacolo riscrive Puccini in una forma inedita. Un&rsquo;esperienza unica in Italia. Un esperimento artistico radicale narrato da una drammaturgia multistrato, distribuita nello spazio e nel tempo.</p>
+                <p>Scarpia, Cavaradossi e Tosca rivivono la tragedia in tempo reale, mentre una troupe gira il film dell&rsquo;opera: questo duplice registro &egrave; il cuore pulsante di <em>Tosca d&rsquo;essai</em>. Da un lato, il pubblico assiste alla messa in scena dal vivo della vicenda pucciniana; dall&rsquo;altro, gli stessi gesti, le stesse emozioni e le stesse parole vengono catturate dalle telecamere e trasformate in film.</p>
+            </div>
+
             <nav class="project-navigation">
-                <a href="tosca.html" class="nav-link prev">Tosca</a>
+                <a href="eburnea-teatro.html" class="nav-link prev">Eburnea</a>
                 <a href="../index.html#portfolio" class="nav-link">Torna al Portfolio</a>
-                <a href="libro-dolori.html" class="nav-link next">Il libro dei dolori dell'infanzia</a>
+                <a href="libro-dolori.html" class="nav-link next">Il libro dei dolori dell&rsquo;infanzia</a>
             </nav>
         </div>
     </main>
 
-    <!-- Footer (uguale a index.html) -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-copyright">
-                    &copy; 2025 Boris Pimenov — Artista e regista italo-russo
-                </div>
-                <div class="footer-credits">
-                    Esplorando l'ibrido tra corpo performativo e spazio digitale
-                </div>
+                <div class="footer-copyright">&copy; 2025 Boris Pimenov &mdash; Artista e regista italo-russo</div>
+                <div class="footer-credits">Esplorando l&rsquo;ibrido tra corpo performativo e spazio digitale</div>
             </div>
         </div>
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+    var toscaImgs = [
+        '../assets/gallery/tosca1.png',
+        '../assets/gallery/tosca2.png',
+        '../assets/gallery/tosca3.png',
+        '../assets/gallery/tosca4.png',
+        '../assets/gallery/tosca5.png',
+        '../assets/gallery/tosca6.png'
+    ];
+    var lbIdx = 0;
+    function openLB(i){ lbIdx=i; showLBImg(); document.getElementById('lb-overlay').classList.add('active'); }
+    function closeLB(){ document.getElementById('lb-overlay').classList.remove('active'); }
+    function lbNav(d){ lbIdx=(lbIdx+d+toscaImgs.length)%toscaImgs.length; showLBImg(); }
+    function showLBImg(){ var img=document.getElementById('lb-img'); img.src=toscaImgs[lbIdx]; document.getElementById('lb-counter').textContent=(lbIdx+1)+'/'+toscaImgs.length; }
+    document.addEventListener('keydown',function(e){ var o=document.getElementById('lb-overlay'); if(!o.classList.contains('active'))return; if(e.key==='Escape')closeLB(); if(e.key==='ArrowLeft')lbNav(-1); if(e.key==='ArrowRight')lbNav(1); });
+    </script>
 </body>
 </html>

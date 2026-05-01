@@ -3,21 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eburnea - Boris Pimenov</title>
+    <title>Compagnia di Giro · Boris Pimenov</title>
     <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        .eb-page { max-width:900px; margin:0 auto; padding:3.5rem 1.5rem 5rem 1.5rem; font-family:'Courier Prime',monospace; color:#f7f7f7; }
+        .eb-page h1 { font-size:3rem; font-weight:400; letter-spacing:0.04em; color:#fff; margin-bottom:0.3rem; }
+        .eb-meta { font-size:0.85rem; color:#888; margin-bottom:1.8rem; letter-spacing:0.14em; text-transform:uppercase; }
+        .eb-label { font-size:0.75rem; letter-spacing:0.16em; text-transform:uppercase; color:#666; margin-bottom:0.7rem; }
+        .eb-block { font-size:1.08rem; line-height:1.85; color:#e8e8e8; margin-bottom:2.5rem; }
+        .eb-block p { margin-bottom:1.2rem; }
+        .eb-block em { font-style:italic; color:#ccc; }
+        .eb-gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.55rem; margin-bottom:3rem; }
+        @media(max-width:700px){ .eb-gallery-grid{ grid-template-columns:repeat(2,1fr); } }
+        .eb-thumb { position:relative; aspect-ratio:1; overflow:hidden; border-radius:6px; cursor:pointer; background:#111; }
+        .eb-thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.35s ease,filter 0.35s ease; }
+        .eb-thumb:hover img { transform:scale(1.07); filter:brightness(0.7); }
+        .eb-thumb-overlay { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity 0.3s ease; }
+        .eb-thumb:hover .eb-thumb-overlay { opacity:1; }
+        .eb-thumb-overlay svg { width:32px; height:32px; fill:none; stroke:#fff; stroke-width:1.5; }
+        #lb-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:9999; align-items:center; justify-content:center; }
+        #lb-overlay.active { display:flex; }
+        #lb-img { max-width:88vw; max-height:85vh; object-fit:contain; border-radius:6px; box-shadow:0 8px 60px rgba(0,0,0,0.8); display:block; }
+        #lb-close { position:fixed; top:1.2rem; right:1.6rem; color:#fff; font-size:2rem; cursor:pointer; opacity:0.6; transition:opacity 0.2s; line-height:1; }
+        #lb-close:hover { opacity:1; }
+        .lb-arrow { position:fixed; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:#fff; font-size:1.8rem; cursor:pointer; padding:0.6rem 1rem; border-radius:4px; transition:background 0.2s; user-select:none; line-height:1; }
+        .lb-arrow:hover { background:rgba(255,255,255,0.18); }
+        #lb-prev { left:1.2rem; } #lb-next { right:1.2rem; }
+        #lb-counter { position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.45); font-size:0.8rem; font-family:'Courier Prime',monospace; letter-spacing:0.1em; }
+    </style>
 </head>
-<body style="padding-top: 4.5rem;">
-    <div class="page-title-left">Tosca</div>
-    <!-- Grain Overlay -->
+<body style="padding-top:4.5rem;">
     <div class="film-grain"></div>
-    
-    <!-- Navigation (uguale a index.html) -->
+
+    <!-- LIGHTBOX -->
+    <div id="lb-overlay">
+        <span id="lb-close" onclick="closeLB()">&#x2715;</span>
+        <span class="lb-arrow" id="lb-prev" onclick="lbNav(-1)">&#8592;</span>
+        <img id="lb-img" src="" alt="">
+        <span class="lb-arrow" id="lb-next" onclick="lbNav(1)">&#8594;</span>
+        <div id="lb-counter"></div>
+    </div>
+
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <a href="../index.html">Boris Pimenov</a>
-            </div>
+            <div class="nav-logo"><a href="../index.html">Boris Pimenov</a></div>
             <div class="nav-menu">
                 <a href="../index.html#portfolio" class="nav-link">Portfolio</a>
                 <a href="../index.html#about" class="nav-link">About</a>
@@ -27,88 +57,72 @@
         </div>
     </nav>
 
-    <!-- Project Content -->
-    <main class="project-page">
-        <div class="project-container">
-            <header class="project-header">
-                <div class="project-meta">
-                    <span>2025</span>
-                    <span>Scenografia Virtuale</span>
-                    <span>Festival dell'opera di San Gimignano 2025</span>
+    <main>
+        <div class="eb-page">
+            <p class="eb-meta">2023&ndash;2024 &nbsp;/&nbsp; Progetto teatrale</p>
+            <h1>Compagnia di Giro</h1>
+
+            <!-- GALLERIA -->
+            <p class="eb-label">Galleria</p>
+            <div class="eb-gallery-grid">
+                <div class="eb-thumb" onclick="openLB(0)">
+                    <img src="../assets/gallery/giro1.jpg" alt="Compagnia di Giro 1">
+                    <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg></div>
                 </div>
-                <p class="section-subtitle"> Scenografia Virtuale per l'opera Tosca di Giacomo Puccini</p>
-            </header>
-
-            <!-- Video Vimeo -->
-            <div class="vimeo-container">
-                <iframe src="https://player.vimeo.com/video/TUO_ID_VIDEO_VIMEO?h=HASH&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-                        frameborder="0" 
-                        allow="autoplay; fullscreen; picture-in-picture" 
-                        allowfullscreen 
-                        title="Tosca 2025 - Boris Pimenov">
-                </iframe>
-            </div>
-
-            <!-- Script Vimeo -->
-            <script src="https://player.vimeo.com/api/player.js"></script>
-
-            <!-- Descrizione -->
-            <div class="project-description-full">
-                <p><em>Tosca 2025</em> è una performance che esplora i concetti di memoria e materia attraverso un dialogo costante tra il corpo del performer e uno spazio digitale generativo.</p>
-
-                <p>Il progetto, vincitore del bando Residenze Digitali 2025, utilizza <strong>TouchDesigner</strong> come nucleo creativo per costruire ambienti virtuali renderizzati in tempo reale che rispondono ai input del performer e del pubblico remoto.</p>
-                
-                <p>La metodologia integra modelli di intelligenza artificiale per la generazione e trasformazione di contenuti visivi e testuali, creando una drammaturgia in continua evoluzione. Questa sinergia tra algoritmi, spazi digitali e azione scenica dal vivo posiziona il lavoro all'avanguardia della ricerca sul teatro immersivo e della performance tecnologicamente ibrida.</p>
-            </div>
-
-            <!-- Dettagli Tecnici -->
-            <div class="project-details">
-                <div class="detail-item">
-                    <h4>Tecnologie</h4>
-                    <p>TouchDesigner, Python, OpenGL, Real-time Rendering, WebSockets</p>
+                <div class="eb-thumb" onclick="openLB(1)">
+                    <img src="../assets/gallery/giro2.jpg" alt="Compagnia di Giro 2">
+                    <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg></div>
                 </div>
-                <div class="detail-item">
-                    <h4>Dimensioni</h4>
-                    <p>Performance: 45 minuti<br>Installazione: variabile</p>
-                </div>
-                <div class="detail-item">
-                    <h4>Team</h4>
-                    <p>Concept, regia e sviluppo: Boris Pimenov<br>Performer: [Nome performer]<br>Sound design: [Nome sound designer]</p>
-                </div>
-                <div class="detail-item">
-                    <h4>Presentazioni</h4>
-                    <p>Residenze Digitali 2025<br>[Festival dell'opera di San Gimignano], [Luogo, Data]<br>[Altro Festival], [Luogo, Data]</p>
+                <div class="eb-thumb" onclick="openLB(2)">
+                    <img src="../assets/gallery/giro3.jpg" alt="Compagnia di Giro 3">
+                    <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg></div>
                 </div>
             </div>
 
-            <!-- Gallery (opzionale) -->
-            <div class="project-gallery">
-                <!-- Puoi aggiungere immagini aggiuntive qui -->
+            <!-- NOTE -->
+            <p class="eb-label">Note</p>
+            <div class="eb-block">
+                <p>&ldquo;Nessuno nasce imparato&rdquo;, diceva qualcuno&hellip;</p>
+                <p>&Egrave; proprio vero, nessuno nasce sapendo chi &egrave;, si impara a diventare e talvolta lo si fa grazie agli insegnanti che per mestiere, o per missione, passano ad altri il proprio sapere, sperando che ci sia almeno un allievo che superi il maestro e porti questo sapere in l&agrave;, pi&ugrave; in l&agrave;; trasformandolo, facendolo proprio, riadattandolo ai tempi, ma mantenendo i principi fondamentali che lo rendono unico. Bene, noi arriviamo da un tempo lontano, siamo figli di quella che fu una Compagnia di Giro.</p>
+                <p>I nonni iniziarono, prima e durante la guerra; i genitori continuarono, noi siamo nati. Siamo nati lungo il cammino e abbiamo provato quella bellezza. Parliamo di una bellezza semplice, fatta di scambi tra attore e spettatore.</p>
+            </div>
+            <div class="eb-block">
+                <p>Qualcosa di indispensabile. La gente ama il teatro se il teatro ama la gente, la rispetta, non crea distinzioni, la incontra, la desidera, la fa sedere come sulla sedia di casa. Non &egrave; teatro di piazza, n&eacute; di strada, non &egrave; di sala, non &egrave; commedia dell&rsquo;arte, n&eacute; prosa o ricerca&hellip; Ma &egrave; tutto questo allo stesso tempo, nello scambio puro e incondizionato con lo spettatore.</p>
+                <p>Quell&rsquo;insegnamento c&rsquo;&egrave; rimasto dentro, come radice nella terra, &egrave; il nostro mestiere e la nostra missione, &egrave; il nostro vivere, tanto da non poterne fare a meno. Negli anni ottanta, quando Franco Seghizzi cap&igrave; che di compagnie di giro non ce n&rsquo;erano pi&ugrave;, chiam&ograve; la propria compagnia &ldquo;I Superstiti&rdquo;. Poi se ne and&ograve;.</p>
+                <p>Credo che lui non lo sapesse, perch&eacute; di sicuro non gliene importava niente, ma era un Maestro&hellip;</p>
+                <p style="color:#888;font-style:italic;">&mdash; Loris Seghizzi</p>
             </div>
 
-            <!-- Navigazione tra progetti -->
+            <p class="eb-label">Approfondimento</p>
+            <div class="eb-block">
+                <p><a href="https://www.sartoriacaronte.it/unplugged/" target="_blank" rel="noopener" style="color:#e74c3c;">Sartoria Caronte &mdash; Unplugged &rarr;</a></p>
+            </div>
+
             <nav class="project-navigation">
-                <a href="tosca.html" class="nav-link prev">Tosca</a>
+                <a href="cinica-matrice.html" class="nav-link prev">Cinica Matrice</a>
                 <a href="../index.html#portfolio" class="nav-link">Torna al Portfolio</a>
-                <a href="libro-dolori.html" class="nav-link next">Il libro dei dolori dell'infanzia</a>
             </nav>
         </div>
     </main>
 
-    <!-- Footer (uguale a index.html) -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-copyright">
-                    &copy; 2025 Boris Pimenov — Artista e regista italo-russo
-                </div>
-                <div class="footer-credits">
-                    Esplorando l'ibrido tra corpo performativo e spazio digitale
-                </div>
+                <div class="footer-copyright">&copy; 2025 Boris Pimenov &mdash; Artista e regista italo-russo</div>
+                <div class="footer-credits">Esplorando l&rsquo;ibrido tra corpo performativo e spazio digitale</div>
             </div>
         </div>
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+    var giroImgs = ['../assets/gallery/giro1.jpg','../assets/gallery/giro2.jpg','../assets/gallery/giro3.jpg'];
+    var lbIdx = 0;
+    function openLB(i){ lbIdx=i; showLBImg(); document.getElementById('lb-overlay').classList.add('active'); }
+    function closeLB(){ document.getElementById('lb-overlay').classList.remove('active'); }
+    function lbNav(d){ lbIdx=(lbIdx+d+giroImgs.length)%giroImgs.length; showLBImg(); }
+    function showLBImg(){ document.getElementById('lb-img').src=giroImgs[lbIdx]; document.getElementById('lb-counter').textContent=(lbIdx+1)+'/'+giroImgs.length; }
+    document.addEventListener('keydown',function(e){ var o=document.getElementById('lb-overlay'); if(!o.classList.contains('active'))return; if(e.key==='Escape')closeLB(); if(e.key==='ArrowLeft')lbNav(-1); if(e.key==='ArrowRight')lbNav(1); });
+    </script>
 </body>
 </html>

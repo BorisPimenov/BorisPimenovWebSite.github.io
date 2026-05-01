@@ -6,13 +6,183 @@
     <title>Il libro dei dolori dell'infanzia - Boris Pimenov</title>
     <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* Stili aggiuntivi per garantire la corretta visualizzazione della galleria e la leggibilità del testo */
+        
+        /* Galleria a griglia */
+        .eb-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .eb-thumb {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .eb-thumb:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        .eb-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: filter 0.3s ease;
+        }
+        
+        .eb-thumb-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .eb-thumb:hover .eb-thumb-overlay {
+            opacity: 1;
+        }
+        
+        .eb-thumb-overlay svg {
+            width: 48px;
+            height: 48px;
+            stroke: white;
+            stroke-width: 1.5;
+            fill: none;
+        }
+        
+        /* Lightbox modale */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 48px;
+            color: white;
+            cursor: pointer;
+            font-family: monospace;
+            transition: transform 0.2s;
+        }
+        
+        .lightbox-close:hover {
+            transform: scale(1.2);
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-family: 'Courier Prime', monospace;
+        }
+        
+        .lightbox-prev, .lightbox-next {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            padding: 0.5rem 1rem;
+            margin: 0 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        
+        .lightbox-prev:hover, .lightbox-next:hover {
+            background: rgba(255,255,255,0.4);
+        }
+        
+        /* Miglioramenti leggibilità testo descrittivo */
+        .project-description-full {
+            border-left: 4px solid #9e7b5c;
+            padding: 1.5rem 2rem;
+            background-color: rgba(0,0,0,0.03);
+            margin: 2rem 0;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            max-width: 100%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        /* Adattamento per schermi piccoli */
+        @media (max-width: 768px) {
+            .eb-gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+            .project-description-full {
+                padding: 1rem 1.2rem;
+                margin: 1.5rem 0;
+            }
+            .lightbox img {
+                max-width: 95%;
+                max-height: 70%;
+            }
+        }
+        
+        /* Assicura che il contenitore del progetto abbia uno sfondo pulito */
+        .project-container {
+            background: transparent;
+        }
+        
+        /* Stile per i dettagli tecnici (opzionale per coerenza) */
+        .project-details {
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 1.5rem 0;
+            margin: 2rem 0;
+        }
+    </style>
 </head>
 <body style="padding-top: 4.5rem;">
     <div class="page-title-left">Il libro dei dolori dell'infanzia</div>
     <!-- Grain Overlay -->
     <div class="film-grain"></div>
     
-    <!-- Navigation (uguale a index.html) -->
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -43,11 +213,9 @@
             <div class="vimeo-container">
                 <iframe title="vimeo-player" src="https://player.vimeo.com/video/1147339473?h=74595019d6" width="640" height="360" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>
             </div>
-
-            <!-- Script Vimeo -->
             <script src="https://player.vimeo.com/api/player.js"></script>
 
-            <!-- Descrizione -->
+            <!-- Descrizione con bordo e formattazione migliorata -->
             <div class="project-description-full">
                 <p><em>Il libro dei dolori dell'infanzia</em> è un poema visivo sulla memoria e la misericordia — una veglia senza tempo sospesa tra gelo e tenerezza.<br>
                 L'opera attraversa la materia come un rito funebre: terra, garza, patate, cenere — reliquie di un mondo infantile che si rifiuta di morire.<br>
@@ -76,14 +244,32 @@
                 </div>
             </div>
 
-            <!-- Gallery (opzionale) -->
-            <div class="project-gallery">
-                <img src="../assets/gallery/libro-dolori1.png" alt="Libro dei dolori gallery 1" style="max-width:100%;margin-bottom:1rem;" />
-                <img src="../assets/gallery/libro-dolori2.png" alt="Libro dei dolori gallery 2" style="max-width:100%;margin-bottom:1rem;" />
-                <img src="../assets/gallery/libro-dolori3.png" alt="Libro dei dolori gallery 3" style="max-width:100%;margin-bottom:1rem;" />
-                <img src="../assets/gallery/libro-dolori4.png" alt="Libro dei dolori gallery 4" style="max-width:100%;margin-bottom:1rem;" />
-                <img src="../assets/gallery/libro-dolori5.png" alt="Libro dei dolori gallery 5" style="max-width:100%;margin-bottom:1rem;" />
-                <img src="../assets/gallery/libro-dolori6.png" alt="Libro dei dolori gallery 6" style="max-width:100%;margin-bottom:1rem;" />
+            <!-- GALLERIA - griglia con thumbnail e lightbox -->
+            <div class="eb-gallery-grid" id="gallery">
+                <div class="eb-thumb" onclick="openLB(0)">
+                    <img src="../assets/gallery/libro-dolori1.png" alt="Il libro dei dolori dell'infanzia 1">
+                    <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+                </div>
+                <div class="eb-thumb" onclick="openLB(1)">
+                    <img src="../assets/gallery/libro-dolori2.png" alt="Il libro dei dolori dell'infanzia 2">
+                    <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+                </div>
+                <div class="eb-thumb" onclick="openLB(2)">
+                    <img src="../assets/gallery/libro-dolori3.png" alt="Il libro dei dolori dell'infanzia 3">
+                    <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+                </div>
+                <div class="eb-thumb" onclick="openLB(3)">
+                    <img src="../assets/gallery/libro-dolori4.png" alt="Il libro dei dolori dell'infanzia 4">
+                    <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+                </div>
+                <div class="eb-thumb" onclick="openLB(4)">
+                    <img src="../assets/gallery/libro-dolori5.png" alt="Il libro dei dolori dell'infanzia 5">
+                    <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+                </div>
+                <div class="eb-thumb" onclick="openLB(5)">
+                    <img src="../assets/gallery/libro-dolori6.png" alt="Il libro dei dolori dell'infanzia 6">
+                    <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+                </div>
             </div>
 
             <!-- Navigazione tra progetti -->
@@ -95,7 +281,7 @@
         </div>
     </main>
 
-    <!-- Footer (uguale a index.html) -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -109,6 +295,76 @@
         </div>
     </footer>
 
+    <!-- Lightbox modale (implementata per completare la galleria) -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" onclick="closeLB()">&times;</span>
+        <img id="lightbox-img" src="" alt="Immagine ingrandita">
+        <div class="lightbox-nav">
+            <button class="lightbox-prev" onclick="changeImage(-1)">‹ Precedente</button>
+            <button class="lightbox-next" onclick="changeImage(1)">Successiva ›</button>
+        </div>
+    </div>
+
+    <script>
+        // Array dei percorsi delle immagini della galleria (stessi ordine dei thumb)
+        const galleryImages = [
+            "../assets/gallery/libro-dolori1.png",
+            "../assets/gallery/libro-dolori2.png",
+            "../assets/gallery/libro-dolori3.png",
+            "../assets/gallery/libro-dolori4.png",
+            "../assets/gallery/libro-dolori5.png",
+            "../assets/gallery/libro-dolori6.png"
+        ];
+        
+        let currentIndex = 0;
+        
+        function openLB(index) {
+            if (index >= 0 && index < galleryImages.length) {
+                currentIndex = index;
+                const lightboxImg = document.getElementById('lightbox-img');
+                lightboxImg.src = galleryImages[currentIndex];
+                document.getElementById('lightbox').classList.add('active');
+                // Blocca scroll della pagina
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeLB() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        function changeImage(direction) {
+            let newIndex = currentIndex + direction;
+            if (newIndex < 0) newIndex = galleryImages.length - 1;
+            if (newIndex >= galleryImages.length) newIndex = 0;
+            currentIndex = newIndex;
+            document.getElementById('lightbox-img').src = galleryImages[currentIndex];
+        }
+        
+        // Chiudi lightbox con tasto ESC
+        document.addEventListener('keydown', function(e) {
+            const lb = document.getElementById('lightbox');
+            if (lb.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeLB();
+                } else if (e.key === 'ArrowLeft') {
+                    changeImage(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeImage(1);
+                }
+            }
+        });
+        
+        // Chiudi cliccando fuori dall'immagine (sullo sfondo)
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLB();
+            }
+        });
+    </script>
+    
+    <!-- Il file script.js originale viene mantenuto per eventuali altre funzionalità -->
     <script src="../script.js"></script>
 </body>
 </html>
