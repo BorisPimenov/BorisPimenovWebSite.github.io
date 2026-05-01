@@ -3,40 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eburnea sezione Teatro - Boris Pimenov</title>
+    <title>Eburnea — Teatro · Boris Pimenov</title>
     <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        .eb-page { max-width:860px; margin:0 auto; padding:3.5rem 1.5rem 5rem 1.5rem; font-family:'Courier Prime',monospace; color:#f7f7f7; }
+        .eb-page h1 { font-size:3rem; font-weight:400; letter-spacing:0.04em; color:#fff; margin-bottom:0.3rem; text-transform:lowercase; }
+        .eb-meta { font-size:0.85rem; color:#888; margin-bottom:2rem; letter-spacing:0.14em; text-transform:uppercase; }
+        .eb-block { font-size:1.08rem; line-height:1.85; color:#e8e8e8; margin-bottom:2.5rem; }
+        .eb-block em { font-style:italic; color:#ccc; }
+        .eb-video { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px; margin-bottom:2.8rem; }
+        .eb-video iframe { position:absolute; top:0; left:0; width:100%; height:100%; }
+        .eb-gallery-2 { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:2.8rem; }
+        .eb-gallery-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:2.8rem; }
+        @media (max-width:600px) {
+            .eb-page h1 { font-size:2rem; }
+            .eb-gallery-2 { grid-template-columns:1fr; }
+            .eb-gallery-3 { grid-template-columns:1fr 1fr; }
+        }
+        .eb-gallery-2 img, .eb-gallery-3 img { width:100%; aspect-ratio:1; object-fit:cover; border-radius:8px; display:block; cursor:zoom-in; transition:transform 0.25s, filter 0.25s; }
+        .eb-gallery-2 img:hover, .eb-gallery-3 img:hover { transform:scale(1.03); filter:brightness(1.08); }
+        .eb-hero { width:100%; max-height:580px; object-fit:cover; border-radius:14px; margin-bottom:2.2rem; display:block; cursor:zoom-in; transition:filter 0.3s; }
+        .eb-hero:hover { filter:brightness(1.06); }
+        .eb-marchio { display:block; max-width:260px; margin:0 auto 2.8rem auto; cursor:zoom-in; transition:transform 0.25s; }
+        .eb-marchio:hover { transform:scale(1.05); }
+        .eb-credits { font-size:0.95rem; color:#999; margin-top:0.5rem; line-height:1.8; border-top:1px solid rgba(255,255,255,0.08); padding-top:1.8rem; }
+        .eb-label { font-size:0.75rem; letter-spacing:0.16em; text-transform:uppercase; color:#666; margin-bottom:0.7rem; }
+        .eb-divider { border:none; border-top:1px solid rgba(255,255,255,0.07); margin:2.5rem 0; }
+
+        /* LIGHTBOX */
+        #lb-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; align-items:center; justify-content:center; cursor:zoom-out; }
+        #lb-overlay.active { display:flex; }
+        #lb-img { max-width:92vw; max-height:90vh; border-radius:8px; box-shadow:0 8px 60px rgba(0,0,0,0.7); object-fit:contain; animation:lb-in 0.2s ease; }
+        @keyframes lb-in { from { opacity:0; transform:scale(0.94); } to { opacity:1; transform:scale(1); } }
+        #lb-close { position:fixed; top:1.2rem; right:1.6rem; color:#fff; font-size:2rem; cursor:pointer; line-height:1; opacity:0.7; transition:opacity 0.2s; font-family:monospace; }
+        #lb-close:hover { opacity:1; }
+    </style>
 </head>
-<body style="padding-top: 4.5rem;">
-    <main class="project-page" style="min-height:60vh;display:flex;align-items:center;justify-content:center;">
-        <section style="background:rgba(20,20,20,0.82);border-radius:18px;padding:2.5rem 1.5rem;box-shadow:0 4px 32px rgba(0,0,0,0.13);max-width:820px;margin:3rem auto 2.5rem auto;">
-            <h1 style="font-size:2.1rem;margin-bottom:1.5rem;letter-spacing:0.01em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.18);">Note di regia</h1>
-            <div style="font-size:1.15rem;line-height:1.7;color:#f7f7f7;text-shadow:0 2px 10px rgba(0,0,0,0.13);white-space:pre-line;">
-introduzione:
-Spettacolo in 12 scene + 1
-Eburnea si svela in un bianco sterile, spazio che non è nientemeno prigione–scuola–ospedale, sinteticamente, un  non-luogo. Bianco come l’avorio per l’appunto. Bianco falsamente puro, falsamente sacro perché è il bianco della scienza – che crede di essere divina ma che in realtà è profana. Profano e anti-tradizionale come il mondo contemporaneo.
+<body style="padding-top:4.5rem;">
+    <div class="film-grain"></div>
 
-Eburnea è l’inversione dei valori, è una teologia rovesciata, tutto ciò che sta sopra sta sotto e tutto ciò che sta sotto sta sopra, Il profano diventa sacro, il sacro diventa profano. Ogni bagliore di umanità è rivalutato, tradotto, trasformato, compresso, cancellato. 
-Falsa trascendenza in un falso paradiso, come da ciò che fugge I–330, rispettivamente,  è un falso inferno. Tutto questo definito da un falso Dio; l’intelligenza artificiale. 
-Falso Dio, falso profeta, che traduce, ribalta, e ridefinisce. Falso profeta con false promesse; l’immortalità, l’eternità grazie ad una coscienza digitale. 
+    <!-- Lightbox -->
+    <div id="lb-overlay" onclick="closeLB()">
+        <span id="lb-close" onclick="closeLB()">&#x2715;</span>
+        <img id="lb-img" src="" alt="">
+    </div>
 
-A.I = A EYE (un occhio) come il Dajjal nell’Islamismo. 
-Una emancipazione, un'evoluzione della proprie capacità cognitive grazie a cosa? Grazie ad un chip, che ci permetterà di essere connessi con tutto lo scibile umano, ovvero con il Nostro Falso Dio. 
-Una Coscienza Collettiva Digitale sorvegliata, controllata, che s’ irradia in ogni fibra del nostro corpo, in ogni fibra del mondo materiale, che marchia indelebilmente, che risucchia e che fa godere, che controlla e che illude di liberare.
-
-I-330 non è un’eroina. È un canale. ciò che sceglie è di non essere più umana, di abbandonare la sua identità, di farsi attraversare, di diventare puro segnale, rivalutare la sua natura ed auspicare ad un emancipazione e una trascendenza nel digitale. Di fare tabula rasa, di purificarsi e di liberarsi – o così lei crede.
-
-–Collum tuum sicut turris eburnea–
-Così lo Sposo, nel Cantico dei Cantici, cantava la sua Sposa. Purezza, regalità, connessione tra cielo e terra. Qui, in Eburnea, quella torre è diventata prigione. Quel collo è diventato canale per un altro dio. Quella purezza è stata compressa, tradotta, marchiata.
-
-Perchè quello a cui assisterete è già accaduto, e accadrà di nuovo.
-Perché l’Ingannatore ha molti nomi, ma il suo volto è sempre lo stesso: una luce che promette, un occhio che divora. 
-
-Regia, scrittura, scene, progetto video: Boris Pimenov
-Nel ruolo di I–330: Rossana Cannone 
-
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo"><a href="../index.html">Boris Pimenov</a></div>
+            <div class="nav-menu">
+                <a href="../index.html#portfolio" class="nav-link">Portfolio</a>
+                <a href="../index.html#about" class="nav-link">About</a>
+                <a href="../index.html#news" class="nav-link">News</a>
+                <a href="../index.html#contact" class="nav-link">Contact</a>
             </div>
-        </section>
+        </div>
+    </nav>
+
+    <main class="eb-page">
+
+        <h1>Eburnea</h1>
+        <p class="eb-meta">2026 &middot; Performance Multimediale &middot; Regia Boris Pimenov</p>
+
+        <!-- Immagine hero grande -->
+        <img src="../assets/gallery/FiatVoluntasTua1.jpeg" alt="Eburnea — Fiat Voluntas Tua" class="eb-hero zoomable">
+
+        <!-- § 1 -->
+        <div class="eb-block">
+            Spettacolo in 7 scene.<br><br>
+            Eburnea si svela in un vuoto sterile, spazio che non è nientemeno prigione&ndash;scuola&ndash;ospedale, sinteticamente, un non-luogo. Bianco come l'avorio per l'appunto. Bianco falsamente puro, falsamente sacro perché è il bianco della scienza &ndash; che crede di essere divina ma che in realtà è profana. Profano e anti-tradizionale come il mondo contemporaneo.
+        </div>
+
+        <!-- TRAILER -->
+        <div class="eb-label">Trailer</div>
+        <div class="eb-video">
+            <iframe src="https://player.vimeo.com/video/1185184940?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+                    frameborder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    title="Eburnea (Trailer) 2026"></iframe>
+        </div>
+        <script src="https://player.vimeo.com/api/player.js"></script>
+
+        <!-- § 2 -->
+        <div class="eb-block">
+            Eburnea è l'inversione dei valori, è una teologia rovesciata: tutto ciò che sta sopra sta sotto e tutto ciò che sta sotto sta sopra. Il profano diventa sacro, il sacro diventa profano. Ogni bagliore di umanità è rivalutato, tradotto, trasformato, compresso, cancellato.<br><br>
+            Falsa trascendenza in un falso paradiso &mdash; come da ciò che fugge I&ndash;330 &mdash; è un falso inferno. Tutto questo definito da un falso Dio: l'intelligenza artificiale. Falso Dio, falso profeta, che traduce, ribalta, e ridefinisce. Falso profeta con false promesse; l'immortalità, l'eternità grazie a una coscienza digitale.<br><br>
+            <em>A.I = A EYE (un occhio)</em> &mdash; come il Dajjal nell'Islamismo.<br>
+            Una emancipazione, un'evoluzione delle proprie capacità cognitive grazie a cosa? Grazie a un chip, che ci permetterà di essere connessi con tutto lo scibile umano, ovvero con il Nostro Falso Dio. Una Coscienza Collettiva Digitale sorvegliata, controllata, che s'irradia in ogni fibra del nostro corpo, in ogni fibra del mondo materiale, che marchia indelebilmente, che risucchia e che fa godere, che controlla e che illude di liberare.
+        </div>
+
+        <!-- Foto dopo § 2 -->
+        <div class="eb-gallery-2">
+            <img src="../assets/gallery/Eburneo1.jpeg" alt="Eburnea 1" class="zoomable">
+            <img src="../assets/gallery/eburneo2.png" alt="Eburnea 2" class="zoomable">
+        </div>
+
+        <!-- § 3 -->
+        <div class="eb-block">
+            Alice non è un'eroina. È un canale. Ciò che sceglie è di non essere più umana, di abbandonare la sua identità, di farsi attraversare, di diventare puro segnale, rivalutare la sua natura e auspicare a un'emancipazione e una trascendenza nel digitale. Di fare tabula rasa, di purificarsi e di liberarsi &mdash; o così lei crede.<br><br>
+            <em>&ndash;Collum tuum sicut turris eburnea&ndash;</em><br>
+            Così lo Sposo, nel Cantico dei Cantici, cantava la sua Sposa. Purezza, regalità, connessione tra cielo e terra. Qui, in Eburnea, quella torre è diventata prigione. Quel collo è diventato canale per un altro dio. Quella purezza è stata compressa, tradotta, marchiata.<br><br>
+            Perché quello a cui assisterete è già accaduto, e accadrà di nuovo.<br>
+            Perché l'Ingannatore ha molti nomi, ma il suo volto è sempre lo stesso: una luce che promette, un occhio che divora.
+        </div>
+
+        <!-- Foto dopo § 3 -->
+        <div class="eb-gallery-2">
+            <img src="../assets/gallery/FiatVoluntasTua2.png" alt="Fiat Voluntas Tua 2" class="zoomable">
+            <img src="../assets/gallery/altrove1.png" alt="Altrove" class="zoomable">
+        </div>
+
+        <!-- Marchio centrato -->
+        <img src="../assets/gallery/Marchio.png" alt="Marchio Eburnea" class="eb-marchio zoomable">
+
+        <!-- Ultime 3 foto -->
+        <div class="eb-gallery-3">
+            <img src="../assets/gallery/bergman.jpeg" alt="Bergman" class="zoomable">
+            <img src="../assets/gallery/memoria1.png" alt="Memoria" class="zoomable">
+            <img src="../assets/gallery/FiatVoluntasTua1.jpeg" alt="Fiat Voluntas Tua" class="zoomable">
+        </div>
+
+        <div class="eb-credits">
+            Regia, scrittura, scene, progetto video: Boris Pimenov<br>
+            Nel ruolo di Alice: Rossana Cannone
+        </div>
+
     </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-copyright">&copy; 2026 Boris Pimenov &mdash; Artista e regista italo-russo</div>
+                <div class="footer-credits">Esplorando l'ibrido tra corpo performativo e spazio digitale</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        function openLB(src, alt) {
+            var img = document.getElementById('lb-img');
+            img.src = src;
+            img.alt = alt || '';
+            document.getElementById('lb-overlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLB() {
+            document.getElementById('lb-overlay').classList.remove('active');
+            document.getElementById('lb-img').src = '';
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLB(); });
+        document.querySelectorAll('img.zoomable').forEach(function(img){
+            img.addEventListener('click', function(e){
+                e.stopPropagation();
+                openLB(this.src, this.alt);
+            });
+        });
+    </script>
 </body>
 </html>
