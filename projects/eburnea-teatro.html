@@ -5,111 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eburnea — Teatro · Boris Pimenov</title>
     <link rel="stylesheet" href="../style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-    <style>
-        .eb-page { max-width:900px; margin:0 auto; padding:3.5rem 1.5rem 5rem 1.5rem; font-family:'Courier Prime',monospace; color:#f7f7f7; }
-        .eb-page h1 { font-size:3rem; font-weight:400; letter-spacing:0.04em; color:#fff; margin-bottom:0.3rem; }
-        .eb-meta { font-size:0.85rem; color:#888; margin-bottom:0.5rem; letter-spacing:0.14em; text-transform:uppercase; }
-        .eb-badge { font-size:0.9rem; color:#bbb; margin-bottom:0.4rem; line-height:1.6; font-family:'Courier Prime',monospace; }
-        .eb-badge strong { color:#fff; }
-        .eb-note { font-size:0.82rem; color:#888; font-family:'Courier Prime',monospace; line-height:1.6; margin-bottom:2.2rem; font-style:italic; }
-
-        /* GALLERY GRID */
-        .eb-gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.55rem;
-            margin-bottom: 3rem;
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+     <style>
+        /* Stili completi per l'atmosfera del progetto */
+        :root {
+            --ink:       #e8e4de;
+            --bg:        #0e0e0e;
+            --mid:       #888;
+            --border:    rgba(255,255,255,.14);
+            --gap:       clamp(1.5rem, 5vw, 3.5rem);
+            --max-text:  68ch;
         }
-        @media (max-width:700px) { .eb-gallery-grid { grid-template-columns: repeat(2, 1fr); } }
-        .eb-thumb {
-            position: relative;
-            aspect-ratio: 1;
-            overflow: hidden;
-            border-radius: 6px;
-            cursor: pointer;
-            background: #111;
-        }
-        .eb-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.35s ease, filter 0.35s ease;
-        }
-        .eb-thumb:hover img { transform: scale(1.07); filter: brightness(0.7); }
-        .eb-thumb-overlay {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .eb-thumb:hover .eb-thumb-overlay { opacity: 1; }
-        .eb-thumb-overlay svg { width: 32px; height: 32px; fill: none; stroke: #fff; stroke-width: 1.5; }
-
-        /* TESTO */
-        .eb-block { font-size:1.08rem; line-height:1.85; color:#e8e8e8; margin-bottom:2.5rem; }
+        body { background: var(--bg); color: var(--ink); font-family: 'Cormorant Garamond', serif; }
+        .eb-page { max-width:1100px; margin:0 auto; padding: var(--gap) clamp(1rem,5vw,3rem) 4rem; }
+        .eb-page h1 { font-family: 'Courier Prime', monospace; font-size:4.5rem; font-weight:400; letter-spacing:0.04em; color:#fff; margin-bottom:0.3rem; }
+        .eb-meta { font-family: 'Courier Prime', monospace; font-size:1.2rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--mid); margin-bottom:1.8rem; }
+        .eb-badge { font-family: 'Cormorant Garamond', serif; font-size:1.35rem; color:#bbb; margin-bottom:0.4rem; line-height:1.6; }
+        .eb-badge strong { color:#fff; font-weight:400; }
+        .eb-note { font-family: 'Cormorant Garamond', serif; font-size:1.2rem; color:var(--mid); font-style:italic; margin-bottom:2.2rem; }
+        .eb-credits { font-family: 'Cormorant Garamond', serif; font-size:1.2rem; color:#999; line-height:1.8; border-top:1px solid var(--border); padding-top:1.8rem; margin-top:0.5rem; }
+        .eb-block { font-family: 'Cormorant Garamond', serif; font-size:1.5rem; line-height:1.85; color:#e8e8e8; margin-bottom:2.5rem; font-weight:300; }
         .eb-block em { font-style:italic; color:#ccc; }
-
-        /* VIDEO */
-        .eb-video { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px; margin-bottom:2.8rem; }
-        .eb-video iframe { position:absolute; top:0; left:0; width:100%; height:100%; }
-        .eb-label { font-size:0.75rem; letter-spacing:0.16em; text-transform:uppercase; color:#666; margin-bottom:0.7rem; }
-
-        /* MARCHIO */
-        .eb-marchio-wrap { text-align:center; margin: 2rem 0 3rem; }
-        .eb-marchio-wrap img { max-width:220px; cursor:pointer; transition:transform 0.25s; display:inline-block; }
-        .eb-marchio-wrap img:hover { transform:scale(1.06); }
-
-        /* CREDITS */
-        .eb-credits { font-size:0.95rem; color:#999; line-height:1.8; border-top:1px solid rgba(255,255,255,0.08); padding-top:1.8rem; margin-top:0.5rem; }
-
-        /* LIGHTBOX */
-        #lb-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.95);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-        }
-        #lb-overlay.active { display: flex; }
-        #lb-img {
-            max-width: 88vw;
-            max-height: 85vh;
-            object-fit: contain;
-            border-radius: 6px;
-            box-shadow: 0 8px 60px rgba(0,0,0,0.8);
-            animation: lb-in 0.22s ease;
-            display: block;
-        }
-        @keyframes lb-in { from { opacity:0; transform:scale(0.93); } to { opacity:1; transform:scale(1); } }
-        #lb-close {
-            position: fixed; top: 1.2rem; right: 1.6rem;
-            color: #fff; font-size: 2rem; cursor: pointer;
-            opacity: 0.6; transition: opacity 0.2s; font-family: monospace; line-height:1;
-        }
-        #lb-close:hover { opacity: 1; }
-        .lb-arrow {
-            position: fixed;
-            top: 50%; transform: translateY(-50%);
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            color: #fff; font-size: 1.8rem;
-            cursor: pointer; padding: 0.6rem 1rem;
-            border-radius: 4px;
-            transition: background 0.2s;
-            user-select: none;
-            line-height: 1;
-        }
-        .lb-arrow:hover { background: rgba(255,255,255,0.18); }
-        #lb-prev { left: 1.2rem; }
-        #lb-next { right: 1.2rem; }
+        .eb-block strong { color:#fff; font-weight:400; }
+        .eb-label { font-family: 'Courier Prime', monospace; font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--mid); margin-bottom:0.7rem; }
+        .eb-video { position:relative; width:100%; padding-bottom:56.25%; margin: var(--gap) 0; border-radius:4px; overflow:hidden; background:#000; box-shadow:0 8px 40px rgba(0,0,0,.8); }
+        .eb-video iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
+        .eb-gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.6rem; margin: var(--gap) 0; }
+        @media(max-width:700px){ .eb-gallery-grid{ grid-template-columns:repeat(2,1fr); } }
+        .eb-thumb { position:relative; cursor:pointer; overflow:hidden; aspect-ratio:4/3; background:#000; border-radius:2px; }
+        .eb-thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s ease, filter 0.4s ease; }
+        .eb-thumb:hover img { transform:scale(1.04); filter:brightness(.8); }
+        .eb-thumb-overlay { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity 0.3s; }
+        .eb-thumb:hover .eb-thumb-overlay { opacity:1; }
+        .eb-thumb-overlay svg { width:36px; height:36px; stroke:#fff; stroke-width:1.2; fill:none; }
+        .eb-btn { display:inline-block; padding:0.7em 2.1em; background:var(--accent, #ff3b30); color:#fff; border:none; font-family:'Courier Prime',monospace; font-size:1.08rem; font-weight:bold; letter-spacing:0.04em; text-decoration:none; border-radius:4px; cursor:pointer; transition:background 0.2s; }
+        .eb-btn:hover { background:#e0352b; }
+        /* Lightbox */
+        #lb-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.97); z-index:9999; align-items:center; justify-content:center; }
+        #lb-overlay.active { display:flex; }
+        #lb-img { max-width:88vw; max-height:85vh; object-fit:contain; border-radius:6px; box-shadow:0 8px 60px rgba(0,0,0,0.8); display:block; }
+        #lb-close { position:fixed; top:1.2rem; right:1.6rem; color:#fff; font-size:2rem; cursor:pointer; opacity:0.6; transition:opacity 0.2s; font-family:'Courier Prime',monospace; line-height:1; }
+        #lb-close:hover { opacity:1; }
+        .lb-arrow { position:fixed; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:#fff; font-size:1.8rem; cursor:pointer; padding:0.6rem 1rem; border-radius:4px; transition:background 0.2s; user-select:none; line-height:1; }
+        .lb-arrow:hover { background:rgba(255,255,255,0.18); }
+        #lb-prev { left:1.2rem; } #lb-next { right:1.2rem; }
         #lb-counter { position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.45); font-size:0.8rem; font-family:'Courier Prime',monospace; letter-spacing:0.1em; }
+        /* Navigazione progetti */
+        .project-navigation { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-top: var(--gap); padding-top:1.5rem; border-top:1px solid var(--border); flex-wrap:wrap; }
+        .project-navigation .nav-link { font-family:'Courier Prime',monospace; font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--mid); text-decoration:none; transition:color 0.2s; }
+        .project-navigation .nav-link:hover { color:var(--ink); }
+        .project-navigation .nav-link.prev::before { content:'← '; }
+        .project-navigation .nav-link.next::after  { content:' →'; }
+        /* Footer */
+        .footer { margin-top:4rem; padding:2.5rem 0; border-top:1px solid var(--border); }
+        .footer-content { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; max-width:1200px; margin:0 auto; padding:0 2rem; }
+        .footer-copyright, .footer-credits { font-family:'Courier Prime',monospace; font-size:0.65rem; letter-spacing:0.1em; color:rgba(255,255,255,0.3); }
     </style>
 </head>
 <body style="padding-top:4.5rem;">
@@ -193,7 +143,7 @@
             </div>
         </div>
 <!-- INTERAZIONE -->
-<div class="eb-label">Interazione su Touchdesigner</div>
+<div class="eb-label">Interazione su</div>
 <div class="eb-block">
     <img src="../assets/gallery/touchdesignerpatch.png" alt="Schema interazione Eburnea" style="max-width:600px;width:100%;display:block;margin:0 auto 2rem auto;border-radius:12px;box-shadow:0 4px 32px rgba(0,0,0,0.22);">
     <strong>Descrizione dettagliata</strong><br><br>
@@ -201,7 +151,7 @@
     Il flusso funziona così:
     <ul style="margin:1.2em 0 1.2em 1.2em;">
         <li><strong>Input dal pubblico</strong> – Un QR code o un link breve proiettato in sala porta a una semplice form testuale. Lo spettatore scrive il proprio ricordo in poche righe, senza filtri o correzioni.</li>
-        <li><strong>Processamento in tempo reale</strong> – Ogni invio viene ricevuto da un server che lo inoltra alle API di Eleven Labs su Touchdesigner, un sofisticato sistema di sintesi vocale basato su intelligenza artificiale. La voce generata non è neutra: è stata preventivamente addestrata sulla voce della protagonista dello spettacolo, clonandone timbro, inflessioni e ritmi.</li>
+        <li><strong>Processamento in tempo reale</strong> – Ogni invio viene ricevuto da un server che lo inoltra alle API di Eleven Labs, un sofisticato sistema di sintesi vocale basato su intelligenza artificiale. La voce generata non è neutra: è stata preventivamente addestrata sulla voce della protagonista dello spettacolo, clonandone timbro, inflessioni e ritmi.</li>
         <li><strong>Restituzione in scena</strong> – Nel giro di pochi secondi, il ricordo “parlato” con la voce della protagonista viene riprodotto attraverso il sistema audio del teatro. Quel testo privato diventa così parte pubblica della narrazione, pronunciato da colei che è al centro della scena, come se quelle memorie appartenessero anche a lei.</li>
     </ul>
     L’effetto è volutamente perturbante: il pubblico sente la propria intimità restituita da una voce artificiale che non è la propria, ma che suona umana e familiare. Lo spettatore diventa co-autore inconsapevole, mentre la protagonista (che resta in scena, forse in ascolto) si fa portavoce di una memoria collettiva in divenire.<br><br>

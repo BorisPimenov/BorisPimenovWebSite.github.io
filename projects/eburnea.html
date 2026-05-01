@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eburnea - Boris Pimenov</title>
+    <title>Eburnea — Teatro · Boris Pimenov</title>
     <link rel="stylesheet" href="../style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 </head>
-<body style="padding-top: 4.5rem;">
-    <!-- Titolo grande in alto a sinistra -->
-    <div class="page-title-left">Eburnea</div>
-    <!-- Grain Overlay -->
+<body>
     <div class="film-grain"></div>
-    
-    <!-- Navigation (uguale a index.html) -->
+
+    <!-- Lightbox vecchio sistema (funziona perché abbiamo gli stili in style.css) -->
+    <div id="lb-overlay">
+        <span id="lb-close" onclick="closeLB()">&#x2715;</span>
+        <span class="lb-arrow" id="lb-prev" onclick="lbNav(-1)">&#8592;</span>
+        <img id="lb-img" src="" alt="">
+        <span class="lb-arrow" id="lb-next" onclick="lbNav(1)">&#8594;</span>
+        <div id="lb-counter"></div>
+    </div>
+
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <a href="../index.html">Boris Pimenov</a>
-            </div>
+            <div class="nav-logo"><a href="../index.html">Boris Pimenov</a></div>
             <div class="nav-menu">
                 <a href="../index.html#portfolio" class="nav-link">Portfolio</a>
                 <a href="../index.html#about" class="nav-link">About</a>
@@ -28,88 +30,154 @@
         </div>
     </nav>
 
-    <!-- Project Content -->
-    <main class="project-page">
-        <div class="project-container">
-            <header class="project-header">
-                <div class="project-meta">
-                    <span>2025</span>
-                    <span>Performance multimediale</span>
-                    <span>Residenze Digitali 2025</span>
-                </div>
-                <p class="section-subtitle">Performance interattiva multimediale che indaga la memoria attraverso l'integrazione tra corpo performativo, spazio digitale e interazione in tempo reale</p>
-            </header>
+    <main class="eb-page">
+        <h1>Eburnea</h1>
+        <p class="eb-meta">2026 &middot; Performance Multimediale Interattiva &middot; Regia Boris Pimenov</p>
+        <p class="eb-badge">
+            Vincitore bando <strong>Residenze Digitali 2025</strong><br>
+            con il supporto di Centro di Residenza della Toscana <strong>(Armunia – CapoTrave/Kilowatt)</strong>
+        </p>
+        <p class="eb-note">
+            Progetto realizzato grazie al contributo della @regionetoscana nell'ambito del progetto “Digital Arts. Comunità nel digitale” – @giovanisi.it – Toscana in contemporanea 2025
+        </p>
 
-            <!-- Video Vimeo -->
-            <div class="vimeo-container">
-                <iframe title="vimeo-player" src="https://player.vimeo.com/video/1147338894?h=be358d1a3b" width="640" height="360" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>
+        <div class="eb-credits" style="margin-bottom:2.5rem;">
+           <strong>Regia, scrittura, scene, progetto video:</strong> Boris Pimenov<br>
+           <strong>Nel ruolo di Alice:</strong> Rossana Cannone
+        </div>
+
+        <div style="text-align:center; margin:2.5rem 0;">
+            <a href="#trailer" class="eb-btn">Guarda il trailer</a>
+        </div>
+
+        <!-- Galleria -->
+        <div class="eb-gallery-grid" id="gallery">
+            <div class="eb-thumb" onclick="openLB(0)">
+                <img src="../assets/gallery/FiatVoluntasTua1.jpeg" alt="Fiat Voluntas Tua 1">
+                <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
             </div>
-
-            <!-- Script Vimeo -->
-            <script src="https://player.vimeo.com/api/player.js"></script>
-
-            <!-- Descrizione -->
-            <div class="project-description-full">
-                <p><em>Eburnea</em> è una performance che esplora i concetti di memoria e materia attraverso un dialogo costante tra il corpo del performer e uno spazio digitale generativo.</p>
-                
-                <p>Il progetto, vincitore del bando Residenze Digitali 2025, utilizza <strong>TouchDesigner</strong> come nucleo creativo per costruire ambienti virtuali renderizzati in tempo reale che rispondono ai input del performer e del pubblico remoto.</p>
-                
-                <p>La metodologia integra modelli di intelligenza artificiale per la generazione e trasformazione di contenuti visivi e testuali, creando una drammaturgia in continua evoluzione. Questa sinergia tra algoritmi, spazi digitali e azione scenica dal vivo posiziona il lavoro all'avanguardia della ricerca sul teatro immersivo e della performance tecnologicamente ibrida.</p>
+            <div class="eb-thumb" onclick="openLB(1)">
+                <img src="../assets/gallery/Eburneo1.jpeg" alt="Eburnea 1">
+                <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
             </div>
-
-            <!-- Dettagli Tecnici -->
-            <div class="project-details">
-                <div class="detail-item">
-                    <h4 style="font-size:1.25rem;font-weight:bold;">Tecnologie</h4>
-                    <p>TouchDesigner, Python, OpenGL, Real-time Rendering, WebSockets</p>
-                </div>
-                <div class="detail-item">
-                    <h4 style="font-size:1.25rem;font-weight:bold;">Dimensioni</h4>
-                    <p>Performance: 45 minuti<br>Installazione: variabile</p>
-                </div>
-                <div class="detail-item">
-                    <h4 style="font-size:1.25rem;font-weight:bold;">Team</h4>
-                    <p>Concept, regia e sviluppo: Boris Pimenov<br>Performer in scena: Sveva Gini<br>Assistenza alla regia: Ksenia Rotar'<br>Sound design: Grigorij Lavorov</p>
-                </div>
-                <div class="detail-item">
-                    <h4 style="font-size:1.25rem;font-weight:bold;">Presentazioni</h4>
-                    <p>Residenze Digitali 2025<br>[Nome Festival], [Luogo, Data]<br>[Altro Festival], [Luogo, Data]</p>
-                </div>
+            <div class="eb-thumb" onclick="openLB(2)">
+                <img src="../assets/gallery/eburneo2.png" alt="Eburnea 2">
+                <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
             </div>
-
-            <!-- Gallery (opzionale) -->
-            <div class="project-gallery">
-                <img src="../assets/gallery/eburnea1.png" alt="Eburnea gallery 1" style="max-width:100%;margin-bottom:1rem;" />
-                <img src="../assets/gallery/eburnea2.png" alt="Eburnea gallery 2" style="max-width:100%;margin-bottom:1rem;" />
-                <img src="../assets/gallery/eburnea3.png" alt="Eburnea gallery 3" style="max-width:100%;margin-bottom:1rem;" />
-                <img src="../assets/gallery/eburnea4.png" alt="Eburnea gallery 4" style="max-width:100%;margin-bottom:1rem;" />
-                <img src="../assets/gallery/eburnea5.png" alt="Eburnea gallery 5" style="max-width:100%;margin-bottom:1rem;" />
-                <img src="../assets/gallery/eburnea6.png" alt="Eburnea gallery 6" style="max-width:100%;margin-bottom:1rem;" />
+            <div class="eb-thumb" onclick="openLB(3)">
+                <img src="../assets/gallery/FiatVoluntasTua2.png" alt="Fiat Voluntas Tua 2">
+                <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
             </div>
+            <div class="eb-thumb" onclick="openLB(4)">
+                <img src="../assets/gallery/altrove1.png" alt="Altrove">
+                <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="eb-thumb" onclick="openLB(5)">
+                <img src="../assets/gallery/bergman.jpeg" alt="Bergman">
+                <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="eb-thumb" onclick="openLB(6)">
+                <img src="../assets/gallery/memoria1.png" alt="Memoria">
+                <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="eb-thumb" onclick="openLB(7)">
+                <img src="../assets/gallery/Marchio.png" alt="Marchio Eburnea">
+                <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+        </div>
 
-            <!-- Navigazione tra progetti -->
-            <nav class="project-navigation">
-                <a href="tosca.html" class="nav-link prev">Tosca</a>
-                <a href="../index.html#portfolio" class="nav-link">Torna al Portfolio</a>
-                <a href="libro-dolori.html" class="nav-link next">Il libro dei dolori dell'infanzia</a>
-            </nav>
+        <!-- Interazione Touchdesigner -->
+        <div class="eb-label">Interazione su Touchdesigner</div>
+        <div class="eb-block">
+            <img src="../assets/gallery/touchdesignerpatch.png" alt="Schema interazione" style="max-width:600px;width:100%;display:block;margin:0 auto 2rem auto;border-radius:12px;box-shadow:0 4px 32px rgba(0,0,0,0.22);">
+            <strong>Descrizione dettagliata</strong><br><br>
+            L’elemento centrale di questa performance è un sistema di interazione in tempo reale che dissolve il confine tra palco e pubblico...
+        </div>
+
+        <!-- Trailer -->
+        <div class="eb-label" id="trailer">Trailer</div>
+        <div class="eb-video">
+            <iframe src="https://player.vimeo.com/video/1185184940?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+                    frameborder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    title="Eburnea (Trailer) 2026"></iframe>
+        </div>
+        <script src="https://player.vimeo.com/api/player.js"></script>
+
+        <!-- Drammaturgia -->
+        <div class="eb-label">Drammaturgia</div>
+        <div class="eb-block">
+            Spettacolo in 7 scene.<br><br>
+            Eburnea è uno spettacolo interattivo, si svela in un vuoto sterile...
+        </div>
+
+        <div class="eb-block">
+            Eburnea è l'inversione dei valori, è una teologia rovesciata...
+        </div>
+
+        <div class="eb-block">
+            Alice non è un'eroina. È un canale...
         </div>
     </main>
 
-    <!-- Footer (uguale a index.html) -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-copyright">
-                    &copy; 2025 Boris Pimenov — Artista e regista italo-russo
-                </div>
-                <div class="footer-credits">
-                    Esplorando l'ibrido tra corpo performativo e spazio digitale
-                </div>
+                <div class="footer-copyright">&copy; 2026 Boris Pimenov — Artista e regista italo-russo</div>
+                <div class="footer-credits">Esplorando l’ibrido tra corpo performativo e spazio digitale</div>
             </div>
         </div>
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        var lbImages = [
+            { src: '../assets/gallery/FiatVoluntasTua1.jpeg', alt: 'Fiat Voluntas Tua 1' },
+            { src: '../assets/gallery/Eburneo1.jpeg', alt: 'Eburnea 1' },
+            { src: '../assets/gallery/eburneo2.png', alt: 'Eburnea 2' },
+            { src: '../assets/gallery/FiatVoluntasTua2.png', alt: 'Fiat Voluntas Tua 2' },
+            { src: '../assets/gallery/altrove1.png', alt: 'Altrove' },
+            { src: '../assets/gallery/bergman.jpeg', alt: 'Bergman' },
+            { src: '../assets/gallery/memoria1.png', alt: 'Memoria' },
+            { src: '../assets/gallery/Marchio.png', alt: 'Marchio Eburnea' }
+        ];
+        var lbCurrent = 0;
+
+        function openLB(index) {
+            lbCurrent = index;
+            showLBImage();
+            document.getElementById('lb-overlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showLBImage() {
+            var img = document.getElementById('lb-img');
+            img.src = lbImages[lbCurrent].src;
+            img.alt = lbImages[lbCurrent].alt;
+            document.getElementById('lb-counter').textContent = (lbCurrent + 1) + ' / ' + lbImages.length;
+        }
+
+        function lbNav(dir) {
+            lbCurrent = (lbCurrent + dir + lbImages.length) % lbImages.length;
+            showLBImage();
+        }
+
+        function closeLB() {
+            document.getElementById('lb-overlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('lb-overlay').addEventListener('click', function(e) {
+            if (e.target === this) closeLB();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (!document.getElementById('lb-overlay').classList.contains('active')) return;
+            if (e.key === 'Escape') closeLB();
+            if (e.key === 'ArrowLeft') lbNav(-1);
+            if (e.key === 'ArrowRight') lbNav(1);
+        });
+    </script>
 </body>
 </html>
