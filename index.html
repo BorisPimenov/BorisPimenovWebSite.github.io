@@ -9,11 +9,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Avviso sito in costruzione -->
+    <div id="construction-alert" style="position:fixed;top:0;left:0;width:100vw;z-index:9999;background:rgba(30,30,30,0.98);color:#fff;padding:1.2rem 0;text-align:center;font-size:1.1rem;letter-spacing:0.02em;font-family:'Courier Prime', monospace;box-shadow:0 2px 12px rgba(0,0,0,0.12);transition:top 0.4s;">
+         Il sito è in fase di costruzione 
+        <button id="close-alert" style="margin-left:2rem;background:#e74c3c;color:#fff;border:none;padding:0.4em 1.2em;border-radius:4px;cursor:pointer;font-size:1rem;">Chiudi</button>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var btn = document.getElementById('close-alert');
+        if(btn) {
+            btn.onclick = function() {
+                var alert = document.getElementById('construction-alert');
+                if(alert) alert.style.top = '-80px';
+                setTimeout(function(){
+                    if(alert) alert.style.display = 'none';
+                }, 400);
+            };
+        }
+    });
+    </script>
+
     <!-- Grain Overlay -->
     <div class="film-grain"></div>
     
-    <div class="logo-fixed">
-        <img src="assets/logo/logo.png" alt="Logo Boris Pimenov" />
+    <div class="logo-fixed" style="top: 18px; right: 2.2rem; width:92px;height:auto;z-index:1001;">
+        <img src="assets/logo/logo.png" alt="Logo Boris Pimenov" style="width:100%;height:auto;max-width:120px;filter:drop-shadow(0 2px 12px rgba(0,0,0,0.18));" />
     </div>
     
     <!-- Navigation -->
@@ -43,20 +63,19 @@
     </nav>
 
    <!-- Hero Section -->
-<section id="home" class="hero">
-    <div class="video-background">
-        <div class="youtube-container">
+<section id="home" class="hero reveal-on-scroll" style="display:flex;align-items:center;justify-content:center;flex-direction:column;min-height:100vh;width:100vw;">
+    <div class="video-background" style="position:absolute;top:0;left:0;width:100vw;height:100vh;z-index:0;">
+        <div class="youtube-container" style="width:100vw;height:100vh;">
             <iframe src="https://www.youtube.com/embed/GGmWUzWF4mk?autoplay=1&mute=1&controls=0&loop=1&playlist=GGmWUzWF4mk&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3"
                     frameborder="0"
                     allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-            </iframe>
+                    allowfullscreen style="width:100vw;height:100vh;"></iframe>
         </div>
         <div class="video-overlay"></div>
     </div>
-    
-    <div class="hero-content">
-        <h1 class="hero-title">boris pimenov - video artist - regista</h1>
+    <div class="hero-content" style="position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;width:100vw;">
+        <h1 class="hero-title" style="font-size:2rem; font-weight:400; letter-spacing:0.02em; text-transform:lowercase;">boris pimenov - video artist - regista</h1>
+        <span class="hero-title-deco"></span>
         <p class="hero-subtitle">
             Esplorando il confine tra performance, tecnologia e narrazione visiva
         </p>
@@ -65,7 +84,6 @@
             <a href="#portfolio" class="cta-button secondary">Vedi Portfolio</a>
         </div>
     </div>
-    
     <div class="scroll-indicator">
         <span>Scroll</span>
         <div class="arrow"></div>
@@ -73,7 +91,7 @@
 </section>
 
 <!-- Showreel Section -->
-<section id="showreel" class="showreel">
+<section id="showreel" class="showreel reveal-on-scroll">
     <div class="container">
         <div class="section-header">
             <h2 class="section-title">Showreel</h2>
@@ -90,11 +108,11 @@
                 <div class="showreel-details">
                     <div class="detail">
                         <h4>Durata</h4>
-                        <p>3:45 minuti</p>
+                        <p>3:06 minuti</p>
                     </div>
                     <div class="detail">
                         <h4>Anno</h4>
-                        <p>2024</p>
+                        <p>2025</p>
                     </div>
                     <div class="detail">
                         <h4>Contenuti</h4>
@@ -108,190 +126,136 @@
 </section>
 <script src="https://player.vimeo.com/api/player.js"></script>
 
-  <!-- Portfolio Section -->
-<section id="portfolio" class="portfolio">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">Portfolio</h2>
-            <div class="section-line"></div>
+<!-- Portfolio Section -->
+<section class="portfolio-section">
+  <div class="container">
+    <div class="portfolio-grid">
+      <a href="projects/eburnea-teatro.html" class="portfolio-item">
+        <div class="portfolio-image-wrapper">
+          <img src="assets/gallery/FiatVoluntasTua1.jpeg" alt="Stage scene from Eburnea sezione Teatro with a performer standing under dramatic lighting on a minimalist set, evoking a contemplative and intense atmosphere" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <span class="portfolio-year">2026</span>
+            <span class="portfolio-tags">Teatro</span>
+          </div>
         </div>
-        
-        <div class="portfolio-grid">
-            <!-- Eburnea -->
-            <a href="projects/eburnea.html" class="project-card">
-                <div class="project-media">
-                    <div class="project-number">01</div>
-                    <img src="assets/covers/eburnea-cover.jpg" alt="Eburnea" class="project-cover">
-                    <div class="project-overlay">
-                        <div class="project-info">
-                            <h3 class="project-title">Eburnea</h3>
-                            <p class="project-category">Performance multimediale interattiva</p>
-                            <p class="project-description">Vincitore bando Residenze Digitali 2025</p>
-                            <span class="project-link red-hover">Vedi progetto →</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Tosca -->
-            <a href="projects/tosca.html" class="project-card">
-                <div class="project-media">
-                    <div class="project-number">02</div>
-                    <img src="assets/covers/tosca-cover.jpg" alt="Tosca" class="project-cover">
-                    <div class="project-overlay">
-                        <div class="project-info">
-                            <h3 class="project-title">Tosca</h3>
-                            <p class="project-category">Scenografia virtuale per opera</p>
-                            <p class="project-description">Sezione Classica e Sezione Ubiqua</p>
-                            <span class="project-link red-hover">Vedi progetto →</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Il libro dei dolori dell'infanzia -->
-            <a href="projects/libro-dolori.html" class="project-card">
-                <div class="project-media">
-                    <div class="project-number">03</div>
-                    <img src="assets/covers/libro-cover.jpg" alt="Il libro dei dolori dell'infanzia" class="project-cover">
-                    <div class="project-overlay">
-                        <div class="project-info">
-                            <h3 class="project-title">Il libro dei dolori dell'infanzia</h3>
-                            <p class="project-category">Cortometraggio</p>
-                            <span class="project-link red-hover">Vedi progetto →</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Shinel' -->
-            <a href="projects/shinel.html" class="project-card">
-                <div class="project-media">
-                    <div class="project-number">04</div>
-                    <img src="assets/covers/shinel-cover.jpg" alt="SHINEL'" class="project-cover">
-                    <div class="project-overlay">
-                        <div class="project-info">
-                            <h3 class="project-title">SHINEL'</h3>
-                            <p class="project-category">Performance in solo</p>
-                            <p class="project-description">Ispirato a Gogol'</p>
-                            <span class="project-link red-hover">Vedi progetto →</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <!-- The Peach and the Madman -->
-            <a href="projects/matto-pesca.html" class="project-card">
-                <div class="project-media">
-                    <div class="project-number">05</div>
-                    <img src="assets/covers/matto-pesca-cover.jpg" alt="The Peach and the Madman" class="project-cover">
-                    <div class="project-overlay">
-                        <div class="project-info">
-                            <h3 class="project-title">The Peach and the Madman</h3>
-                            <p class="project-category">Cortometraggio di esordio</p>
-                            <span class="project-link red-hover">Vedi progetto →</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Arte Generativa / TouchDesigner -->
-            <a href="projects/touchdesigner.html" class="project-card">
-                <div class="project-media">
-                    <div class="project-number">06</div>
-                    <img src="assets/covers/touchdesigner-cover.jpg" alt="Arte Generativa" class="project-cover">
-                    <div class="project-overlay">
-                        <div class="project-info">
-                            <h3 class="project-title">Arte Generativa</h3>
-                            <p class="project-category">TouchDesigner & AI</p>
-                            <p class="project-description">Scenografie virtuali interattive</p>
-                            <span class="project-link red-hover">Vedi progetto →</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
+        <div class="portfolio-title">Eburnea (2026) II Edizione</div>
+      </a>
+      <a href="projects/eburnea.html" class="portfolio-item">
+        <div class="portfolio-image-wrapper">
+          <img src="assets/covers/eburnea-cover.jpg" alt="Eburnea" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <span class="portfolio-year">2025</span>
+            <span class="portfolio-tags">Performance</span>
+          </div>
         </div>
-
-        <!-- Altri progetti espandibili -->
-        <div class="portfolio-list expandable-projects">
-            <button class="expand-btn" id="expandProjectsBtn">Clicca per visualizzare gli altri progetti;</button>
-            <div class="expandable-projects-grid" id="expandableProjectsGrid" style="display: none;">
-                <!-- Bohème -->
-                <a href="projects/boheme.html" class="project-card">
-                    <div class="project-media">
-                        <div class="project-number">07</div>
-                        <img src="assets/covers/boheme-cover.jpg" alt="Bohème" class="project-cover">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3 class="project-title">Bohème</h3>
-                                <p class="project-category">Opera video</p>
-                                <span class="project-link">Vedi progetto →</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- Morricone -->
-                <a href="projects/morricone.html" class="project-card">
-                    <div class="project-media">
-                        <div class="project-number">08</div>
-                        <img src="assets/covers/morricone-cover.jpg" alt="Sillabe di Ennio Morricone" class="project-cover">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3 class="project-title">Sillabe di Ennio Morricone</h3>
-                                <p class="project-category">Video installazione</p>
-                                <span class="project-link">Vedi progetto →</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- Rasi Al Suolo -->
-                <a href="projects/rasi-suolo.html" class="project-card">
-                    <div class="project-media">
-                        <div class="project-number">09</div>
-                        <img src="assets/covers/rasi-suolo-cover.jpg" alt="Rasi Al Suolo" class="project-cover">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3 class="project-title">Rasi Al Suolo</h3>
-                                <p class="project-category">Performance</p>
-                                <span class="project-link">Vedi progetto →</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- Cinica Matrice -->
-                <a href="projects/cinica-matrice.html" class="project-card">
-                    <div class="project-media">
-                        <div class="project-number">10</div>
-                        <img src="assets/covers/cinicamatrice.jpg" alt="Cinica Matrice" class="project-cover">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3 class="project-title">Cinica Matrice</h3>
-                                <p class="project-category">Video arte</p>
-                                <span class="project-link">Vedi progetto →</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <!-- Compagnia di Giro -->
-                <a href="projects/compagnia-giro.html" class="project-card">
-                    <div class="project-media">
-                        <div class="project-number">11</div>
-                        <img src="assets/covers/placeholder.jpg" alt="Compagnia di Giro" class="project-cover">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3 class="project-title">Compagnia di Giro</h3>
-                                <p class="project-category">Progetto teatrale</p>
-                                <span class="project-link">Vedi progetto →</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+        <div class="portfolio-title">Eburnea (2025) I Edizione – Residenze Digitali</div>
+      </a>
+      <a href="projects/tosca.html" class="portfolio-item">
+        <div class="portfolio-image-wrapper">
+          <img src="assets/covers/tosca-cover.jpg" alt="Tosca" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <span class="portfolio-year">2025</span>
+            <span class="portfolio-tags">Scenografia teatrale</span>
+          </div>
         </div>
+        <div class="portfolio-title">Tosca</div>
+      </a>
+      <a href="projects/libro-dolori.html" class="portfolio-item">
+        <div class="portfolio-image-wrapper">
+          <img src="assets/covers/libro-cover.jpg" alt="Il libro dei dolori dell'infanzia" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <span class="portfolio-year">2025</span>
+            <span class="portfolio-tags">Cortometraggio</span>
+          </div>
+        </div>
+        <div class="portfolio-title">Il libro dei dolori dell'infanzia</div>
+      </a>
+      <a href="projects/shinel.html" class="portfolio-item">
+        <div class="portfolio-image-wrapper">
+          <img src="assets/covers/shinel-cover.jpg" alt="SHINEL'" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <span class="portfolio-year">2024</span>
+            <span class="portfolio-tags">Cortometraggio</span>
+          </div>
+        </div>
+        <div class="portfolio-title">SHINEL'</div>
+      </a>
+      <a href="projects/matto-pesca.html" class="portfolio-item">
+        <div class="portfolio-image-wrapper">
+          <img src="assets/covers/matto-pesca-cover.jpg" alt="The Peach and the Madman" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <span class="portfolio-year">2023</span>
+            <span class="portfolio-tags">Cortometraggio</span>
+          </div>
+        </div>
+        <div class="portfolio-title">The Peach and the Madman</div>
+      </a>
+      <a href="projects/touchdesigner.html" class="portfolio-item">
+        <div class="portfolio-image-wrapper">
+          <img src="assets/covers/touchdesigner-cover.jpg" alt="Arte Generativa" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <span class="portfolio-year">presente</span>
+            <span class="portfolio-tags">Arte generativa</span>
+          </div>
+        </div>
+        <div class="portfolio-title">Arte Generativa</div>
+      </a>
+      <a href="projects/boheme.html" class="portfolio-item">
+        <div class="portfolio-image-wrapper">
+          <img src="assets/covers/boheme-cover.jpg" alt="Bohème" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <span class="portfolio-year">2024</span>
+            <span class="portfolio-tags">Opera video</span>
+          </div>
+        </div>
+        <div class="portfolio-title">Bohème</div>
+      </a>
+      <a href="projects/morricone.html" class="portfolio-item">
+        <div class="portfolio-image-wrapper">
+          <img src="assets/covers/morricone-cover.jpg" alt="Sillabe di Ennio Morricone" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <span class="portfolio-year">2025</span>
+            <span class="portfolio-tags">Video installazione</span>
+          </div>
+        </div>
+        <div class="portfolio-title">Sillabe di Ennio Morricone</div>
+      </a>
+      <a href="projects/rasi-suolo.html" class="portfolio-item">
+        <div class="portfolio-image-wrapper">
+          <img src="assets/covers/rasi-suolo-cover.jpg" alt="Rasi Al Suolo" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <span class="portfolio-year">2025</span>
+            <span class="portfolio-tags">Performance</span>
+          </div>
+        </div>
+        <div class="portfolio-title">Rasi Al Suolo</div>
+      </a>
+      <a href="projects/cinica-matrice.html" class="portfolio-item">
+        <div class="portfolio-image-wrapper">
+          <img src="assets/covers/cinicamatrice.jpg" alt="Cinica Matrice" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <span class="portfolio-year">2023</span>
+            <span class="portfolio-tags">Collettivo artistico</span>
+          </div>
+        </div>
+        <div class="portfolio-title">Cinica Matrice</div>
+      </a>
+      <a href="projects/compagnia-giro.html" class="portfolio-item">
+        <div class="portfolio-image-wrapper">
+          <img src="assets/covers/placeholder.jpg" alt="Compagnia di Giro" class="portfolio-image">
+          <div class="portfolio-overlay">
+            <span class="portfolio-year">2023-2024</span>
+            <span class="portfolio-tags">Progetto teatrale</span>
+          </div>
+        </div>
+        <div class="portfolio-title">Compagnia di Giro</div>
+      </a>
     </div>
+  </div>
 </section>
+
     <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" class="about reveal-on-scroll">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">About</h2>
@@ -340,41 +304,40 @@
         </div>
     </section>
 
-    <!-- News Section -->
-    <section id="news" class="news">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">News & Progetti</h2>
-                <div class="section-line"></div>
-            </div>
-            
-            <div class="news-grid">
-                <article class="news-card">
-                    <div class="news-date">2025</div>
-                    <h3 class="news-title">Eburnea - Residenze Digitali</h3>
-                    <p class="news-excerpt">Performance interattiva multimediale selezionata per il bando Residenze Digitali 2025. Sviluppo di scenografie virtuali in tempo reale con TouchDesigner e intelligenza artificiale.</p>
-                    <a href="#" class="news-link">Dettagli del progetto →</a>
-                </article>
-
-                <article class="news-card">
-                    <div class="news-date">2024</div>
-                    <h3 class="news-title">Tosca - Scenografia Virtuale</h3>
-                    <p class="news-excerpt">Nuova produzione per l'opera di Puccini con scenografia virtuale in due sezioni: classica e ubiqua. Sperimentazione tra tradizione lirica e tecnologia contemporanea.</p>
-                    <a href="#" class="news-link">Guarda il making of →</a>
-                </article>
-
-                <article class="news-card">
-                    <div class="news-date">2023-24</div>
-                    <h3 class="news-title">Mostre & Festival</h3>
-                    <p class="news-excerpt">Presentazione di opere video e performance in festival internazionali di video arte e teatro tecnologico in Italia, Russia e Germania.</p>
-                    <a href="#" class="news-link">Calendario date →</a>
-                </article>
-            </div>
+   <section id="news" class="news reveal-on-scroll">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">News & Progetti</h2>
+            <div class="section-line"></div>
         </div>
-    </section>
+        
+        <div class="news-grid">
+            <article class="news-card">
+                <div class="news-date">2025</div>
+                <h3 class="news-title">Eburnea - Residenze Digitali</h3>
+                <p class="news-excerpt">Performance interattiva multimediale selezionata per il bando Residenze Digitali 2025. Sviluppo di scenografie virtuali in tempo reale con TouchDesigner e intelligenza artificiale.</p>
+                <a href="projects/eburnea-news.html" class="news-link">Leggi l'approfondimento →</a>
+            </article>
+
+            <article class="news-card">
+                <div class="news-date">2024</div>
+                <h3 class="news-title">Tosca - Scenografia Virtuale</h3>
+                <p class="news-excerpt">Nuova produzione per l'opera di Puccini con scenografia virtuale in due sezioni: classica e ubiqua. Sperimentazione tra tradizione lirica e tecnologia contemporanea.</p>
+                <a href="tosca-news.html" class="news-link">Scopri di più →</a>
+            </article>
+
+            <article class="news-card">
+                <div class="news-date">2023-24</div>
+                <h3 class="news-title">Mostre & Festival</h3>
+                <p class="news-excerpt">Presentazione di opere video e performance in festival internazionali di video arte e teatro tecnologico in Italia, Russia e Germania.</p>
+                <a href="#" class="news-link">In arrivo →</a>
+            </article>
+        </div>
+    </div>
+</section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact reveal-on-scroll">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Contact</h2>
@@ -413,7 +376,7 @@
                     </div>
                 </div>
                 
-                <form class="contact-form" id="contactForm">
+                <form action="https://formspree.io/f/xbdarzow" method="POST" class="contact-form" id="contactForm">
                     <div class="form-row">
                         <div class="form-group">
                             <input type="text" name="name" placeholder="Nome" required>
@@ -451,7 +414,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-copyright">
-                    &copy; 2025 Boris Pimenov — Artista e regista italo-russo
+                    &copy; 2025 Boris Pimenov — Artista e regista 
                 </div>
                 <div class="footer-credits">
                     Esplorando l'ibrido tra corpo performativo e spazio digitale
