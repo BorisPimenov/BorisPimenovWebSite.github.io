@@ -3,80 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sito in manutenzione – Boris Pimenov</title>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
-    <style>
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body {
-            background: #0e0e0e;
-            color: #e8e4de;
-            font-family: 'Cormorant Garamond', serif;
+    <title>Eburnea — Teatro · Boris Pimenov</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+     <style>
+        /* Stili completi per l'atmosfera del progetto */
+        :root {
+            --ink:       #e8e4de;
+            --bg:        #0e0e0e;
+            --mid:       #888;
+            --border:    rgba(255,255,255,.14);
+            --gap:       clamp(1.5rem, 5vw, 3.5rem);
+            --max-text:  68ch;
+        }
+        body { background: var(--bg); color: var(--ink); font-family: 'Cormorant Garamond', serif; }
+        .eb-page { max-width:1100px; margin:0 auto; padding: var(--gap) clamp(1rem,5vw,3rem) 4rem; }
+        .eb-page h1 { font-family: 'Courier Prime', monospace; font-size:4.5rem; font-weight:400; letter-spacing:0.04em; color:#fff; margin-bottom:0.3rem; }
+        .eb-meta { font-family: 'Courier Prime', monospace; font-size:1.2rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--mid); margin-bottom:1.8rem; }
+        .eb-badge { font-family: 'Cormorant Garamond', serif; font-size:1.35rem; color:#bbb; margin-bottom:0.4rem; line-height:1.6; }
+        .eb-badge strong { color:#fff; font-weight:400; }
+        .eb-note { font-family: 'Cormorant Garamond', serif; font-size:1.2rem; color:var(--mid); font-style:italic; margin-bottom:2.2rem; }
+        .eb-credits { font-family: 'Cormorant Garamond', serif; font-size:1.2rem; color:#999; line-height:1.8; border-top:1px solid var(--border); padding-top:1.8rem; margin-top:0.5rem; }
+        .eb-block { font-family: 'Cormorant Garamond', serif; font-size:1.5rem; line-height:1.85; color:#e8e8e8; margin-bottom:2.5rem; font-weight:300; }
+        .eb-block em { font-style:italic; color:#ccc; }
+        .eb-block strong { color:#fff; font-weight:400; }
+        .eb-label { font-family: 'Courier Prime', monospace; font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--mid); margin-bottom:0.7rem; }
+        .eb-video { position:relative; width:100%; padding-bottom:56.25%; margin: var(--gap) 0; border-radius:4px; overflow:hidden; background:#000; box-shadow:0 8px 40px rgba(0,0,0,.8); }
+        .eb-video iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
+        .eb-gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.6rem; margin: var(--gap) 0; }
+        @media(max-width:700px){ .eb-gallery-grid{ grid-template-columns:repeat(2,1fr); } }
+        .eb-thumb { position:relative; cursor:pointer; overflow:hidden; aspect-ratio:4/3; background:#000; border-radius:2px; }
+        .eb-thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s ease, filter 0.4s ease; }
+        .eb-thumb:hover img { transform:scale(1.04); filter:brightness(.8); }
+        .eb-thumb-overlay { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity 0.3s; }
+        .eb-thumb:hover .eb-thumb-overlay { opacity:1; }
+        .eb-thumb-overlay svg { width:36px; height:36px; stroke:#fff; stroke-width:1.2; fill:none; }
+        .eb-btn { display:inline-block; padding:0.7em 2.1em; background:var(--accent, #ff3b30); color:#fff; border:none; font-family:'Courier Prime',monospace; font-size:1.08rem; font-weight:bold; letter-spacing:0.04em; text-decoration:none; border-radius:4px; cursor:pointer; transition:background 0.2s; }
+        .eb-btn:hover { background:#e0352b; }
+        /* Lightbox */
+        #lb-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.97); z-index:9999; align-items:center; justify-content:center; }
+        #lb-overlay.active { display:flex; }
+        #lb-img { max-width:88vw; max-height:85vh; object-fit:contain; border-radius:6px; box-shadow:0 8px 60px rgba(0,0,0,0.8); display:block; }
+        #lb-close { position:fixed; top:1.2rem; right:1.6rem; color:#fff; font-size:2rem; cursor:pointer; opacity:0.6; transition:opacity 0.2s; font-family:'Courier Prime',monospace; line-height:1; }
+        #lb-close:hover { opacity:1; }
+        .lb-arrow { position:fixed; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:#fff; font-size:1.8rem; cursor:pointer; padding:0.6rem 1rem; border-radius:4px; transition:background 0.2s; user-select:none; line-height:1; }
+        .lb-arrow:hover { background:rgba(255,255,255,0.18); }
+        #lb-prev { left:1.2rem; } #lb-next { right:1.2rem; }
+        #lb-counter { position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.45); font-size:0.8rem; font-family:'Courier Prime',monospace; letter-spacing:0.1em; }
+        /* Navigazione progetti */
+        .project-navigation { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-top: var(--gap); padding-top:1.5rem; border-top:1px solid var(--border); flex-wrap:wrap; }
+        .project-navigation .nav-link { font-family:'Courier Prime',monospace; font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--mid); text-decoration:none; transition:color 0.2s; }
+        .project-navigation .nav-link:hover { color:var(--ink); }
+        .project-navigation .nav-link.prev::before { content:'← '; }
+        .project-navigation .nav-link.next::after  { content:' →'; }
+        /* Footer */
+        .footer { margin-top:4rem; padding:2.5rem 0; border-top:1px solid var(--border); }
+        .footer-content { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; max-width:1200px; margin:0 auto; padding:0 2rem; }
+        .footer-copyright, .footer-credits { font-family:'Courier Prime',monospace; font-size:0.65rem; letter-spacing:0.1em; color:rgba(255,255,255,0.3); }
+        .eb-inversione-flex {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-            padding: 2rem;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
         }
-        .grain {
-            position: fixed; inset:0; z-index:-1; pointer-events:none;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-            opacity: 0.25;
-            animation: grainShift 0.5s steps(1) infinite;
-        }
-        @keyframes grainShift {
-            0%,100% { transform:translate(0,0); }
-            10% { transform:translate(-1%,-1%); }
-            20% { transform:translate(1%,1%); }
-            30% { transform:translate(-1%,0); }
-            40% { transform:translate(0,-1%); }
-            50% { transform:translate(1%,1%); }
-            60% { transform:translate(-1%,-1%); }
-            70% { transform:translate(1%,0); }
-            80% { transform:translate(0,1%); }
-            90% { transform:translate(-1%,1%); }
-        }
-        h1 {
-            font-family: 'Courier Prime', monospace;
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            font-weight: 400;
-            letter-spacing: 0.04em;
-            margin-bottom: 1.5rem;
-        }
-        p {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            color: #aaa;
+        .eb-inversione-img {
+            flex: 0 1 420px;
+            min-width: 220px;
             max-width: 600px;
+            text-align: center;
+            align-self: center;
+            /* Add relative for cropping */
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/4;
             margin: 0 auto;
         }
-        .accent {
-            width: 60px;
-            height: 3px;
-            background: #ff3b30;
-            margin: 2rem auto;
-            border-radius: 2px;
+        .eb-inversione-img img {
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            min-width: 0;
+            border-radius: 0;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.22);
+            object-fit: cover;
+            object-position: center;
+            background: none;
+            padding: 0;
+            display: block;
         }
-        .signature {
-            margin-top: 3rem;
-            font-family: 'Courier Prime', monospace;
-            font-size: 0.7rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: #888;
+        .eb-inversione-text {
+            flex: 1 1 320px;
+            min-width: 240px;
+            max-width: 600px;
+            align-self: center;
+            font-size: 1.5rem;
+            line-height: 1.85;
+            color: #e8e8e8;
+            font-weight: 300;
         }
-    </style>
+        @media (max-width: 1000px) {
+            .eb-inversione-flex {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .eb-inversione-img, .eb-inversione-text {
+                max-width: 100%;
+                min-width: 0;
+                flex: 1 1 100%;
+            }
+            .eb-inversione-img {
+                aspect-ratio: 3/4;
+                max-width: 340px;
+                margin: 0 auto;
+            }
+            .eb-inversione-img img {
+                max-width: none;
+                margin: 0 auto;
+            }
+        }
+  </style>
 </head>
-<body>
-    <div class="grain"></div>
-    <div>
-        <h1>Sito in manutenzione</h1>
-        <div class="accent"></div>
-        <p>
-            Il portfolio di Boris Pimenov è momentaneamente offline per aggiornamenti.
-            Tornerà online a breve con nuovi progetti.
-        </p>
-        <div class="signature">Boris Pimenov — Artista e regista italo‑russo</div>
+<body style="padding-top:4.5rem;">
+    <div class="film-grain"></div>
+
+    <!-- LIGHTBOX -->
+    <div id="lb-overlay">
+        <span id="lb-close" onclick="closeLB()">&#x2715;</span>
+        <span class="lb-arrow" id="lb-prev" onclick="lbNav(-1)">&#8592;</span>
+        <img id="lb-img" src="" alt="">
+        <span class="lb-arrow" id="lb-next" onclick="lbNav(1)">&#8594;</span>
+        <div id="lb-counter"></div>
     </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo"><a href="../index.html">Boris Pimenov</a></div>
+            <div class="nav-menu">
+                <a href="../index.html#portfolio" class="nav-link">Portfolio</a>
+                <a href="../index.html#about" class="nav-link">About</a>
+                <a href="../index.html#news" class="nav-link">News</a>
+                <a href="../index.html#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="eb-page">
+
+        <h1>Eburnea</h1>
+        <p class="eb-meta">2026 &middot; Performance Multimediale Interattiva &middot; Regia Boris Pimenov</p>
+        <p class="eb-badge">
+            Vincitore bando <strong>Residenze Digitali 2025</strong><br>
+            con il supporto di Centro di Residenza della Toscana <strong>(Armunia &ndash; CapoTrave/Kilowatt)</strong>
+        </p>
+        <p class="eb-note">
+            Progetto realizzato grazie al contributo della @regionetoscana nell'ambito del progetto &ldquo;Digital Arts. Comunità nel digitale&rdquo; &ndash; @giovanisi.it &ndash; Toscana in contemporanea 2025
+        </p>
+
+        <div class="eb-credits" style="margin-bottom:2.5rem;">
+           <strong>Regia, scrittura, scene, progetto video:</strong> Boris Pimenov<br>
+           <strong>Nel ruolo di Alice:</strong> Rossana Cannone
+        </div>
+<div style="width:100%;text-align:center;margin:2.5rem 0 2.5rem 0;">
+    <a href="#trailer" class="eb-btn" style="display:inline-block;padding:0.7em 2.1em;background:#fff;color:#222;font-family:'Courier Prime',monospace;font-size:1.08rem;border-radius:7px;text-decoration:none;box-shadow:0 2px 12px rgba(0,0,0,0.10);font-weight:bold;letter-spacing:0.04em;transition:background 0.18s, color 0.18s;">Guarda il trailer</a>
+</div>
+
+     </div>
+ <!-- GALLERIA -->
+        <div class="eb-gallery-grid" id="gallery">
+            <div class="eb-thumb" onclick="openLB(0)">
+                <img src="../assets/gallery/FiatVoluntasTua1.jpeg" alt="Fiat Voluntas Tua 1">
+                <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="eb-thumb" onclick="openLB(1)">
+                <img src="../assets/gallery/Eburneo1.jpeg" alt="Eburnea 1">
+                <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="eb-thumb" onclick="openLB(2)">
+                <img src="../assets/gallery/eburneo2.png" alt="Eburnea 2">
+                <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="eb-thumb" onclick="openLB(3)">
+                <img src="../assets/gallery/FiatVoluntasTua2.png" alt="Fiat Voluntas Tua 2">
+                <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="eb-thumb" onclick="openLB(4)">
+                <img src="../assets/gallery/altrove1.png" alt="Altrove">
+                <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+    
+            
+        </div>
+<!-- INTERAZIONE -->
+<div class="eb-block">
+    <div class="project-description-full">
+    <p>
+    <strong>Descrizione dettagliata</strong><br><br>
+    L’elemento centrale di questa performance è un sistema di interazione in tempo reale che dissolve il confine tra palco e pubblico. Attraverso un’interfaccia web accessibile da smartphone o computer, gli spettatori vengono invitati a condividere un ricordo personale – un frammento di vita, un’immagine sensoriale, un dialogo mai dimenticato. Questi testi, inseriti anonimamente o con un nome fittizio, non rimangono confinati nel dispositivo dell’utente, ma vengono riversati istantaneamente in un motore di elaborazione scenica.
+    </p>
+    </div>
+<div class="eb-interazione-flex" style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:2.5rem;margin-bottom:2.5rem;">
+    <div style="flex:1 1 320px;min-width:240px;max-width:600px;">
+        <span style="font-weight:bold;">Il flusso funziona così:</span>
+        <ul style="margin:1.2em 0 1.2em 1.2em;">
+            <li><strong>Input dal pubblico</strong> – Un QR code o un link breve proiettato in sala porta a una semplice form testuale. Lo spettatore scrive il proprio ricordo in poche righe, senza filtri o correzioni.</li>
+            <li><strong>Processamento in tempo reale</strong> – Ogni invio viene ricevuto da un server che lo inoltra alle API di Eleven Labs, un sofisticato sistema di sintesi vocale basato su intelligenza artificiale. La voce generata non è neutra: è stata preventivamente addestrata sulla voce della protagonista dello spettacolo, clonandone timbro, inflessioni e ritmi.</li>
+          
+            <div class="eb-block">
+            <li><strong>Restituzione in scena</strong> – Nel giro di pochi secondi, il ricordo “parlato” con la voce della protagonista viene riprodotto attraverso il sistema audio del teatro. Quel testo privato diventa così parte pubblica della narrazione, pronunciato da colei che è al centro della scena, come se quelle memorie appartenessero anche a lei.</li>
+        </ul>
+    </div>
+    <div style="flex:0 1 320px;min-width:180px;max-width:340px;text-align:center;">
+        <img src="../assets/gallery/bergman.jpeg" alt="Bergman" style="width:100%;max-width:340px;border-radius:12px;box-shadow:0 4px 32px rgba(0,0,0,0.22);object-fit:cover;">
+    </div>
+</div>
+<div class="eb-block">
+     <div class="project-description-full">
+        </p>
+    L’effetto è volutamente perturbante: il pubblico sente la propria intimità restituita da una voce artificiale che non è la propria, ma che suona umana e familiare. Lo spettatore diventa co-autore inconsapevole, mentre la protagonista (che resta in scena, forse in ascolto) si fa portavoce di una memoria collettiva in divenire.<br><br>
+    Questa è una tecnologia di drammaturgia partecipativa in tempo reale, che trasforma l’ascolto passivo in un atto di donazione e restituzione sonora, dove i ricordi del pubblico diventano materia viva dello spettacolo.
+</p>
+</div>
+
+        <!-- TRAILER -->
+       <div class="eb-label" id="trailer">Trailer</div>
+        <div class="eb-video">
+            <iframe src="https://player.vimeo.com/video/1185184940?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479"
+                    frameborder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    title="Eburnea (Trailer) 2026"></iframe>
+        </div>
+        <script src="https://player.vimeo.com/api/player.js"></script>
+
+        <!-- NOTE DI REGIA -->
+        <div class="eb-label">Drammaturgia</div>
+
+        <div class="eb-block">
+            Spettacolo in 7 scene.<br><br>
+            Eburnea è uno spettacolo interattivo, si svela in un vuoto sterile, spazio che non è nientemeno prigione&ndash;scuola&ndash;ospedale, sinteticamente, un non-luogo. Bianco come l'avorio per l'appunto. Bianco falsamente puro, falsamente sacro perché è il bianco della scienza &ndash; che crede di essere divina ma che in realtà è profana. Profano e anti-tradizionale come il mondo contemporaneo.
+        </div>
+
+       <div class="eb-inversione-flex">
+  <div class="eb-inversione-img">
+    <img src="../assets/gallery/Marchio.png" alt="Marchio Eburnea">
+  </div>
+  <div class="eb-inversione-text">
+    <span style="font-weight:bold;">Eburnea è l'inversione dei valori</span>, è una teologia rovesciata: tutto ciò che sta sopra sta sotto e tutto ciò che sta sotto sta sopra. Il profano diventa sacro, il sacro diventa profano. Ogni bagliore di umanità è rivalutato, tradotto, trasformato, compresso, cancellato.<br><br>
+    Falsa trascendenza in un falso paradiso &mdash; come da ciò che fugge I&ndash;330 &mdash; è un falso inferno. Tutto questo definito da un falso Dio: l'intelligenza artificiale. Falso Dio, falso profeta, che traduce, ribalta, e ridefinisce. Falso profeta con false promesse; l'immortalità, l'eternità grazie a una coscienza digitale.<br><br>
+    <em>A.I = A EYE (un occhio)</em> &mdash; come il Dajjal nell'Islamismo.<br>
+    Una emancipazione, un'evoluzione delle proprie capacità cognitive grazie a cosa? Grazie a un chip,<br>
+</div>  </div>
+</div>
+        <div class="eb-block">
+            che ci permetterà di essere connessi con tutto lo scibile umano, ovvero con il Nostro Falso Dio. Una Coscienza Collettiva Digitale sorvegliata, controllata, che s'irradia in ogni fibra del nostro corpo, in ogni fibra del mondo materiale, che marchia indelebilmente, che risucchia e che fa godere, che controlla e che illude di liberare.
+            Alice non è un'eroina. È un canale. Ciò che sceglie è di non essere più umana, di abbandonare la sua identità, di farsi attraversare, di diventare puro segnale, rivalutare la sua natura e auspicare a un'emancipazione e una trascendenza nel digitale. Di fare tabula rasa, di purificarsi e di liberarsi &mdash; o così lei crede.<br><br>
+            <em>&ndash;Collum tuum sicut turris eburnea&ndash;</em><br>
+           <div class="eb-interazione-flex" style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:2.5rem;margin-bottom:2.5rem;">
+  <div style="flex:1 1 320px;min-width:240px;max-width:600px;align-self:center;">
+    <span style="font-weight:bold;">&ndash;Collum tuum sicut turris eburnea&ndash;</span><br>
+    Così lo Sposo, nel Cantico dei Cantici, cantava la sua Sposa. Purezza, regalità, connessione tra cielo e terra. Qui, in Eburnea, quella torre è diventata prigione. Quel collo è diventato canale per un altro dio. Quella purezza è stata compressa, tradotta, marchiata.<br><br>
+    Perché quello a cui assisterete è già accaduto, e accadrà di nuovo.<br>
+    Perché l'Ingannatore ha molti nomi, ma il suo volto è sempre lo stesso: una luce che promette, un occhio che divora.
+  </div>
+  <div style="flex:0 1 320px;min-width:180px;max-width:340px;text-align:center;align-self:center;">
+    <img src="../assets/gallery/memoria1.png" alt="Memoria"
+        style="width:100%;max-width:420px;aspect-ratio:3/4;height:auto;border-radius:12px;box-shadow:0 4px 32px rgba(0,0,0,0.22);object-fit:cover;">
+  </div>
+</div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-copyright">&copy; 2026 Boris Pimenov &mdash; Artista e regista italo-russo</div>
+                <div class="footer-credits">Esplorando l'ibrido tra corpo performativo e spazio digitale</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        var lbImages = [
+            { src: '../assets/gallery/FiatVoluntasTua1.jpeg', alt: 'Fiat Voluntas Tua 1' },
+            { src: '../assets/gallery/Eburneo1.jpeg', alt: 'Eburnea 1' },
+            { src: '../assets/gallery/eburneo2.png', alt: 'Eburnea 2' },
+            { src: '../assets/gallery/FiatVoluntasTua2.png', alt: 'Fiat Voluntas Tua 2' },
+            { src: '../assets/gallery/altrove1.png', alt: 'Altrove' },
+            { src: '../assets/gallery/bergman.jpeg', alt: 'Bergman' },
+            { src: '../assets/gallery/memoria1.png', alt: 'Memoria' },
+            { src: '../assets/gallery/Marchio.png', alt: 'Marchio Eburnea' }
+        ];
+        var lbCurrent = 0;
+
+        function openLB(index) {
+            lbCurrent = index;
+            showLBImage();
+            document.getElementById('lb-overlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showLBImage() {
+            var img = document.getElementById('lb-img');
+            img.style.animation = 'none';
+            img.offsetHeight; // reflow
+            img.style.animation = 'lb-in 0.22s ease';
+            img.src = lbImages[lbCurrent].src;
+            img.alt = lbImages[lbCurrent].alt;
+            document.getElementById('lb-counter').textContent = (lbCurrent + 1) + ' / ' + lbImages.length;
+        }
+
+        function lbNav(dir) {
+            lbCurrent = (lbCurrent + dir + lbImages.length) % lbImages.length;
+            showLBImage();
+        }
+
+        function closeLB() {
+            document.getElementById('lb-overlay').classList.remove('active');
+            document.getElementById('lb-img').src = '';
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('lb-overlay').addEventListener('click', function(e) {
+            if (e.target === this) closeLB();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (!document.getElementById('lb-overlay').classList.contains('active')) return;
+            if (e.key === 'Escape') closeLB();
+            if (e.key === 'ArrowLeft') lbNav(-1);
+            if (e.key === 'ArrowRight') lbNav(1);
+        });
+    </script>
 </body>
 </html>

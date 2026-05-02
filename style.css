@@ -924,17 +924,23 @@ section {
     left: 0;
     z-index: 999;
     writing-mode: vertical-rl;
-    transform: rotate(180deg);
+    transform: rotate(-90deg);
     font-family: var(--font-heading);
-    font-size: .65rem;
+    font-size: 2.2rem;           /* << Più grande */
     letter-spacing: .18em;
     text-transform: uppercase;
-    color: var(--mid);
-    padding: 1.2rem .6rem;
+    color: #fff;                  /* << Bianco per maggiore contrasto */
+    padding: 2.2rem 1.2rem;       /* << Più spazio */
     pointer-events: none;
     display: none;
+    opacity: 0.85;
+    text-shadow: 0 2px 18px rgba(0,0,0,0.28);
 }
-
+@media (min-width: 900px) {
+    .page-title-left {
+        display: block;
+    }
+}
 @media (min-width: 900px) {
     .page-title-left {
         display: block;
@@ -982,3 +988,4 @@ section {
     opacity: 1;
     transform: translateY(0);
 }
+
