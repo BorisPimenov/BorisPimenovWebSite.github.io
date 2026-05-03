@@ -5,118 +5,172 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eburnea nelle Residenze Digitali 2025 - Boris Pimenov</title>
     <link rel="stylesheet" href="../style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <style>
+        .project-title-center {
+            text-align: left;
+            font-family: 'EB Garamond', Garamond, serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            color: #fff;
+            margin: 2.5rem 0 0.5rem 0;
+            letter-spacing: .04em;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+        .project-meta-line {
+            font-family: 'EB Garamond', Garamond, serif;
+            font-size: 0.82rem; color: #888;
+            letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 0.4rem;
+        }
+        .project-subtitle-line {
+            font-family: 'EB Garamond', Garamond, serif;
+            font-size: 1.15rem; color: #999;
+            font-style: italic; margin-bottom: 2.5rem;
+        }
+        .project-section-label {
+            font-family: 'EB Garamond', Garamond, serif;
+            font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+            color: #666; margin: 3rem 0 1rem 0;
+        }
+        .project-description-full {
+            border-left: 4px solid #9e7b5c;
+            padding: 1.5rem 2rem; margin: 1.5rem 0 2.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-family: 'EB Garamond', Garamond, serif;
+            font-size: clamp(1.15rem, 2.4vw, 1.35rem);
+            line-height: 2; color: #ddd;
+        }
+        .project-description-full p { margin-bottom: 1.2rem; }
+        .project-description-full p:last-child { margin-bottom: 0; }
+        .project-description-full em { font-style: italic; color: #ccc; }
+        .project-description-full strong { color: #eee; font-weight: 500; }
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1rem; margin: 1.5rem 0 2.5rem 0;
+        }
+        .link-card {
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 6px; padding: 1.4rem 1.6rem;
+            background: #111;
+            transition: border-color 0.3s, background 0.3s;
+        }
+        .link-card:hover { border-color: rgba(255,255,255,0.26); background: #161616; }
+        .link-card h3 {
+            font-family: 'EB Garamond', Garamond, serif;
+            font-size: 1.1rem; font-weight: 500;
+            color: #e8e4de; margin-bottom: 0.5rem;
+        }
+        .link-card p {
+            font-family: 'EB Garamond', Garamond, serif;
+            font-style: italic; font-size: 0.95rem;
+            color: #888; line-height: 1.5; margin-bottom: 1rem;
+        }
+        .link-card a {
+            font-family: 'EB Garamond', Garamond, serif;
+            font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+            color: #c0845a; text-decoration: none; transition: color 0.2s;
+        }
+        .link-card a:hover { color: #e09060; }
+        .eb-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.55rem; margin-bottom: 1.5rem;
+        }
+        @media (max-width: 700px) { .eb-gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+        .eb-thumb { position: relative; aspect-ratio: 4/3; overflow: hidden; border-radius: 6px; background: #111; }
+        .eb-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s ease, filter 0.35s ease; }
+        .eb-thumb:hover img { transform: scale(1.05); filter: brightness(0.75); }
+        .gallery-caption {
+            font-family: 'EB Garamond', Garamond, serif;
+            font-style: italic; font-size: 0.88rem;
+            color: #666; text-align: center; margin-bottom: 2.5rem;
+        }
+    </style>
 </head>
-<body>
+<body style="padding-top: 4.5rem;">
     <!-- Grain Overlay -->
     <div class="film-grain"></div>
     
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html">Boris Pimenov</a>
-            </div>
+            <div class="nav-logo"><a href="../index.html">Boris Pimenov</a></div>
             <div class="nav-menu">
-                <a href="index.html#portfolio" class="nav-link">Portfolio</a>
-                <a href="index.html#about" class="nav-link">About</a>
-                <a href="index.html#news" class="nav-link">News</a>
-                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="../index.html#portfolio" class="nav-link">Portfolio</a>
+                <a href="../index.html#about" class="nav-link">About</a>
+                <a href="../index.html#news" class="nav-link">News</a>
+                <a href="../index.html#contact" class="nav-link">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- News Article -->
-    <main class="news-article">
-        <div class="container">
-            <article class="article-content">
-                <header class="article-header">
-                    <div class="article-meta">
-                        <span>Dicembre 2025</span>
-                        <span>Residenze Digitali</span>
-                        <span>Eburnea</span>
-                        <span>Intervista</span>
-                    </div>
-                    <h1 class="article-title">Al via la 6a edizione della Settimana delle Residenze Digitali</h1>
-                    <p class="article-subtitle">Intervista a Boris Pimenov sul progetto Eburnea, vincitore del bando Residenze Digitali 2025</p>
-                </header>
-                
-                <div class="article-text">
-                    <p>La sesta edizione della Settimana delle Residenze Digitali ha preso il via con una serie di progetti che esplorano le intersezioni tra performance, tecnologia e intelligenza artificiale. Tra questi spicca <strong>Eburnea</strong>, performance interattiva multimediale di Boris Pimenov, selezionata tra i vincitori del bando Residenze Digitali 2025.</p>
-                    
-                    <p>Il progetto di Pimenov indaga la memoria attraverso l'integrazione tra corpo performativo, spazio digitale e interazione in tempo reale di un pubblico remoto. Utilizzando <strong>TouchDesigner</strong> come nucleo creativo, l'artista costruisce ambienti virtuali renderizzati in tempo reale che rispondono ai input del performer e del pubblico.</p>
-                    
-                    <p>Durante la settimana di residenza, Pimenov ha sviluppato ulteriormente la componente di intelligenza artificiale del progetto, integrando modelli generativi per la trasformazione in tempo reale di contenuti visivi e testuali. Questa sinergia tra algoritmi, spazi digitali e azione scenica dal vivo posiziona Eburnea all'avanguardia della ricerca sul teatro immersivo.</p>
-                    
-                    <p>Di seguito, i principali articoli e interviste pubblicati in occasione della presentazione del progetto:</p>
+    <main class="project-page">
+        <div class="project-container">
+
+            <p class="project-meta-line">Dicembre 2025 &nbsp;/&nbsp; Residenze Digitali &nbsp;/&nbsp; Intervista</p>
+            <h1 class="project-title-center">Al via la 6&ordf; edizione della Settimana delle Residenze Digitali</h1>
+            <p class="project-subtitle-line">Intervista a Boris Pimenov sul progetto <em>Eburnea</em>, vincitore del bando Residenze Digitali 2025</p>
+
+            <div class="project-description-full">
+                <p>La sesta edizione della Settimana delle Residenze Digitali ha preso il via con una serie di progetti che esplorano le intersezioni tra performance, tecnologia e intelligenza artificiale. Tra questi spicca <strong>Eburnea</strong>, performance interattiva multimediale di Boris Pimenov, selezionata tra i vincitori del bando Residenze Digitali 2025.</p>
+                <p>Il progetto di Pimenov indaga la memoria attraverso l&rsquo;integrazione tra corpo performativo, spazio digitale e interazione in tempo reale di un pubblico remoto. Utilizzando <strong>TouchDesigner</strong> come nucleo creativo, l&rsquo;artista costruisce ambienti virtuali renderizzati in tempo reale che rispondono ai input del performer e del pubblico.</p>
+                <p>Durante la settimana di residenza, Pimenov ha sviluppato ulteriormente la componente di intelligenza artificiale del progetto, integrando modelli generativi per la trasformazione in tempo reale di contenuti visivi e testuali. Questa sinergia tra algoritmi, spazi digitali e azione scenica dal vivo posiziona <em>Eburnea</em> all&rsquo;avanguardia della ricerca sul teatro immersivo.</p>
+                <p>Di seguito, i principali articoli e interviste pubblicati in occasione della presentazione del progetto:</p>
+            </div>
+
+            <p class="project-section-label">Rassegna stampa</p>
+            <div class="links-grid">
+                <div class="link-card">
+                    <h3>Pane Acqua Culture</h3>
+                    <p>&ldquo;Al via la 6a edizione della Settimana delle Residenze Digitali: intervista a Boris Pimenov di Eburnea&rdquo;</p>
+                    <a href="https://www.paneacquaculture.net/2025/12/01/al-via-la-6a-edizione-della-settimana-delle-residenze-digitali-intervista-a-boris-pimenov-di-eburnea/" target="_blank" rel="noopener">Leggi l&rsquo;articolo &rarr;</a>
                 </div>
-                
-                <!-- Links to Articles -->
-                <div class="links-grid">
-                    <div class="link-card">
-                        <h3>Pane Acqua Culture</h3>
-                        <p>"Al via la 6a edizione della Settimana delle Residenze Digitali: intervista a Boris Pimenov di Eburnea"</p>
-                        <a href="https://www.paneacquaculture.net/2025/12/01/al-via-la-6a-edizione-della-settimana-delle-residenze-digitali-intervista-a-boris-pimenov-di-eburnea/" target="_blank" rel="noopener">Leggi l'articolo</a>
-                    </div>
-                    
-                    <div class="link-card">
-                        <h3>Residenze Digitali</h3>
-                        <p>Pagina ufficiale dell'edizione 2025 con tutti i progetti selezionati</p>
-                        <a href="https://www.residenzedigitali.it/edizione-2025/" target="_blank" rel="noopener">Visita il sito</a>
-                    </div>
-                    
-                    <div class="link-card">
-                        <h3>Quarantasettezeroquattro</h3>
-                        <p>Evento e presentazione delle Residenze Digitali 2025</p>
-                        <a href="https://www.quarantasettezeroquattro.it/evento/residenze-digitali/" target="_blank" rel="noopener">Vai all'evento</a>
-                    </div>
-                    
-                    <div class="link-card">
-                        <h3>Teatro e Critica</h3>
-                        <p>"Arrivano le Residenze Digitali: chi ha paura della tecnologia?"</p>
-                        <a href="https://www.teatroecritica.net/2025/11/arrivano-le-residenze-digitali-chi-ha-paura-della-tecnologia/" target="_blank" rel="noopener">Leggi l'articolo</a>
-                    </div>
-                    
-                    <div class="link-card">
-                        <h3>Ateatro</h3>
-                        <p>"Racconti dalla Settimana delle Residenze Digitali: Alice nel paese dell'AI"</p>
-                        <a href="https://www.ateatro.it/2025/12/05/racconti-dalla-settimana-delle-residenze-digitali-alice-nel-paese-dellai/" target="_blank" rel="noopener">Leggi l'articolo</a>
-                    </div>
+                <div class="link-card">
+                    <h3>Residenze Digitali</h3>
+                    <p>Pagina ufficiale dell&rsquo;edizione 2025 con tutti i progetti selezionati</p>
+                    <a href="https://www.residenzedigitali.it/edizione-2025/" target="_blank" rel="noopener">Visita il sito &rarr;</a>
                 </div>
-                
-                <!-- Gallery -->
-                <section class="gallery-section">
-                    <h2>Gallery</h2>
-                    <p>Immagini dal progetto Eburnea durante le Residenze Digitali 2025</p>
-                    
-                    <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="../assets/gallery/eburnea1.png" alt="Eburnea - Performance multimediale interattiva">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="../assets/gallery/eburnea2.png" alt="Eburnea - Interazione con spazio digitale">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="../assets/gallery/eburnea3.png" alt="Eburnea - Setup tecnologico">
-                        </div>
-                    </div>
-                    
-                    <p class="gallery-caption">Documentazione fotografica della performance Eburnea durante la Settimana delle Residenze Digitali 2025</p>
-                </section>
-                
-                <!-- Additional Content -->
-                <div class="article-text">
-                    <p>L'interesse per Eburnea ha dimostrato come la ricerca artistica nell'ambito delle tecnologie digitali stia assumendo un ruolo sempre più centrale nel panorama teatrale contemporaneo. La capacità di Pimenov di fondere una solida formazione teatrale con competenze tecniche avanzate rappresenta un esempio significativo di come l'arte performativa possa evolversi nell'era digitale.</p>
-                    
-                    <p>Il progetto continuerà il suo percorso con ulteriori sviluppi e presentazioni internazionali nel corso del 2026, confermando l'attenzione crescente per le pratiche artistiche che esplorano le potenzialità espressive delle nuove tecnologie.</p>
+                <div class="link-card">
+                    <h3>Quarantasettezeroquattro</h3>
+                    <p>Evento e presentazione delle Residenze Digitali 2025</p>
+                    <a href="https://www.quarantasettezeroquattro.it/evento/residenze-digitali/" target="_blank" rel="noopener">Vai all&rsquo;evento &rarr;</a>
                 </div>
-                
-                <!-- Navigation -->
-                <div class="article-navigation">
-                    <a href="projects/eburnea.html" class="nav-button">← Vai alla pagina del progetto Eburnea</a>
-                    <a href="index.html#news" class="nav-button secondary">Torna a tutte le News</a>
+                <div class="link-card">
+                    <h3>Teatro e Critica</h3>
+                    <p>&ldquo;Arrivano le Residenze Digitali: chi ha paura della tecnologia?&rdquo;</p>
+                    <a href="https://www.teatroecritica.net/2025/11/arrivano-le-residenze-digitali-chi-ha-paura-della-tecnologia/" target="_blank" rel="noopener">Leggi l&rsquo;articolo &rarr;</a>
                 </div>
-            </article>
+                <div class="link-card">
+                    <h3>Ateatro</h3>
+                    <p>&ldquo;Racconti dalla Settimana delle Residenze Digitali: Alice nel paese dell&rsquo;AI&rdquo;</p>
+                    <a href="https://www.ateatro.it/2025/12/05/racconti-dalla-settimana-delle-residenze-digitali-alice-nel-paese-dellai/" target="_blank" rel="noopener">Leggi l&rsquo;articolo &rarr;</a>
+                </div>
+            </div>
+
+            <p class="project-section-label">Galleria</p>
+            <div class="eb-gallery-grid">
+                <div class="eb-thumb">
+                    <img src="../assets/gallery/eburnea1.png" alt="Eburnea — Performance multimediale interattiva">
+                </div>
+                <div class="eb-thumb">
+                    <img src="../assets/gallery/eburnea2.png" alt="Eburnea — Interazione con spazio digitale">
+                </div>
+                <div class="eb-thumb">
+                    <img src="../assets/gallery/eburnea3.png" alt="Eburnea — Setup tecnologico">
+                </div>
+            </div>
+            <p class="gallery-caption">Documentazione fotografica della performance <em>Eburnea</em> durante la Settimana delle Residenze Digitali 2025</p>
+
+            <div class="project-description-full">
+                <p>L&rsquo;interesse per <em>Eburnea</em> ha dimostrato come la ricerca artistica nell&rsquo;ambito delle tecnologie digitali stia assumendo un ruolo sempre più centrale nel panorama teatrale contemporaneo. La capacità di Pimenov di fondere una solida formazione teatrale con competenze tecniche avanzate rappresenta un esempio significativo di come l&rsquo;arte performativa possa evolversi nell&rsquo;era digitale.</p>
+                <p>Il progetto continuerà il suo percorso con ulteriori sviluppi e presentazioni internazionali nel corso del 2026, confermando l&rsquo;attenzione crescente per le pratiche artistiche che esplorano le potenzialità espressive delle nuove tecnologie.</p>
+            </div>
+
+            <nav class="project-navigation">
+                <a href="eburnea.html" class="nav-link prev">Progetto Eburnea</a>
+                <a href="../index.html#news" class="nav-link">Torna alle News</a>
+            </nav>
+
         </div>
     </main>
 
@@ -134,6 +188,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html>

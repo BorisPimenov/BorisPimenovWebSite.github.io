@@ -5,15 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compagnia di Giro · Boris Pimenov</title>
     <link rel="stylesheet" href="../style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <style>
-        .eb-page { max-width:900px; margin:0 auto; padding:3.5rem 1.5rem 5rem 1.5rem; font-family:'Courier Prime',monospace; color:#f7f7f7; }
-        .eb-page h1 { font-size:3rem; font-weight:400; letter-spacing:0.04em; color:#fff; margin-bottom:0.3rem; }
-        .eb-meta { font-size:0.85rem; color:#888; margin-bottom:1.8rem; letter-spacing:0.14em; text-transform:uppercase; }
-        .eb-label { font-size:0.75rem; letter-spacing:0.16em; text-transform:uppercase; color:#666; margin-bottom:0.7rem; }
-        .eb-block { font-size:1.08rem; line-height:1.85; color:#e8e8e8; margin-bottom:2.5rem; }
-        .eb-block p { margin-bottom:1.2rem; }
-        .eb-block em { font-style:italic; color:#ccc; }
+        .project-title-center {
+            text-align: left;
+            font-family: 'EB Garamond', Garamond, serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            color: #fff;
+            margin: 2.5rem 0 0.5rem 0;
+            letter-spacing: .04em;
+            font-weight: 400;
+            line-height: 1.15;
+        }
+        .project-meta-line {
+            font-family: 'EB Garamond', Garamond, serif;
+            font-size: 0.85rem; color: #888;
+            letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.5rem;
+        }
+        .project-section-label {
+            font-family: 'EB Garamond', Garamond, serif;
+            font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+            color: #666; margin: 3rem 0 1rem 0;
+        }
+        .project-description-full {
+            border-left: 4px solid #9e7b5c;
+            padding: 1.5rem 2rem; margin: 1.5rem 0 2.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-family: 'EB Garamond', Garamond, serif;
+            font-size: clamp(1.15rem, 2.4vw, 1.35rem);
+            line-height: 2; color: #ddd;
+        }
+        .project-description-full p { margin-bottom: 1.2rem; }
+        .project-description-full p:last-child { margin-bottom: 0; }
+        .project-description-full em { font-style: italic; color: #ccc; }
+        .youtube-container {
+            position: relative; width: 100%; aspect-ratio: 16 / 9;
+            margin: 2rem 0 3rem 0; border-radius: 10px; overflow: hidden; background: #111;
+        }
+        .youtube-container iframe { width: 100%; height: 100%; border: none; display: block; }
         .eb-gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.55rem; margin-bottom:3rem; }
         @media(max-width:700px){ .eb-gallery-grid{ grid-template-columns:repeat(2,1fr); } }
         .eb-thumb { position:relative; aspect-ratio:1; overflow:hidden; border-radius:6px; cursor:pointer; background:#111; }
@@ -30,7 +59,10 @@
         .lb-arrow { position:fixed; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:#fff; font-size:1.8rem; cursor:pointer; padding:0.6rem 1rem; border-radius:4px; transition:background 0.2s; user-select:none; line-height:1; }
         .lb-arrow:hover { background:rgba(255,255,255,0.18); }
         #lb-prev { left:1.2rem; } #lb-next { right:1.2rem; }
-        #lb-counter { position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.45); font-size:0.8rem; font-family:'Courier Prime',monospace; letter-spacing:0.1em; }
+        #lb-counter { position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.45); font-size:0.8rem; font-family:'EB Garamond',Garamond,serif; letter-spacing:0.1em; }
+        .author-sig { font-style: italic; color: #888; }
+        .project-link { color: #c0845a; text-decoration: none; transition: color 0.2s; }
+        .project-link:hover { color: #e09060; }
     </style>
 </head>
 <body style="padding-top:4.5rem;">
@@ -57,21 +89,24 @@
         </div>
     </nav>
 
-    <main>
-        <div class="eb-page">
-            <p class="eb-meta">2023&ndash;2024 &nbsp;/&nbsp; Progetto teatrale</p>
-            <h1>Compagnia di Giro</h1>
+    <main class="project-page">
+        <div class="project-container">
 
-            <!-- GALLERIA -->
-            <p class="eb-label">Galleria</p>
+            <p class="project-meta-line">2023&ndash;2024 &nbsp;/&nbsp; Documentario teatrale</p>
+            <h1 class="project-title-center">Compagnia di Giro</h1>
+
+            <div class="project-description-full">
+                <p>Nel corso degli anni 2023 e 2024 ho seguito la <em>Compagnia di Giro</em> realizzando un documentario-video: ho intervistato le persone del luogo, raccolto testimonianze e proiettato video-dedica nei vari borghi attraversati dalla compagnia.</p>
+                <p>Questo lavoro ha voluto restituire voce e memoria alle comunità, valorizzando il legame tra teatro itinerante e territorio.</p>
+            </div>
+
+            <p class="project-section-label">Documentario 2023&ndash;2024</p>
+            <div class="youtube-container">
+                <iframe src="https://www.youtube.com/embed/QrQi5BnxnlY?si=hr4fUL1rY81Wo4DB" title="Compagnia di Giro — Documentario" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <p class="project-section-label">Galleria</p>
             <div class="eb-gallery-grid">
-                <p class="eb-label">Documentario 2023–2024</p>
-<div style="max-width:560px;margin:0 auto 2.2rem;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/QrQi5BnxnlY?si=hr4fUL1rY81Wo4DB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;max-width:560px;aspect-ratio:16/9;border-radius:8px;display:block;margin:0 auto;"></iframe>
-</div>
-<div class="eb-block">
-    <p>Nel corso degli anni 2023 e 2024 ho seguito la Compagnia di Giro realizzando un documentario-video: ho intervistato le persone del luogo, raccolto testimonianze e proiettato video-dedica nei vari borghi attraversati dalla compagnia. Questo lavoro ha voluto restituire voce e memoria alle comunità, valorizzando il legame tra teatro itinerante e territorio.</p>
-</div>
                 <div class="eb-thumb" onclick="openLB(0)">
                     <img src="../assets/gallery/giro1.jpg" alt="Compagnia di Giro 1">
                     <div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg></div>
@@ -86,29 +121,27 @@
                 </div>
             </div>
 
-            <!-- NOTE -->
-            <p class="eb-label">Note</p>
-            <div class="eb-block">
+            <p class="project-section-label">Note</p>
+            <div class="project-description-full">
                 <p>&ldquo;Nessuno nasce imparato&rdquo;, diceva qualcuno&hellip;</p>
-                <p>&Egrave; proprio vero, nessuno nasce sapendo chi &egrave;, si impara a diventare e talvolta lo si fa grazie agli insegnanti che per mestiere, o per missione, passano ad altri il proprio sapere, sperando che ci sia almeno un allievo che superi il maestro e porti questo sapere in l&agrave;, pi&ugrave; in l&agrave;; trasformandolo, facendolo proprio, riadattandolo ai tempi, ma mantenendo i principi fondamentali che lo rendono unico. Bene, noi arriviamo da un tempo lontano, siamo figli di quella che fu una Compagnia di Giro.</p>
+                <p>&Egrave; proprio vero, nessuno nasce sapendo chi &egrave;, si impara a diventare e talvolta lo si fa grazie agli insegnanti che per mestiere, o per missione, passano ad altri il proprio sapere, sperando che ci sia almeno un allievo che superi il maestro e porti questo sapere in l&agrave;, pi&ugrave; in l&agrave;; trasformandolo, facendolo proprio, riadattandolo ai tempi, ma mantenendo i principi fondamentali che lo rendono unico. Bene, noi arriviamo da un tempo lontano, siamo figli di quella che fu una <em>Compagnia di Giro</em>.</p>
                 <p>I nonni iniziarono, prima e durante la guerra; i genitori continuarono, noi siamo nati. Siamo nati lungo il cammino e abbiamo provato quella bellezza. Parliamo di una bellezza semplice, fatta di scambi tra attore e spettatore.</p>
-            </div>
-            <div class="eb-block">
                 <p>Qualcosa di indispensabile. La gente ama il teatro se il teatro ama la gente, la rispetta, non crea distinzioni, la incontra, la desidera, la fa sedere come sulla sedia di casa. Non &egrave; teatro di piazza, n&eacute; di strada, non &egrave; di sala, non &egrave; commedia dell&rsquo;arte, n&eacute; prosa o ricerca&hellip; Ma &egrave; tutto questo allo stesso tempo, nello scambio puro e incondizionato con lo spettatore.</p>
                 <p>Quell&rsquo;insegnamento c&rsquo;&egrave; rimasto dentro, come radice nella terra, &egrave; il nostro mestiere e la nostra missione, &egrave; il nostro vivere, tanto da non poterne fare a meno. Negli anni ottanta, quando Franco Seghizzi cap&igrave; che di compagnie di giro non ce n&rsquo;erano pi&ugrave;, chiam&ograve; la propria compagnia &ldquo;I Superstiti&rdquo;. Poi se ne and&ograve;.</p>
                 <p>Credo che lui non lo sapesse, perch&eacute; di sicuro non gliene importava niente, ma era un Maestro&hellip;</p>
-                <p style="color:#888;font-style:italic;">&mdash; Loris Seghizzi</p>
+                <p class="author-sig">&mdash; Loris Seghizzi</p>
             </div>
 
-            <p class="eb-label">Approfondimento</p>
-            <div class="eb-block">
-                <p><a href="https://www.sartoriacaronte.it/unplugged/" target="_blank" rel="noopener" style="color:#e74c3c;">Sartoria Caronte &mdash; Unplugged &rarr;</a></p>
+            <p class="project-section-label">Approfondimento</p>
+            <div class="project-description-full">
+                <p><a href="https://www.sartoriacaronte.it/unplugged/" target="_blank" rel="noopener" class="project-link">Sartoria Caronte &mdash; Unplugged &rarr;</a></p>
             </div>
 
             <nav class="project-navigation">
                 <a href="cinica-matrice.html" class="nav-link prev">Cinica Matrice</a>
                 <a href="../index.html#portfolio" class="nav-link">Torna al Portfolio</a>
             </nav>
+
         </div>
     </main>
 

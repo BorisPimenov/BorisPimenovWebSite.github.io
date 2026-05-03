@@ -5,17 +5,67 @@
     <meta name="viewp-width, initial-scale=1.0">
     <title>Rasi al Suolo · Boris Pimenov</title>
     <link rel="stylesheet" href="../style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <style>
-        .eb-page { max-width:900px; margin:0 auto; padding:3.5rem 1.5rem 5rem 1.5rem; font-family:'Courier Prime',monospace; color:#f7f7f7; }
-        .eb-page h1 { font-size:3rem; font-weight:400; letter-spacing:0.04em; color:#fff; margin-bottom:0.3rem; }
-        .eb-meta { font-size:0.85rem; color:#888; margin-bottom:1.8rem; letter-spacing:0.14em; text-transform:uppercase; }
-        .eb-label { font-size:0.75rem; letter-spacing:0.16em; text-transform:uppercase; color:#666; margin-bottom:0.7rem; }
-        .eb-block { font-size:1.08rem; line-height:1.85; color:#e8e8e8; margin-bottom:2.5rem; }
-        .eb-block p { margin-bottom:1.2rem; }
-        .eb-block em { font-style:italic; color:#ccc; }
-        .eb-video { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px; margin-bottom:2.8rem; }
-        .eb-video iframe { position:absolute; top:0; left:0; width:100%; height:100%; }
+        .project-title-center {
+            text-align: left;
+            font-family: 'EB Garamond', Garamond, serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            color: #fff;
+            margin: 2.5rem 0 0.5rem 0;
+            letter-spacing: .04em;
+            font-weight: 400;
+            line-height: 1.15;
+        }
+        .project-meta-line {
+            font-family: 'EB Garamond', Garamond, serif;
+            font-size: 0.85rem; color: #888;
+            letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.4rem;
+        }
+        .project-subtitle-line {
+            font-family: 'EB Garamond', Garamond, serif;
+            font-size: 1rem; color: #777;
+            font-style: italic; margin-bottom: 2rem;
+        }
+        .project-section-label {
+            font-family: 'EB Garamond', Garamond, serif;
+            font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+            color: #666; margin: 3rem 0 1rem 0;
+        }
+        .project-description-full {
+            border-left: 4px solid #9e7b5c;
+            padding: 1.5rem 2rem; margin: 1.5rem 0 2.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-family: 'EB Garamond', Garamond, serif;
+            font-size: clamp(1.15rem, 2.4vw, 1.35rem);
+            line-height: 2; color: #ddd;
+        }
+        .project-description-full p { margin-bottom: 1.2rem; }
+        .project-description-full p:last-child { margin-bottom: 0; }
+        .project-description-full em { font-style: italic; color: #ccc; }
+        .vimeo-container {
+            position: relative; width: 100%; aspect-ratio: 16 / 9;
+            margin: 2rem 0 3rem 0; border-radius: 10px; overflow: hidden; background: #111;
+        }
+        .vimeo-container iframe { width: 100%; height: 100%; border: none; display: block; }
+        .credits-grid {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+            gap: 0.4rem 1.5rem;
+            font-family: 'EB Garamond', Garamond, serif;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: #ddd;
+            line-height: 1.8;
+        }
+        .credits-role {
+            color: #888;
+            font-size: 0.75rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding-top: 0.25rem;
+            white-space: nowrap;
+        }
+        .credits-name { color: #ddd; }
     </style>
 </head>
 <body style="padding-top:4.5rem;">
@@ -37,27 +87,37 @@
     </nav>
 
     <!-- Project Content -->
-    <main>
-        <div class="eb-page">
-            <p class="eb-meta">2024 &nbsp;/&nbsp; Video, teatro &nbsp;/&nbsp; Collinarea Festival del Suono 2024</p>
-            <h1>Rasi al Suolo</h1>
-            <p class="eb-meta" style="margin-top:-0.6rem;margin-bottom:2.5rem;">di Loris Seghizzi e Cesare Inzerillo</p>
+    <main class="project-page">
+        <div class="project-container">
+            <p class="project-meta-line">2024 &nbsp;/&nbsp; Video, teatro &nbsp;/&nbsp; Collinarea Festival del Suono 2024</p>
+            <h1 class="project-title-center">Rasi al Suolo</h1>
+            <p class="project-subtitle-line">di Loris Seghizzi e Cesare Inzerillo</p>
 
-            <p class="eb-label">Trailer</p>
-            <div class="eb-video">
+            <p class="project-section-label">Trailer</p>
+            <div class="vimeo-container">
                 <iframe title="vimeo-player" src="https://player.vimeo.com/video/1149683476?h=adacda1cd1" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>
             </div>
 
-            <p class="eb-label">Note di regia</p>
-            <div class="eb-block">
-                <p><em>Rasi al suolo</em> &egrave; il secondo capitolo della Trilogia con tulle e segue <em>Tempo InFausto</em>.</p>
+            <p class="project-section-label">Note di regia</p>
+            <div class="project-description-full">
+                <p><em>Rasi al suolo</em> è il secondo capitolo della Trilogia con tulle e segue <em>Tempo InFausto</em>.</p>
                 <p>Commedia noir a colori. Indagine cruda e irriverente, scontata e retorica, senza pessimismo, sulla miseria dell&rsquo;essere umano.</p>
-                <p>La scena si svolge in un paesino di provincia, in un tempo che non &egrave; dato sapere, dal sapore retr&ograve; che potrebbe risultare ingannatore, come sempre lo &egrave; il teatro stesso&hellip;</p>
-            </div>
-            <div class="eb-block">
+                <p>La scena si svolge in un paesino di provincia, in un tempo che non è dato sapere, dal sapore retrò che potrebbe risultare ingannatore, come sempre lo è il teatro stesso&hellip;</p>
                 <p>Luogo sospeso, errato, come gli eventi che ne caratterizzano la storia.</p>
-                <p>L&rsquo;errore &egrave; come il particolare, come si palesa stravolge tutto, non necessariamente in peggio alcune volte, ma non &egrave; questo il caso&hellip;</p>
-                <p>Emergono qui le virt&ugrave; capitali, che rappresentano la parodia del nostro tempo, in quello che &egrave; diventato un minestrone indigeribile di religione e stato laico, su base di soffritto, ovviamente&hellip;</p>
+                <p>L&rsquo;errore è come il particolare, come si palesa stravolge tutto, non necessariamente in peggio alcune volte, ma non è questo il caso&hellip;</p>
+                <p>Emergono qui le virtù capitali, che rappresentano la parodia del nostro tempo, in quello che è diventato un minestrone indigeribile di religione e stato laico, su base di soffritto, ovviamente&hellip;</p>
+            </div>
+
+            <p class="project-section-label">Crediti</p>
+            <div class="project-description-full">
+                <div class="credits-grid">
+                    <span class="credits-role">Con</span>
+                    <span class="credits-name">Walter Barone, Iris Barone, Spencer Barone, Eros Carpita, Pietro Piras, Boris Pimenov</span>
+                    <span class="credits-role">Regia</span>
+                    <span class="credits-name">Loris Seghizzi</span>
+                    <span class="credits-role">Video</span>
+                    <span class="credits-name">Boris Pimenov</span>
+                </div>
             </div>
 
             <nav class="project-navigation">
@@ -82,21 +142,3 @@
 </html>
 
                 </div>
-
-
-
-
-            <!-- Script Vimeo -->
-            <script src="https://player.vimeo.com/api/player.js"></script>
-
-            <!-- Descrizione -->
-            <div class="project-description-full">
-                <p><em>Rasi al Suolo</em> Questo progetto di video arte esplora il tema della discesa e della perdita, attraverso una serie di immagini evocative e suggestive.</p>
-
-                <p>L’immagine filmica si fonde con il suo creatore, in un processo di continua cucitura di un organismo ormai morto.</p>
-            
-            <!-- Gallery (opzionale) -->
-            <div class="project-gallery">
-                <!-- Puoi aggiungere immagini aggiuntive qui -->
-            </div>
-

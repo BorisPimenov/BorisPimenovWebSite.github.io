@@ -170,16 +170,28 @@ body {
 }
 
 .hero-title {
-    font-family: var(--font-heading);
-    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-family: 'EB Garamond', Garamond, serif;
+    font-size: clamp(1.2rem, 3vw, 2.4rem);
     font-weight: 400;
     letter-spacing: .02em;
     margin-bottom: 1rem;
+    white-space: nowrap;
+    text-shadow: 0 2px 24px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.9);
+    text-transform: none;
+}
+
+.hero-name {
+    font-style: normal;
+}
+
+.hero-role {
+    font-style: italic;
+    color: inherit;
 }
 
 .hero-title-deco {
     width: 60px;
-    height: 3px;
+    height: 2px;
     background: var(--accent);
     margin: 1rem auto 1.5rem;
     border-radius: 2px;
@@ -251,7 +263,7 @@ section {
     font-size: 2rem;
     font-weight: 400;
     letter-spacing: .04em;
-    margin-bottom: 2.5rem;
+    margin-bottom: 0.4rem;
     color: var(--ink);
     text-transform: lowercase;
 }
@@ -260,14 +272,15 @@ section {
     width: 80px;
     height: 2px;
     background: var(--accent);
-    margin-top: 0.5rem;
+    margin-top: 0;
+    margin-bottom: 2.5rem;
 }
 
 /* -------------------- PORTFOLIO -------------------- */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    gap: 1.5rem;
     padding: 0 1rem;
 }
 
@@ -279,16 +292,41 @@ section {
     text-decoration: none;
     color: inherit;
     display: block;
-    background: transparent;
-    transition: var(--transition);
+    /* Cornice unificata */
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 6px;
+    overflow: hidden;
+    background: #111;
+    transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+}
+
+.portfolio-item:hover {
+    border-color: rgba(255,255,255,0.28);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.7);
+    transform: translateY(-3px);
 }
 
 .portfolio-image-wrapper {
     position: relative;
     padding-top: 100%;
     overflow: hidden;
-    border-radius: 4px;
     background: #000;
+}
+
+/* Gradiente che fonde l'immagine con la caption sottostante */
+.portfolio-image-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 45%,
+        rgba(10,10,10,0.55) 72%,
+        rgba(10,10,10,0.92) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
 }
 
 .portfolio-image {
@@ -297,23 +335,26 @@ section {
     width: 100%; height: 100%;
     object-fit: cover;
     transition: transform 0.6s cubic-bezier(.77,0,.18,1), filter 0.4s;
+    display: block;
 }
 
 .portfolio-item:hover .portfolio-image {
-    transform: scale(1.04);
-    filter: brightness(0.8);
+    transform: scale(1.05);
+    filter: brightness(0.75);
 }
 
+/* Overlay hover (anno + tag al centro) */
 .portfolio-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.7);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: opacity 0.4s;
+    transition: opacity 0.35s;
+    z-index: 2;
+    padding-bottom: 3.5rem; /* lascia spazio al titolo in basso */
 }
 
 .portfolio-item:hover .portfolio-overlay {
@@ -322,24 +363,103 @@ section {
 
 .portfolio-year {
     font-family: var(--font-heading);
-    font-size: 2rem;
-    color: #fff;
-    margin-bottom: 0.5rem;
-}
-
-.portfolio-title {
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: #fff;
-    letter-spacing: 0.5px;
+    font-size: 1.6rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.08em;
 }
 
 .portfolio-tags {
     font-family: var(--font-body);
-    font-size: 1rem;
-    color: rgba(255,255,255,0.7);
-    margin-top: 0.5rem;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.04em;
+}
+
+/* Titolo: si trova dentro .portfolio-item ma FUORI da .portfolio-image-wrapper */
+/* Viene reso parte della cornice con sfondo che continua il gradiente */
+.portfolio-title {
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(232,228,222,0.82);
+    padding: 0.85rem 1rem 0.9rem;
+    background: linear-gradient(to bottom, #111 0%, #0e0e0e 100%);
+    border-top: 1px solid rgba(255,255,255,0.07);
+    transition: color 0.25s;
+    line-height: 1.4;
+}
+
+.portfolio-item:hover .portfolio-title {
+    color: #fff;
+}
+
+/* -------------------- SHOWREEL -------------------- */
+.showreel {
+    background: #0a0a0a;
+}
+
+.showreel-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+    margin-top: 2.5rem;
+}
+
+@media (max-width: 900px) {
+    .showreel-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.showreel-video {
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 12px 60px rgba(0,0,0,0.7);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.showreel-description {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.showreel-description > p {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+    font-weight: 300;
+    line-height: 1.85;
+    color: #bbb;
+}
+
+.showreel-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+}
+
+.showreel-details .detail h4 {
+    font-family: var(--font-heading);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 0.4rem;
+}
+
+.showreel-details .detail p {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    color: #ccc;
+    line-height: 1.4;
 }
 
 /* -------------------- ABOUT -------------------- */
@@ -661,16 +781,16 @@ section {
     margin: var(--gap) 0;
     padding: 2rem 2.2rem 2rem 3rem;
     background: rgba(255,255,255,.04);
-    border-left: 1px solid rgba(255,255,255,.22);
+    border-left: 2px solid var(--accent);
     border-radius: 0 4px 4px 0;
 }
 
 .project-description-full p {
     font-family: var(--font-body);
-    font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+    font-size: clamp(1.15rem, 2.4vw, 1.35rem);
     font-weight: 300;
-    line-height: 1.9;
-    color: #ccc;
+    line-height: 2;
+    color: #ddd;
 }
 
 .project-description-full em {
