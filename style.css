@@ -470,10 +470,20 @@ section {
     align-items: start;
 }
 
+.about-image {
+    position: sticky;
+    top: 6rem;
+}
+
 .about-image img {
     width: 100%;
-    filter: grayscale(100%) contrast(120%);
+    aspect-ratio: 2 / 3;           /* verticale, ma non troppo stretto */
+    object-fit: cover;
+    object-position: 60% center;   /* ritaglia solo un po' da sinistra, viso ben visibile */
+    filter: grayscale(0%) contrast(115%);
     border-radius: 4px;
+    display: block;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
 }
 
 .about-text p {
