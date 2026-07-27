@@ -284,6 +284,25 @@ section {
     padding: 0 1rem;
 }
 
+.portfolio-category {
+    margin-bottom: 2.4rem;
+}
+
+.portfolio-category:last-child {
+    margin-bottom: 0;
+}
+
+.portfolio-category-title {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(232,228,222,0.78);
+    margin: 0 1rem 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(255,255,255,0.16);
+}
+
 @media (max-width: 1200px) { .portfolio-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 900px)  { .portfolio-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px)  { .portfolio-grid { grid-template-columns: 1fr; } }
