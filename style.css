@@ -33,6 +33,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: var(--font-body);
     font-size: 1.125rem;
@@ -40,8 +44,15 @@ body {
     color: var(--ink);
     background: var(--bg);
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    overflow-x: clip;
     position: relative;
+}
+
+img,
+iframe,
+video {
+    max-width: 100%;
+    display: block;
 }
 
 /* -------------------- EFFETTO GRANA GLOBALE -------------------- */
@@ -107,6 +118,7 @@ body {
 .nav-menu {
     display: flex;
     gap: clamp(.8rem, 3vw, 2rem);
+    align-items: center;
 }
 
 .nav-menu .nav-link {
@@ -118,6 +130,38 @@ body {
     text-decoration: none;
     transition: color 0.2s;
     position: relative;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 .nav-menu .nav-link:hover {
@@ -503,6 +547,24 @@ section {
     border-radius: 4px;
     display: block;
     box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+}
+
+@media (max-width: 1024px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-image {
+        position: static;
+        top: auto;
+    }
+
+    .about-image img {
+        max-width: 420px;
+        width: 100%;
+        margin: 0 auto;
+    }
 }
 
 .about-text p {
@@ -1106,23 +1168,121 @@ section {
 }
 
 @media (max-width: 768px) {
+    .navbar {
+        padding: 0.7rem 0;
+    }
+
+    .nav-container {
+        padding: 0 1rem;
+    }
+
+    .nav-logo a {
+        font-size: 0.9rem;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
     .nav-menu {
-        display: none; /* Qui andrebbe un hamburger menu, da implementare */
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem;
+        background: rgba(12, 12, 12, 0.98);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.28);
     }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu .nav-link {
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+    }
+
+    .hero {
+        min-height: 92vh;
+        width: 100%;
+    }
+
+    .hero-content {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
     .hero-title {
-        font-size: 1.8rem;
+        white-space: normal;
+        line-height: 1.08;
+        font-size: clamp(1.7rem, 9vw, 2.5rem);
     }
+
     .hero-subtitle {
-        font-size: 1rem;
+        font-size: 1.05rem;
+        margin-bottom: 1.4rem;
     }
+
+    .hero-cta {
+        flex-direction: column;
+        gap: 0.9rem;
+    }
+
+    .cta-button {
+        width: 100%;
+        text-align: center;
+        padding: 0.9rem 1rem;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    section {
+        padding: 4rem 0;
+    }
+
     .section-title {
         font-size: 1.6rem;
     }
+
     .portfolio-grid {
         grid-template-columns: 1fr;
     }
+
+    .showreel-details {
+        grid-template-columns: 1fr;
+    }
+
     .project-description-full {
         padding: 1.4rem 1.2rem 1.4rem 2rem;
+    }
+
+    .project-page {
+        padding: var(--gap) 1rem 4rem;
+    }
+
+    .contact-grid,
+    .about-grid,
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        padding: 0 1rem;
+    }
+
+    .logo-fixed {
+        width: 68px !important;
+        right: 1rem !important;
+        top: 0.8rem !important;
     }
 }
 

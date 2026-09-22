@@ -59,6 +59,23 @@ document.addEventListener('DOMContentLoaded', function() {
             // Qui andrebbe la logica per cambiare lingua
         });
     });
+
+    // Menu mobile
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            const isOpen = navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active', isOpen);
+        });
+
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            });
+        });
+    }
     
     // Gestione dello scroll per la navbar
     let lastScroll = 0;
