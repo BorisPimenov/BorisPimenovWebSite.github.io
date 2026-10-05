@@ -332,6 +332,54 @@ section {
     margin-bottom: 2.4rem;
 }
 
+.portfolio-structure {
+    display: grid;
+    gap: 3rem;
+}
+
+.portfolio-top-level {
+    padding: 1.5rem 0 0;
+    border-top: 1px solid rgba(255,255,255,0.14);
+}
+
+.portfolio-top-level:first-child {
+    border-top: none;
+    padding-top: 0;
+}
+
+.portfolio-top-level-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    margin: 0 0 1.5rem;
+    color: var(--ink);
+    text-transform: none;
+}
+
+.portfolio-subgroup {
+    margin-bottom: 2rem;
+}
+
+.portfolio-subgroup:last-child {
+    margin-bottom: 0;
+}
+
+.portfolio-subgroup-title {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(232,228,222,0.78);
+    margin: 0 0 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.portfolio-grid {
+    padding: 0;
+}
+
 .portfolio-category:last-child {
     margin-bottom: 0;
 }
