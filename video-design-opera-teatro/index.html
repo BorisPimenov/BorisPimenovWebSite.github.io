@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video design per opera e teatro</title>
+    <meta name="description" content="Boris Pimenov realizza video design per opera e teatro con scenografie digitali in tempo reale, TouchDesigner e video mapping in Toscana.">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #e8e4de;
+            --bg: #0e0e0e;
+            --mid: #a29d97;
+            --border: rgba(255,255,255,.12);
+            --panel: rgba(255,255,255,.03);
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'Cormorant Garamond', serif;
+            line-height: 1.7;
+        }
+
+        .video-design-page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 7rem 1.25rem 4rem;
+        }
+
+        .page-kicker {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--mid);
+            margin-bottom: 1rem;
+        }
+
+        .video-design-page h1 {
+            font-family: 'Courier Prime', monospace;
+            font-size: clamp(2.2rem, 5vw, 4.1rem);
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            margin: 0 0 1.2rem;
+            color: #fff;
+        }
+
+        .intro-copy {
+            max-width: 760px;
+            font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+            line-height: 1.45;
+            color: #ece7e3;
+            margin-bottom: 2.2rem;
+            font-weight: 600;
+        }
+
+        .content-grid {
+            display: block;
+            margin: 2rem 0 3rem;
+        }
+
+        .content-block {
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+        }
+
+        .content-block h2,
+        .projects-section h2 {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--mid);
+            margin: 0 0 1rem;
+            font-weight: 400;
+        }
+
+        .content-block p,
+        .projects-grid a,
+        .closing-copy {
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            line-height: 1.6;
+            color: #e7e2dd;
+            font-weight: 400;
+        }
+
+        .aside-box {
+            display: none;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-callout {
+            margin: 1.5rem 0 2rem;
+            padding: 0.75rem 0 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .contact-callout p {
+            margin: 0;
+            font-size: clamp(1.2rem, 2vw, 1.7rem);
+            line-height: 1.5;
+            color: #e7e2dd;
+            font-weight: 500;
+        }
+
+        .contact-callout a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .projects-grid a {
+            display: block;
+            text-decoration: none;
+            color: var(--ink);
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .projects-grid a:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255,255,255,0.28);
+        }
+
+        .projects-grid img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project-caption {
+            padding: 1rem;
+            color: #e7e2dd;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .project-caption strong {
+            display: block;
+            font-size: 1.4rem;
+            margin-bottom: 0.25rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .project-caption span {
+            font-weight: 400;
+        }
+
+        .closing-copy {
+            margin-top: 2rem;
+            padding-top: 1.4rem;
+            border-top: 1px solid var(--border);
+            font-style: italic;
+            font-weight: 400;
+            font-size: clamp(1.25rem, 2vw, 1.9rem);
+            line-height: 1.55;
+        }
+
+        @media (max-width: 800px) {
+            .content-grid,
+            .projects-grid,
+            .hero-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .video-design-page {
+                padding-top: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="film-grain"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">Boris Pimenov</a>
+            </div>
+            <div class="nav-menu">
+                <a href="../index.html#portfolio" class="nav-link">Portfolio</a>
+                <a href="../index.html#about" class="nav-link">About</a>
+                <a href="../index.html#news" class="nav-link">News</a>
+                <a href="../index.html#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="video-design-page">
+        <p class="page-kicker">Opera e teatro</p>
+        <h1>Video design per opera e teatro</h1>
+        <p class="intro-copy">Sono Boris Pimenov, artista e regista italo-russo, nato a Belgorod nel 2003 e con base in Toscana. Il mio lavoro su commissione nasce dal dialogo tra testo, musica e scena: realizzo scenografie digitali in tempo reale per opera, teatro e danza, con un approccio che mette la ricerca al servizio della produzione.</p>
+
+        <div class="content-grid">
+            <section class="content-block">
+                <h2>Come lavoro</h2>
+                <p>Parto dalla lettura del testo o della partitura e dal confronto con la regia. Insieme definisco il senso dell’immagine, il rapporto tra suono, corpo e spazio e la direzione drammaturgica della scena. Il video design non è un elemento aggiuntivo: è un attore della rappresentazione, come la scenografia o il disegno luci.</p>
+                <p>Realizzo scenografie digitali in tempo reale, con TouchDesigner, rendering live, video mapping e immagini generate, capaci di rispondere con precisione al movimento sul palco. L’immagine nasce in dialogo con la performance e si inserisce nella narrazione senza sovrapporsi ad essa.</p>
+                <p>In ambito progettuale, il mio lavoro comprende la ricerca delle immagini, lo studio della partitura o del copione, e la realizzazione dei modelli 3D necessari alla scena. Quando la composizione richiede forme umane o animali, realizzo il rigging dei modelli in Blender per integrarli nel sistema visivo in modo coerente con la performance.</p>
+            </section>
+        </div>
+
+        <div class="contact-callout">
+            <p>Per una collaborazione: <a href="mailto:borispimenov.sc@gmail.com">borispimenov.sc@gmail.com</a> · <a href="tel:+393514571686">+39 3514571686</a></p>
+        </div>
+
+        <p class="closing-copy">Valuto con attenzione un numero limitato di progetti, per dedicare a ciascuno il tempo necessario alla ricerca e alla costruzione della scena. Se mi scrivi, indica produzione, date e spazio: così posso capire se il progetto è nelle condizioni giuste per essere sviluppato insieme.</p>
+
+        <section class="projects-section">
+            <h2>Alcuni dei progetti commissionati</h2>
+            <div class="projects-grid">
+                <a href="../projects/tosca.html">
+                    <img src="../assets/gallery/tosca4.png" alt="Tosca">
+                    <div class="project-caption">
+                        <strong>Tosca</strong>
+                        <span>Scenografia digitale per opera classica.</span>
+                    </div>
+                </a>
+                <a href="../projects/cavalleria-rusticana.html">
+                    <img src="../assets/gallery/Cavalleria3.jpg" alt="Cavalleria Rusticana">
+                    <div class="project-caption">
+                        <strong>Cavalleria Rusticana</strong>
+                        <span>Visuale scenica e impatto emotivo.</span>
+                    </div>
+                </a>
+                <a href="../projects/gianni-schicchi.html">
+                    <img src="../assets/gallery/giannischicchi1.JPG" alt="Gianni Schicchi">
+                    <div class="project-caption">
+                        <strong>Gianni Schicchi</strong>
+                        <span>Scenografia digitale per un'opera di Puccini.</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-copyright">&copy; 2025 Boris Pimenov</div>
+                <div class="footer-credits">Video design per opera, teatro e performance multimediale</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

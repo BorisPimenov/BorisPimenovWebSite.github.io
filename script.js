@@ -1,6 +1,91 @@
 // In script.js
 // script.js
 document.addEventListener('DOMContentLoaded', function() {
+    // Carosello progetti in evidenza: usa TUTTI i progetti del portfolio
+    const featuredCarousel = document.querySelector('.featured-carousel');
+    if (featuredCarousel) {
+        const portfolioItems = Array.from(document.querySelectorAll('#portfolio .portfolio-item'));
+        const carouselTrack = featuredCarousel.querySelector('.carousel-track');
+        const prevBtn = featuredCarousel.querySelector('.carousel-arrow.prev');
+        const nextBtn = featuredCarousel.querySelector('.carousel-arrow.next');
+
+        if (carouselTrack && portfolioItems.length) {
+            const slides = [];
+
+            portfolioItems.forEach((item, index) => {
+                const link = item.closest('a');
+                const img = item.querySelector('.portfolio-image');
+                const title = item.querySelector('.portfolio-title')?.textContent?.trim() || 'Project';
+                const kicker = item.querySelector('.portfolio-kicker')?.textContent?.trim() || '';
+
+                if (!link || !img) return;
+
+                const slide = document.createElement('article');
+                slide.className = `carousel-slide${index === 0 ? ' is-active' : ''}`;
+                slide.innerHTML = `
+                    <a href="${link.href}" class="carousel-link">
+                        <img src="${img.src}" alt="${title}">
+                        <div class="carousel-caption">
+                            <span>${kicker}</span>
+                            <h3>${title}</h3>
+                        </div>
+                    </a>
+                `;
+                slides.push(slide);
+                carouselTrack.appendChild(slide);
+
+            });
+
+            const progressBar = featuredCarousel.querySelector('.carousel-progress-bar');
+            let activeIndex = 0;
+            let carouselTimer = null;
+            const autoplayDelay = 4500;
+
+            function showSlide(index) {
+                activeIndex = (index + slides.length) % slides.length;
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('is-active', i === activeIndex);
+                });
+                featuredCarousel.classList.toggle('is-ending', activeIndex >= Math.max(slides.length - 2, 0));
+            }
+
+            function resetProgress() {
+                if (!progressBar) return;
+                progressBar.style.transition = 'none';
+                progressBar.style.width = '0%';
+                void progressBar.offsetWidth;
+                progressBar.style.transition = `width ${autoplayDelay}ms linear`;
+                progressBar.style.width = '100%';
+            }
+
+            function startAutoCycle() {
+                clearTimeout(carouselTimer);
+                resetProgress();
+                carouselTimer = setTimeout(() => {
+                    showSlide(activeIndex + 1);
+                    startAutoCycle();
+                }, autoplayDelay);
+            }
+
+            prevBtn?.addEventListener('click', () => {
+                showSlide(activeIndex - 1);
+                startAutoCycle();
+            });
+
+            nextBtn?.addEventListener('click', () => {
+                showSlide(activeIndex + 1);
+                startAutoCycle();
+            });
+
+            featuredCarousel.addEventListener('mouseenter', () => clearTimeout(carouselTimer));
+            featuredCarousel.addEventListener('mouseleave', () => {
+                startAutoCycle();
+            });
+
+            startAutoCycle();
+        }
+    }
+
     // Funzione per i video del portfolio
     const projectVideos = document.querySelectorAll('.project-media video');
     

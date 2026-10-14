@@ -39,7 +39,6 @@
             <div class="nav-menu">
                 <a href="#showreel" class="nav-link">Showreel</a>
                 <a href="#portfolio" class="nav-link">Portfolio</a>
-                <a href="#laboratorio" class="nav-link">Cinematrice Lab</a>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#news" class="nav-link">News</a>
                 <a href="#contact" class="nav-link">Contact</a>
@@ -120,24 +119,24 @@
 </section>
 <script src="https://player.vimeo.com/api/player.js"></script>
 
-<section id="laboratorio" class="laboratorio-section reveal-on-scroll">
+<section class="featured-carousel reveal-on-scroll" aria-label="Progetti in evidenza">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title">Cinematrice Lab</h2>
+            <h2 class="section-title">Selected projects</h2>
             <div class="section-line"></div>
         </div>
 
-        <article class="laboratorio-card">
-            <div class="laboratorio-card__media">
-                <img src="assets/covers/Cinematrice-cover.jpg" alt="Cinematrice Lab" />
-            </div>
-            <div class="laboratorio-card__content">
-                <p class="laboratorio-kicker">Laboratorio</p>
-                <h3>Cinematrice Lab</h3>
-                <p>Uno spazio di ricerca e sperimentazione dedicato alla collaborazione tra immagine, performance e scenografia digitale.</p>
-                <a href="https://cinematrice.lariscena.com/#studio" target="_blank" rel="noopener noreferrer" class="lab-link-btn">Scopri di più</a>
-            </div>
-        </article>
+        <div class="carousel-shell">
+            <button class="carousel-arrow prev" type="button" aria-label="Progetto precedente">&#8249;</button>
+
+            <div class="carousel-track" aria-live="polite"></div>
+
+            <button class="carousel-arrow next" type="button" aria-label="Progetto successivo">&#8250;</button>
+        </div>
+
+        <div class="carousel-progress" aria-hidden="true">
+            <span class="carousel-progress-bar"></span>
+        </div>
     </div>
 </section>
 
@@ -330,7 +329,7 @@
             </a>
             <a href="projects/elisir-d-amore.html" class="portfolio-item">
               <div class="portfolio-image-wrapper">
-                <img src="assets/covers/elisirdamore_cover.jpg" alt="Elisir d'Amore" class="portfolio-image">
+                <img src="assets/gallery/elisir1.png" alt="Elisir d'Amore" class="portfolio-image">
               </div>
               <div class="portfolio-card-body">
                 <div class="portfolio-kicker">2026 · Opera</div>
