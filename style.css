@@ -8,12 +8,12 @@
 :root {
     /* Colori principali */
     --ink:          #e8e4de;        /* testo chiaro */
-    --bg:           #0e0e0e;        /* nero profondo */
+    --bg:           #000000;        /* nero puro */
     --mid:          #888888;        /* testo secondario */
     --pale:         rgba(255,255,255,.06);
     --border:       rgba(255,255,255,.14);
     --accent:       #ff3b30;        /* rosso cinematografico */
-    --card-bg:      #161616;        /* sfondo card (quasi nero) */
+    --card-bg:      #000000;        /* sfondo card portfolio (nero pieno) */
 
     /* Tipografia */
     --font-heading: 'Courier Prime', monospace;
@@ -490,21 +490,32 @@ section {
     display: block;
     border: 1px solid rgba(255,255,255,0.14);
     overflow: hidden;
-    background: rgba(255,255,255,0.03);
+    background: linear-gradient(180deg, #040404 0%, #000 58%, #000 100%);
     transition: transform 0.28s ease, border-color 0.28s ease, background 0.28s ease;
 }
 
 .portfolio-item:hover {
     transform: translateY(-4px);
     border-color: rgba(255,255,255,0.35);
-    background: rgba(255,255,255,0.05);
+    background: linear-gradient(180deg, #070707 0%, #000 58%, #000 100%);
 }
 
 .portfolio-image-wrapper {
     position: relative;
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    background: #0b0b0b;
+    background: #000;
+}
+
+.portfolio-image-wrapper::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 30%;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.22) 60%, rgba(0,0,0,0.38) 100%);
 }
 
 .portfolio-image {
@@ -526,6 +537,7 @@ section {
 
 .portfolio-card-body {
     padding: 1rem 1rem 1.2rem;
+    background: linear-gradient(180deg, rgba(14,14,14,0.65) 0%, rgba(6,6,6,0.9) 42%, #000 100%);
 }
 
 .portfolio-kicker {
@@ -557,24 +569,26 @@ section {
 
 /* -------------------- FEATURED PROJECTS CAROUSEL -------------------- */
 .featured-carousel {
-    background: rgba(10, 10, 10, 0.9);
-    padding-top: 3rem;
+    background: #000;
+    padding: 3rem 0 4rem;
+}
+
+.featured-carousel .container {
+    max-width: none;
+    padding: 0;
 }
 
 .carousel-shell {
     position: relative;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 1rem;
+    display: block;
 }
 
 .carousel-track {
     position: relative;
-    min-height: clamp(340px, 42vw, 620px);
+    min-height: clamp(420px, 74vh, 900px);
     overflow: hidden;
-    border: 1px solid var(--border);
-    background: #101010;
+    border: none;
+    background: #000;
 }
 
 .carousel-slide {
@@ -610,7 +624,7 @@ section {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.72) 100%);
+    background: linear-gradient(180deg, rgba(0,0,0,0.16) 0%, rgba(0,0,0,0.74) 100%);
 }
 
 .carousel-caption {
@@ -642,47 +656,43 @@ section {
 }
 
 .carousel-arrow {
-    width: 34px;
-    height: 34px;
-    border: 1px solid rgba(255,255,255,0.12);
-    background: rgba(255,255,255,0.01);
-    color: rgba(255,255,255,0.85);
-    font-size: 1.7rem;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: var(--transition);
-    padding: 0;
+    display: none;
 }
 
 .carousel-arrow:hover {
-    background: rgba(255,255,255,0.04);
-    border-color: rgba(255,255,255,0.3);
+    display: none;
 }
 
 .carousel-progress {
     position: absolute;
-    right: clamp(0.8rem, 2vw, 1.6rem);
-    top: 50%;
-    width: 68px;
-    height: 2px;
-    transform: translateY(-50%);
-    background: rgba(255,255,255,0.18);
+    left: clamp(1.25rem, 3vw, 2.5rem);
+    bottom: clamp(0.85rem, 2vw, 1.6rem);
+    width: clamp(90px, 14vw, 160px);
+    height: 1px;
+    background: rgba(255,255,255,0.24);
     overflow: hidden;
     border-radius: 999px;
-    z-index: 4;
     pointer-events: none;
+    opacity: 0.9;
 }
 
 .carousel-progress-bar {
     display: block;
     width: 0%;
     height: 100%;
-    background: rgba(255,255,255,0.95);
+    background: rgba(255,255,255,0.88);
     border-radius: inherit;
     transition: width 4.5s linear, background 0.3s ease;
+}
+
+.carousel-progress::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -0.55rem;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
 }
 
 .featured-carousel.is-ending .carousel-progress-bar {
@@ -690,24 +700,28 @@ section {
 }
 
 @media (max-width: 700px) {
-    .carousel-shell {
-        grid-template-columns: 1fr;
+    .featured-carousel {
+        padding: 2.4rem 0 3rem;
     }
 
-    .carousel-arrow {
-        display: none;
+    .carousel-track {
+        min-height: clamp(320px, 56vh, 560px);
+    }
+
+    .carousel-progress {
+        bottom: 0.7rem;
     }
 }
 
 /* -------------------- SHOWREEL -------------------- */
 .showreel {
-    background: #0a0a0a;
+    background: #000;
 }
 
 .showreel-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(2rem, 5vw, 4rem);
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: clamp(2rem, 4vw, 3.2rem);
     align-items: center;
     margin-top: 2.5rem;
 }
@@ -740,6 +754,8 @@ section {
 }
 
 .showreel-video {
+    padding-bottom: 60%;
+    margin: 0;
     border-radius: 6px;
     overflow: hidden;
     box-shadow: 0 12px 60px rgba(0,0,0,0.7);
