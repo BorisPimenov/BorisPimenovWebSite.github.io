@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tosca d'essai (Opera Ubiqua) · Boris Pimenov</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        .eb-page { max-width: 900px; margin: 0 auto; padding: 3.5rem 1.5rem 5rem 1.5rem; color: #f7f7f7; }
+        .eb-page h1 { font-size: 4rem; font-weight: 400; letter-spacing: 0.04em; color: #fff; margin-bottom: 0.3rem; }
+        .eb-meta { font-size: 0.85rem; color: #888; margin-bottom: 1.8rem; letter-spacing: 0.14em; text-transform: uppercase; }
+        .eb-label { font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; color: #666; margin-bottom: 0.7rem; }
+        .eb-block { font-size: 1.08rem; line-height: 1.85; color: #e8e8e8; margin-bottom: 2.5rem; }
+        .eb-block p { margin-bottom: 1.2rem; }
+        .eb-block em { font-style: italic; color: #ccc; }
+        .eb-block strong { color: #fff; }
+        .eb-video { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; margin-bottom: 2.8rem; }
+        .eb-video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .eb-gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.55rem; margin-bottom: 3rem; }
+        @media (max-width: 700px) { .eb-gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+        .eb-thumb { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 6px; cursor: pointer; background: #111; }
+        .eb-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s ease, filter 0.35s ease; }
+        .eb-thumb:hover img { transform: scale(1.07); filter: brightness(0.7); }
+        .eb-thumb-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
+        .eb-thumb:hover .eb-thumb-overlay { opacity: 1; }
+        .eb-thumb-overlay svg { width: 32px; height: 32px; fill: none; stroke: #fff; stroke-width: 1.5; }
+        #lb-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; align-items: center; justify-content: center; }
+        #lb-overlay.active { display: flex; }
+        #lb-img { max-width: 88vw; max-height: 85vh; object-fit: contain; border-radius: 6px; box-shadow: 0 8px 60px rgba(0,0,0,0.8); display: block; }
+        #lb-close { position: fixed; top: 1.2rem; right: 1.6rem; color: #fff; font-size: 2rem; cursor: pointer; opacity: 0.6; transition: opacity 0.2s; line-height: 1; }
+        #lb-close:hover { opacity: 1; }
+        .lb-arrow { position: fixed; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 1.8rem; cursor: pointer; padding: 0.6rem 1rem; border-radius: 4px; transition: background 0.2s; user-select: none; line-height: 1; }
+        .lb-arrow:hover { background: rgba(255,255,255,0.18); }
+        #lb-prev { left: 1.2rem; }
+        #lb-next { right: 1.2rem; }
+        #lb-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.45); font-size: 0.8rem; font-family: 'Courier Prime', monospace; letter-spacing: 0.1em; }
+    </style>
+</head>
+<body style="padding-top:4.5rem;">
+    <div class="film-grain"></div>
+
+    <div id="lb-overlay">
+        <span id="lb-close" onclick="closeLB()">&#x2715;</span>
+        <span class="lb-arrow" id="lb-prev" onclick="lbNav(-1)">&#8592;</span>
+        <img id="lb-img" src="" alt="">
+        <span class="lb-arrow" id="lb-next" onclick="lbNav(1)">&#8594;</span>
+        <div id="lb-counter"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo"><a href="../index.html">Boris Pimenov</a></div>
+            <div class="nav-menu">
+                <a href="../index.html#portfolio" class="nav-link">Portfolio</a>
+                <a href="../index.html#about" class="nav-link">About</a>
+                <a href="../index.html#news" class="nav-link">News</a>
+                <a href="../index.html#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="eb-page">
+            <p class="eb-meta">Tosca d'essai - Opera site-specific - Borgo di Lari</p>
+            <h1>Tosca d'essai</h1>
+            <p class="eb-meta" style="margin-top:-0.8rem;">Opera ubiqua</p>
+
+            <p class="eb-label">Galleria</p>
+            <div class="eb-gallery-grid" id="gallery">
+                <div class="eb-thumb" onclick="openLB(0)"><img src="../assets/gallery/tosca1.png" alt="Tosca 1"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+                <div class="eb-thumb" onclick="openLB(1)"><img src="../assets/gallery/tosca2.png" alt="Tosca 2"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+                <div class="eb-thumb" onclick="openLB(2)"><img src="../assets/gallery/tosca3.png" alt="Tosca 3"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+                <div class="eb-thumb" onclick="openLB(3)"><img src="../assets/gallery/tosca4.png" alt="Tosca 4"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+                <div class="eb-thumb" onclick="openLB(4)"><img src="../assets/gallery/tosca5.png" alt="Tosca 5"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+                <div class="eb-thumb" onclick="openLB(5)"><img src="../assets/gallery/tosca6.png" alt="Tosca 6"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+            </div>
+
+            <p class="eb-label">Video</p>
+            <div class="eb-video">
+                <iframe title="vimeo-player" src="https://player.vimeo.com/video/1149661577?h=5c0c56776c" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>
+            </div>
+
+            <p class="eb-label">Note</p>
+            <div class="eb-block">
+                <p><em>Tosca d'essai</em> e un'opera ubiqua, immersiva e site-specific, che coinvolge i luoghi del borgo di Lari grazie all'infrastruttura <strong>Connessioni</strong> ideata da Loris Seghizzi e Mirco Mencacci. Tra musica, teatro e realta aumentata, lo spettacolo riscrive Puccini in una forma inedita. Un'esperienza unica in Italia. Un esperimento artistico radicale narrato da una drammaturgia multistrato, distribuita nello spazio e nel tempo.</p>
+                <p>Scarpia, Cavaradossi e Tosca rivivono la tragedia in tempo reale, mentre una troupe gira il film dell'opera: questo duplice registro e il cuore pulsante di <em>Tosca d'essai</em>. Da un lato, il pubblico assiste alla messa in scena dal vivo della vicenda pucciniana; dall'altro, gli stessi gesti, le stesse emozioni e le stesse parole vengono catturate dalle telecamere e trasformate in film.</p>
+            </div>
+
+            <nav class="project-navigation">
+                <a href="tosca-classica.html" class="nav-link prev">Tosca Classica</a>
+                <a href="tosca.html" class="nav-link">Selezione Tosca</a>
+                <a href="libro-dolori.html" class="nav-link next">Il libro dei dolori dell'infanzia</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-copyright">&copy; 2025 Boris Pimenov - Artista e regista italo-russo</div>
+                <div class="footer-credits">Esplorando l'ibrido tra corpo performativo e spazio digitale</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+    var toscaImgs = [
+        '../assets/gallery/tosca1.png',
+        '../assets/gallery/tosca2.png',
+        '../assets/gallery/tosca3.png',
+        '../assets/gallery/tosca4.png',
+        '../assets/gallery/tosca5.png',
+        '../assets/gallery/tosca6.png'
+    ];
+    var lbIdx = 0;
+    function openLB(i) { lbIdx = i; showLBImg(); document.getElementById('lb-overlay').classList.add('active'); }
+    function closeLB() { document.getElementById('lb-overlay').classList.remove('active'); }
+    function lbNav(d) { lbIdx = (lbIdx + d + toscaImgs.length) % toscaImgs.length; showLBImg(); }
+    function showLBImg() { var img = document.getElementById('lb-img'); img.src = toscaImgs[lbIdx]; document.getElementById('lb-counter').textContent = (lbIdx + 1) + '/' + toscaImgs.length; }
+    document.addEventListener('keydown', function(e) { var o = document.getElementById('lb-overlay'); if (!o.classList.contains('active')) return; if (e.key === 'Escape') closeLB(); if (e.key === 'ArrowLeft') lbNav(-1); if (e.key === 'ArrowRight') lbNav(1); });
+    </script>
+</body>
+</html>

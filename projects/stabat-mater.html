@@ -5,10 +5,161 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stabat Mater - Boris Pimenov</title>
     <link rel="stylesheet" href="../style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #e8e4de;
+            --bg: #0e0e0e;
+            --mid: #888;
+            --border: rgba(255,255,255,.14);
+            --gap: clamp(1.5rem, 5vw, 3.5rem);
+        }
+        body { background: var(--bg); color: var(--ink); font-family: 'Cormorant Garamond', serif; }
+        .eb-page { max-width: 1100px; margin: 0 auto; padding: var(--gap) clamp(1rem,5vw,3rem) 4rem; }
+        .eb-page h1 { font-family: 'Courier Prime', monospace; font-size: 4.5rem; font-weight: 400; letter-spacing: 0.04em; color: #fff; margin-bottom: 0.3rem; }
+        .eb-meta { font-family: 'Courier Prime', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); margin-bottom: 1.8rem; }
+        .eb-label { font-family: 'Courier Prime', monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.7rem; }
+        .eb-block { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; line-height: 1.85; color: #e8e8e8; margin-bottom: 2.5rem; font-weight: 300; }
+        .eb-block p { margin-bottom: 1.2rem; }
+        .eb-block strong { color: #fff; font-weight: 400; }
+        .eb-video { position: relative; width: 100%; padding-bottom: 75%; margin: var(--gap) 0; border-radius: 4px; overflow: hidden; background: #000; box-shadow: 0 8px 40px rgba(0,0,0,.8); }
+        .eb-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+        .eb-gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: var(--gap) 0; }
+        @media (max-width: 700px) { .eb-gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+        .eb-thumb { position: relative; cursor: pointer; overflow: hidden; aspect-ratio: 4/3; background: #000; border-radius: 2px; }
+        .eb-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease, filter 0.4s ease; }
+        .eb-thumb:hover img { transform: scale(1.04); filter: brightness(.8); }
+        .eb-thumb-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+        .eb-thumb:hover .eb-thumb-overlay { opacity: 1; }
+        .eb-thumb-overlay svg { width: 36px; height: 36px; stroke: #fff; stroke-width: 1.2; fill: none; }
+        #lb-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.97); z-index: 9999; align-items: center; justify-content: center; }
+        #lb-overlay.active { display: flex; }
+        #lb-img { max-width: 88vw; max-height: 85vh; object-fit: contain; border-radius: 6px; box-shadow: 0 8px 60px rgba(0,0,0,0.8); display: block; }
+        #lb-close { position: fixed; top: 1.2rem; right: 1.6rem; color: #fff; font-size: 2rem; cursor: pointer; opacity: 0.6; transition: opacity 0.2s; font-family: 'Courier Prime', monospace; line-height: 1; }
+        #lb-close:hover { opacity: 1; }
+        .lb-arrow { position: fixed; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 1.8rem; cursor: pointer; padding: 0.6rem 1rem; border-radius: 4px; transition: background 0.2s; user-select: none; line-height: 1; }
+        .lb-arrow:hover { background: rgba(255,255,255,0.18); }
+        #lb-prev { left: 1.2rem; }
+        #lb-next { right: 1.2rem; }
+        #lb-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.45); font-size: 0.8rem; font-family: 'Courier Prime', monospace; letter-spacing: 0.1em; }
+        .project-navigation { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: var(--gap); padding-top: 1.5rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
+        .project-navigation .nav-link { font-family: 'Courier Prime', monospace; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+        .project-navigation .nav-link:hover { color: var(--ink); }
+        .project-navigation .nav-link.prev::before { content: '← '; }
+        .project-navigation .nav-link.next::after { content: ' →'; }
+        .eb-inversione-flex {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+        .eb-inversione-flex.reverse {
+            flex-direction: row-reverse;
+        }
+        .eb-inversione-img {
+            flex: 0 1 420px;
+            min-width: 240px;
+            cursor: pointer;
+        }
+        .eb-inversione-img.is-square {
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            max-width: 420px;
+        }
+        .eb-inversione-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 10px 36px rgba(0,0,0,0.35);
+            transition: transform 0.4s ease, filter 0.3s ease;
+        }
+        .eb-inversione-img.is-square img {
+            height: 100%;
+            object-fit: cover;
+        }
+        .eb-inversione-img:hover img {
+            transform: scale(1.02);
+            filter: brightness(0.88);
+        }
+        .eb-inversione-text {
+            flex: 1 1 320px;
+            min-width: 260px;
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #ddd;
+        }
+        .eb-note {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #888;
+            margin-top: 0.8rem;
+        }
+        .intro-presentazione .eb-inversione-text {
+            flex: 0 1 420px;
+            max-width: 420px;
+            font-size: 1.45rem;
+            line-height: 1.72;
+            color: #efefef;
+        }
+        .intro-presentazione .dropcap {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.4rem;
+            line-height: 0.8;
+            float: left;
+            margin: 0.12em 0.14em 0 0;
+            color: #fff;
+        }
+        .eb-wide-image {
+            margin: 2.5rem 0;
+            cursor: pointer;
+        }
+        .eb-wide-image img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 10px 36px rgba(0,0,0,0.35);
+            transition: transform 0.4s ease, filter 0.3s ease;
+        }
+        .eb-wide-image:hover img {
+            transform: scale(1.01);
+            filter: brightness(0.9);
+        }
+        @media (max-width: 900px) {
+            .eb-inversione-flex,
+            .eb-inversione-flex.reverse {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .eb-inversione-img,
+            .eb-inversione-text {
+                min-width: 0;
+            }
+            .intro-presentazione .eb-inversione-text {
+                max-width: none;
+                font-size: 1.25rem;
+            }
+            .intro-presentazione .dropcap {
+                font-size: 3.4rem;
+            }
+        }
+    </style>
 </head>
 <body style="padding-top: 4.5rem;">
     <div class="film-grain"></div>
+
+    <div id="lb-overlay">
+        <span id="lb-close" onclick="closeLB()">&#x2715;</span>
+        <span class="lb-arrow" id="lb-prev" onclick="lbNav(-1)">&#8592;</span>
+        <img id="lb-img" src="" alt="">
+        <span class="lb-arrow" id="lb-next" onclick="lbNav(1)">&#8594;</span>
+        <div id="lb-counter"></div>
+    </div>
 
     <nav class="navbar">
         <div class="nav-container">
@@ -24,65 +175,79 @@
         </div>
     </nav>
 
-    <main class="project-page">
-        <div class="project-container">
-            <h1 class="project-title-center" style="padding-left:0;">Stabat Mater</h1>
+    <main class="eb-page">
+        <h1>Stabat Mater</h1>
+        <p class="eb-meta">2026 &middot; danza contemporanea &middot; scenografia digitale</p>
 
-            <header class="project-header">
-                <div class="project-meta">
-                    <span>2026</span>
-                    <span>Performance</span>
-                    <span>danza</span>
-                </div>
-                <p class="section-subtitle" style="margin-left:0;margin-right:auto;max-width:760px;text-align:left;padding-left:0.5rem;">
-                    Performance che unisce la musica di Pergolesi a una narrazione visiva monocromatica e intensa, in chiave di danza e dolore materno.
-                </p>
-            </header>
-
-            <section class="project-description-full">
-                <p><strong>Stabat Mater</strong> è una performance di danza che fonde il tema della musica di Pergolesi con una narrazione visiva basata su un linguaggio monocromatico, costruito per raggiungere il dolore della madre, un dolore che si estende oltre il singolo gesto personale e si apre alle madri che hanno perso i figli in guerre e conflitti.</p>
-                <p>Il lavoro ricerca la condizione del lutto come esperienza universale e contemporanea: il dolore della madre, della perdita, della violenza e della fragilità del mondo. La scelta del monocromo diventa un supporto visivo essenziale per avvicinarsi alla purezza della sofferenza, un campo di pensiero astratto e forte, attraverso il quale la presenza del corpo, della voce e dell’immagine si uniscono in una sola tensione.</p>
-                <p>Il progetto vuole attraversare il tema della maternità e della perdita senza retorica, ma quasi come una testimonianza visiva che guarda alle guerre, ai figli dispersi, ai corpi feriti dal tempo e dalla storia. Il suono di Pergolesi fornisce una struttura di ascolto e di intensità interiore, mentre l’immagine si pone come spazio di memoria, silenzio e resistenza.</p>
-            </section>
-
-            <div class="vimeo-container">
-                <img src="../assets/covers/stabatmater-cover.png" alt="Stabat Mater cover" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;" />
-            </div>
-
-            <section class="project-description-full">
-                <p>In questa ricerca, il nero e il bianco non sono solo una scelta estetica: sono un modo per portare il dolore alla sua essenza, riducendo tutto a una materia emotiva estrema. La visione cerca di far emergere la verticalità del lutto, il silenzio che precede il pianto, la dignità della sofferenza e l’eccezionale potenza della musica come medium di memoria collettiva.</p>
-                <p>Il progetto resta un work in progress, un campo di esplorazione drammaturgica e visiva che cerca di trasformare il dolore in forma, riconoscendo che la madre che piange il figlio è anche la madre di tutti i figli perduti dalle guerre del presente.</p>
-            </section>
-
-            <div class="project-details">
-                <div class="detail-item">
-                    <h4>Anno</h4>
-                    <p>2026</p>
-                </div>
-                <div class="detail-item">
-                    <h4>Formato</h4>
-                    <p>Danza / performance visiva</p>
-                </div>
-                <div class="detail-item">
-                    <h4>Coreografia</h4>
-                    <p>Flavia Buccero</p>
-                </div>
-                <div class="detail-item">
-                    <h4>Ballerine</h4>
-                    <p>Jole [cognome non disponibile], Grazia Montellione</p>
-                </div>
-                <div class="detail-item">
-                    <h4>Temi</h4>
-                    <p>Dolore, maternità, guerra, perdita, memoria</p>
-                </div>
-            </div>
-
-            <nav class="project-navigation">
-                <a href="osculo-d-amore.html" class="nav-link prev">Osculo d'Amore</a>
-                <a href="../index.html#portfolio" class="nav-link">Torna al Portfolio</a>
-                <a href="eburnea-teatro.html" class="nav-link next">Eburnea</a>
-            </nav>
+        <div class="eb-label">Video</div>
+        <div class="eb-video">
+            <iframe src="https://player.vimeo.com/video/1235925728?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1"
+                    frameborder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    title="Stabat Mater - Reportage Raid Festival 2026"></iframe>
         </div>
+
+        <div class="eb-label">Presentazione</div>
+
+        <section class="eb-inversione-flex reverse intro-presentazione">
+            <div class="eb-inversione-img is-square" onclick="openLB(5)">
+                <img src="../assets/gallery/Stabatmater6.png" alt="Stabat Mater - scena 6">
+                <div class="eb-note">Iconografia iniziale del progetto</div>
+            </div>
+            <div class="eb-inversione-text">
+                <p><strong><span class="dropcap">N</span>ello Stabat Mater di Giovan Battista Pergolesi la musica sacra incontra la danza contemporanea. La partitura, intrisa di dolore e bellezza, diventa terreno per una rilettura scenica in cui il corpo dà forma alle emozioni delle due Marie, la Madre di Cristo e la Maddalena, in assonanza con le tante madri che oggi piangono i loro figli nelle guerre.</strong></p>
+            </div>
+        </section>
+
+        <section class="eb-inversione-flex">
+            <div class="eb-inversione-img" onclick="openLB(8)">
+                <img src="../assets/gallery/Stabatmater9.png" alt="Stabat Mater - scena 9">
+                <div class="eb-note">Scena visiva dal lavoro performativo</div>
+            </div>
+            <div class="eb-inversione-text">
+                La video-arte è una ricerca sotterranea e mistica che tende alla verticalità di una delle storie più universali di sempre, e la porta in carne e pietra, in un poema visivo sul lutto e sulla perdita. Qui il gesto delle due Marie e la musica di Pergolesi incontrano l’immagine in un unico flusso espressivo in continua dissolvenza e rinascita.
+            </div>
+        </section>
+
+        <div class="eb-block">
+            <p>Questo progetto nasce in seguito alla conoscenza che ho avuto con la compagnia Con.Cor.D.A / Movimentoinactor, la quale, dopo la residenza LIMEN avvenuta nei loro spazi, mi ha commissionato la scenografia digitale per lo spettacolo.</p>
+        </div>
+
+        <div class="eb-wide-image" onclick="openLB(1)">
+            <img src="../assets/gallery/Stabatmater2.png" alt="Stabat Mater - scena 2">
+            <div class="eb-note">Stabat Mater 2</div>
+        </div>
+
+        <div class="eb-block">
+            <p><strong>Coreografia e regia:</strong> Flavia Bucciero<br>
+            <strong>Danzatrici:</strong> Grazia Montelione e Iolanda Del Vecchio<br>
+            <strong>Video-art:</strong> Boris Pimenov<br>
+            <strong>Produzione:</strong> Movimentoinactor Teatrodanza</p>
+            <p>Presentato al Teatro 99 Posti di Mercogliano nell’ambito di RAID Festivals.</p>
+        </div>
+
+        <div class="eb-label">Galleria</div>
+        <div class="eb-gallery-grid" id="gallery">
+            <div class="eb-thumb" onclick="openLB(0)"><img src="../assets/gallery/Stabatmater1.png" alt="Stabat Mater 1"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+            <div class="eb-thumb" onclick="openLB(2)"><img src="../assets/gallery/Stabatmater3.png" alt="Stabat Mater 3"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+            <div class="eb-thumb" onclick="openLB(3)"><img src="../assets/gallery/Stabatmater4.png" alt="Stabat Mater 4"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+            <div class="eb-thumb" onclick="openLB(4)"><img src="../assets/gallery/Stabatmater5.png" alt="Stabat Mater 5"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+            <div class="eb-thumb" onclick="openLB(5)"><img src="../assets/gallery/Stabatmater6.png" alt="Stabat Mater 6"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+            <div class="eb-thumb" onclick="openLB(7)"><img src="../assets/gallery/Stabatmater8.png" alt="Stabat Mater 8"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+            <div class="eb-thumb" onclick="openLB(9)"><img src="../assets/gallery/Stabatmater10.png" alt="Stabat Mater 10"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+            <div class="eb-thumb" onclick="openLB(10)"><img src="../assets/gallery/Stabatmater11.png" alt="Stabat Mater 11"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+            <div class="eb-thumb" onclick="openLB(11)"><img src="../assets/gallery/Stabatmater12.png" alt="Stabat Mater 12"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+            <div class="eb-thumb" onclick="openLB(12)"><img src="../assets/gallery/Stabatmater13.png" alt="Stabat Mater 13"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+        </div>
+
+        <script src="https://player.vimeo.com/api/player.js"></script>
+
+        <nav class="project-navigation">
+            <a href="osculo-d-amore.html" class="nav-link prev">Osculo d'Amore</a>
+            <a href="../index.html#portfolio" class="nav-link">Torna al Portfolio</a>
+            <a href="morricone.html" class="nav-link next">Morricone</a>
+        </nav>
     </main>
 
     <footer class="footer">
@@ -95,5 +260,48 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+    var stabatImages = [
+        '../assets/gallery/Stabatmater1.png',
+        '../assets/gallery/Stabatmater2.png',
+        '../assets/gallery/Stabatmater3.png',
+        '../assets/gallery/Stabatmater4.png',
+        '../assets/gallery/Stabatmater5.png',
+        '../assets/gallery/Stabatmater6.png',
+        '../assets/gallery/Stabatmater7.png',
+        '../assets/gallery/Stabatmater8.png',
+        '../assets/gallery/Stabatmater9.png',
+        '../assets/gallery/Stabatmater10.png',
+        '../assets/gallery/Stabatmater11.png',
+        '../assets/gallery/Stabatmater12.png',
+        '../assets/gallery/Stabatmater13.png'
+    ];
+
+    var lbIdx = 0;
+    function openLB(i) {
+        lbIdx = i;
+        showLBImg();
+        document.getElementById('lb-overlay').classList.add('active');
+    }
+    function closeLB() {
+        document.getElementById('lb-overlay').classList.remove('active');
+    }
+    function lbNav(d) {
+        lbIdx = (lbIdx + d + stabatImages.length) % stabatImages.length;
+        showLBImg();
+    }
+    function showLBImg() {
+        var img = document.getElementById('lb-img');
+        img.src = stabatImages[lbIdx];
+        document.getElementById('lb-counter').textContent = (lbIdx + 1) + '/' + stabatImages.length;
+    }
+    document.addEventListener('keydown', function(e) {
+        var o = document.getElementById('lb-overlay');
+        if (!o.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLB();
+        if (e.key === 'ArrowLeft') lbNav(-1);
+        if (e.key === 'ArrowRight') lbNav(1);
+    });
+    </script>
 </body>
 </html>
