@@ -9,7 +9,7 @@
      <style>
         :root {
             --ink:       #e8e4de;
-            --bg:        #0e0e0e;
+            --bg:        #1a1a1a;
             --mid:       #888;
             --border:    rgba(255,255,255,.14);
             --gap:       clamp(1.5rem, 5vw, 3.5rem);
@@ -32,6 +32,34 @@
         .footer { margin-top:4rem; padding:2.5rem 0; border-top:1px solid var(--border); }
         .footer-content { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; max-width:1200px; margin:0 auto; padding:0 2rem; }
         .footer-copyright, .footer-credits { font-family:'Courier Prime',monospace; font-size:0.65rem; letter-spacing:0.1em; color:rgba(255,255,255,0.3); }
+        .shinel-story,
+        .shinel-gallery-block { display:flex; flex-wrap:wrap; gap:2rem; align-items:flex-start; margin-bottom:2.5rem; }
+        .shinel-story-text,
+        .shinel-gallery-copy { flex:1 1 360px; min-width:280px; }
+        .shinel-story-image,
+        .shinel-gallery-feature { flex:0 1 360px; min-width:260px; max-width:460px; }
+        .shinel-story-image img,
+        .shinel-gallery-feature img,
+        .shinel-strip img {
+            width:100%;
+            display:block;
+            border-radius:10px;
+            box-shadow:0 12px 40px rgba(0,0,0,0.28);
+            object-fit:cover;
+        }
+        .shinel-story-image img,
+        .shinel-gallery-feature img { min-height:420px; }
+        .shinel-strip { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0.8rem; margin-top:1rem; }
+        .shinel-strip img { aspect-ratio:4/3; }
+        @media (max-width: 820px) {
+            .shinel-story-text,
+            .shinel-gallery-copy,
+            .shinel-story-image,
+            .shinel-gallery-feature { flex-basis:100%; max-width:100%; }
+            .shinel-story-image img,
+            .shinel-gallery-feature img { min-height:260px; }
+            .shinel-strip { grid-template-columns:1fr; }
+        }
     </style>
 </head>
 <body style="padding-top:4.5rem;">
@@ -57,11 +85,27 @@
                 <iframe src="https://player.vimeo.com/video/1149349313?h=b5fc57f39b" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen title="Shinel' (Il Cappotto) - Boris Pimenov"></iframe>
             </div>
             <script src="https://player.vimeo.com/api/player.js"></script>
-            <p class="eb-label">Logline</p>
-            <div class="eb-block">
-                <p>Questo cortometraggio è un esperimento inquieto, un bambino perverso che non sa stare fermo, che sfugge al controllo, ambiguo e inafferrabile nel senso e nell’intenzione. L’immagine filmica si fonde con il suo creatore, in un processo di continua cucitura di un organismo ormai morto.</p>
-                <p>Akakij Akakievic è un bambino folle che rincorre un’infanzia sepolta, un’ombra che non smette di ripetere il suo destino. Perché Akakij? Perché Il Cappotto? Non c’è una spiegazione univoca, se non quella di collocarlo all’interno di un archetipo, un tipo psicologico ben preciso. Un archetipo sfruttato per mettere in scena un atto psicomagico, in cui tutto si dissolve, si confonde, si sfalda. Il rischio è concreto: dare corpo ai fantasmi quotidiani, lasciare che prendano forma, che infestino lo spazio visivo e mentale.</p>
-                <p>Shinel’ è un viaggio intimo e inquieto attraverso lo spazio sospeso tra due culture, quella russa e quella italiana, e il vuoto che ne deriva. È il tentativo di ricomporre una memoria impossibile, di riannodare i fili di un’infanzia sepolta, di un’identità che sfugge e si ricostruisce nei frammenti di un passato che non appartiene interamente né al presente né al futuro.</p>
+            <div class="shinel-story">
+                <div class="eb-block shinel-story-text">
+                    <p class="eb-label">Logline</p>
+                    <p>Questo cortometraggio è un esperimento inquieto, un bambino perverso che non sa stare fermo, che sfugge al controllo, ambiguo e inafferrabile nel senso e nell’intenzione. L’immagine filmica si fonde con il suo creatore, in un processo di continua cucitura di un organismo ormai morto.</p>
+                    <p>Akakij Akakievic è un bambino folle che rincorre un’infanzia sepolta, un’ombra che non smette di ripetere il suo destino. Perché Akakij? Perché Il Cappotto? Non c’è una spiegazione univoca, se non quella di collocarlo all’interno di un archetipo, un tipo psicologico ben preciso. Un archetipo sfruttato per mettere in scena un atto psicomagico, in cui tutto si dissolve, si confonde, si sfalda. Il rischio è concreto: dare corpo ai fantasmi quotidiani, lasciare che prendano forma, che infestino lo spazio visivo e mentale.</p>
+                </div>
+                <div class="shinel-story-image">
+                    <img src="../assets/gallery/shinelgallery/shinel2.jpg" alt="Shinel gallery 2">
+                </div>
+            </div>
+            <div class="shinel-gallery-block">
+                <div class="shinel-gallery-feature">
+                    <img src="../assets/gallery/shinelgallery/shinel3.jpg" alt="Shinel gallery 3">
+                </div>
+                <div class="eb-block shinel-gallery-copy">
+                    <p>Shinel’ è un viaggio intimo e inquieto attraverso lo spazio sospeso tra due culture, quella russa e quella italiana, e il vuoto che ne deriva. È il tentativo di ricomporre una memoria impossibile, di riannodare i fili di un’infanzia sepolta, di un’identità che sfugge e si ricostruisce nei frammenti di un passato che non appartiene interamente né al presente né al futuro.</p>
+                    <div class="shinel-strip">
+                        <img src="../assets/gallery/shinelgallery/shinel4.jpg" alt="Shinel gallery 4">
+                        <img src="../assets/gallery/shinelgallery/shinel5.jpg" alt="Shinel gallery 5">
+                    </div>
+                </div>
             </div>
             <p class="eb-label">Scheda tecnica</p>
             <div class="eb-block">

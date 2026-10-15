@@ -6,6 +6,100 @@
     <title>Il Matto e La Pesca - Boris Pimenov</title>
     <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        .mp-page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            color: #f7f7f7;
+        }
+        .mp-intro-flex,
+        .mp-credits-grid,
+        .mp-gallery-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .mp-intro-text,
+        .mp-gallery-copy {
+            flex: 1 1 360px;
+            min-width: 280px;
+        }
+        .mp-intro-image,
+        .mp-gallery-feature {
+            flex: 0 1 360px;
+            min-width: 260px;
+            max-width: 460px;
+        }
+        .mp-intro-image img,
+        .mp-gallery-feature img,
+        .mp-credit-image img {
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.28);
+            object-fit: cover;
+        }
+        .mp-intro-image img,
+        .mp-gallery-feature img {
+            min-height: 420px;
+        }
+        .mp-credits-grid {
+            margin-bottom: 2.5rem;
+        }
+        .mp-credit-card,
+        .mp-credit-image {
+            flex: 1 1 240px;
+            min-width: 240px;
+        }
+        .mp-credit-image {
+            align-self: stretch;
+        }
+        .mp-credit-image img {
+            height: 100%;
+            min-height: 320px;
+        }
+        .mp-gallery-copy {
+            font-size: 1.08rem;
+            line-height: 1.85;
+            color: #e8e8e8;
+        }
+        .mp-gallery-strip {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        .mp-gallery-strip img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+        }
+        @media (max-width: 820px) {
+            .mp-intro-image,
+            .mp-gallery-feature,
+            .mp-credit-card,
+            .mp-credit-image,
+            .mp-intro-text,
+            .mp-gallery-copy {
+                max-width: 100%;
+                flex-basis: 100%;
+            }
+            .mp-intro-image img,
+            .mp-gallery-feature img,
+            .mp-credit-image img {
+                min-height: 260px;
+            }
+            .mp-gallery-strip {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body style="padding-top: 4.5rem;">
     <!-- Grain Overlay -->
@@ -28,7 +122,7 @@
 
     <!-- Project Content -->
     <main class="project-page" style="padding: 3.5rem 0 5rem 0;">
-  <div class="project-container" style="max-width:900px; margin:0 auto; padding:0 1.5rem; font-family:'Cormorant Garamond', serif; font-weight:300; color:#f7f7f7;">
+    <div class="project-container mp-page">
             <h1 class="project-page-title">Il Matto e la Pesca</h1>
             <header class="project-header">
                 <div class="project-meta">
@@ -48,15 +142,20 @@
             <script src="https://player.vimeo.com/api/player.js"></script>
 
             <!-- Descrizione -->
-            <div class="project-description-full" style="font-size:1.08rem; line-height:1.85; color:#e8e8e8; margin-bottom:2.5rem;">
-                <p>Il progetto si ispira liberamente al cortometraggio “Signò Belluscone” di Ciprì e Maresco e i personaggi sono ispirati dalla trilogia di opere “I Giochi dell’Eternità” di Antonio Moresco.</p>
-                <p><strong>Sinossi:</strong><br>
-                La Pesca, giovane sposa, Il Matto, giovane sposo russo. Questi due personaggi fuori dal tempo fanno molteplici appelli al “Signor Presidente” chiedendo un prestito per sfamare la famiglia. Il sempre-presente “figlio” è sul punto di nascere…</p>
+            <div class="mp-intro-flex" style="margin-bottom:2.5rem;">
+                <div class="project-description-full mp-intro-text" style="font-size:1.08rem; line-height:1.85; color:#e8e8e8; margin-bottom:0;">
+                    <p>Il progetto si ispira liberamente al cortometraggio “Signò Belluscone” di Ciprì e Maresco e i personaggi sono ispirati dalla trilogia di opere “I Giochi dell’Eternità” di Antonio Moresco.</p>
+                    <p><strong>Sinossi:</strong><br>
+                    La Pesca, giovane sposa, Il Matto, giovane sposo russo. Questi due personaggi fuori dal tempo fanno molteplici appelli al “Signor Presidente” chiedendo un prestito per sfamare la famiglia. Il sempre-presente “figlio” è sul punto di nascere…</p>
+                </div>
+                <div class="mp-intro-image">
+                    <img src="../assets/gallery/matto-pescagallery/matto-pesca2.jpg" alt="Il Matto e la Pesca 2">
+                </div>
             </div>
 
             <!-- Dettagli Tecnici -->
-           <div class="project-details" style="margin-bottom:2.5rem;">
-         <div class="project-gallery" style="margin-bottom:2.5rem;">
+           <div class="project-details mp-credits-grid" style="margin-bottom:2.5rem;">
+         <div class="project-gallery mp-credit-card" style="margin-bottom:0;">
                     <h4>Cast</h4>
                     <p class="project-cast">
                         <strong>IL MATTO:</strong> Boris Pimenov<br>
@@ -70,7 +169,7 @@
                         <strong>MESSAGGERO DALLE LABBRA DIPINTE NUMERO 3:</strong> Alessandro Lazzari
                     </p>
                 </div>
-                <div class="detail-item">
+                <div class="detail-item mp-credit-card">
                     <h4>Regia</h4>
                     <p>
                         <strong>Regista:</strong> Boris Pimenov<br>
@@ -78,7 +177,7 @@
                         <strong>Assistenza alla regia:</strong> Gaia Picchi
                     </p>
                 </div>
-                <div class="detail-item">
+                <div class="detail-item mp-credit-card">
                     <h4>Produzione</h4>
                     <p>
                         CINICA MATRICE <br>
@@ -86,7 +185,10 @@
                         (Cinica Matrice è un collettivo artistico informale under 25 sotto il tutoraggio di Sartoria Caronte)</span>
                     </p>
                 </div>
-                <div class="detail-item">
+                <div class="detail-item mp-credit-image">
+                    <img src="../assets/gallery/matto-pescagallery/matto-pesca3.jpg" alt="Il Matto e la Pesca 3">
+                </div>
+                <div class="detail-item mp-credit-card">
                     <h4>Maestranze</h4>
                     <p>
                         <strong>Editor:</strong> Boris Pimenov<br>
@@ -98,9 +200,10 @@
                 </div>
             </div>
 
-            <!-- Gallery (opzionale) -->
-            <div class="project-gallery">
-                <!-- Puoi aggiungere immagini aggiuntive qui -->
+            <div class="mp-gallery-row" style="margin-bottom:2.5rem; justify-content:center;">
+                <div class="mp-gallery-feature">
+                    <img src="../assets/gallery/matto-pescagallery/mattp-pesca4.jpg" alt="Il Matto e la Pesca 4">
+                </div>
             </div>
 
             <!-- Navigazione tra progetti -->

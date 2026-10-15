@@ -3,28 +3,166 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Carosello progetti in evidenza: usa TUTTI i progetti del portfolio
     const featuredCarousel = document.querySelector('.featured-carousel');
-    if (featuredCarousel) {
+    if (featuredCarousel && featuredCarousel.dataset.initialized !== 'true') {
+        featuredCarousel.dataset.initialized = 'true';
         const portfolioItems = Array.from(document.querySelectorAll('#portfolio .portfolio-item'));
         const carouselTrack = featuredCarousel.querySelector('.carousel-track');
-        const prevBtn = featuredCarousel.querySelector('.carousel-arrow.prev');
-        const nextBtn = featuredCarousel.querySelector('.carousel-arrow.next');
+        const projectGalleryImages = {
+            'osculo-avviso.html': [
+                'assets/gallery/osculo-d-amoregallery/osculo-d-amore1.png'
+            ],
+            'projects/eburnea-teatro.html': [
+                'assets/gallery/eburnea-teatrogallery/FiatVoluntasTua1.jpeg',
+                'assets/gallery/eburnea-teatrogallery/FiatVoluntasTua2.png',
+                'assets/gallery/eburnea-teatrogallery/Eburneo1.jpeg',
+                'assets/gallery/eburnea-teatrogallery/eburneo2.png',
+                'assets/gallery/eburnea-teatrogallery/altrove1.png',
+                'assets/gallery/eburnea-teatrogallery/bergman.jpeg',
+                'assets/gallery/eburnea-teatrogallery/Marchio.png',
+                'assets/gallery/eburnea-teatrogallery/memoria1.png'
+            ],
+            'projects/eburnea.html': [
+                'assets/gallery/eburneagallery/eburnea1.png',
+                'assets/gallery/eburneagallery/eburnea2.png',
+                'assets/gallery/eburneagallery/eburnea3.png',
+                'assets/gallery/eburneagallery/eburnea4.png'
+            ],
+            'projects/libro-dolori.html': [
+                'assets/gallery/libro-dolorigallery/libro-dolori1.png',
+                'assets/gallery/libro-dolorigallery/libro-dolori2.png',
+                'assets/gallery/libro-dolorigallery/libro-dolori3.png',
+                'assets/gallery/libro-dolorigallery/libro-dolori4.png',
+                'assets/gallery/libro-dolorigallery/libro-dolori5.png',
+                'assets/gallery/libro-dolorigallery/libro-dolori6.png'
+            ],
+            'projects/shinel.html': [
+                'assets/gallery/shinelgallery/shinel1.jpg'
+            ],
+            'projects/matto-pesca.html': [
+                'assets/gallery/matto-pescagallery/matto-pesca1.jpg'
+            ],
+            'projects/stabat-mater.html': [
+                'assets/gallery/stabat-matergallery/Stabatmater1.png',
+                'assets/gallery/stabat-matergallery/Stabatmater2.png',
+                'assets/gallery/stabat-matergallery/Stabatmater3.png',
+                'assets/gallery/stabat-matergallery/Stabatmater4.png',
+                'assets/gallery/stabat-matergallery/Stabatmater5.png',
+                'assets/gallery/stabat-matergallery/Stabatmater6.png',
+                'assets/gallery/stabat-matergallery/Stabatmater7.png',
+                'assets/gallery/stabat-matergallery/Stabatmater8.png',
+                'assets/gallery/stabat-matergallery/Stabatmater9.png',
+                'assets/gallery/stabat-matergallery/Stabatmater10.png',
+                'assets/gallery/stabat-matergallery/Stabatmater11.png',
+                'assets/gallery/stabat-matergallery/Stabatmater12.png',
+                'assets/gallery/stabat-matergallery/Stabatmater13.png'
+            ],
+            'projects/morricone.html': [
+                'assets/gallery/morriconegallery/morricone1.png',
+                'assets/gallery/morriconegallery/morricone2.png',
+                'assets/gallery/morriconegallery/morricone3.png'
+            ],
+            'projects/rasi-suolo.html': [
+                'assets/gallery/rasi-suologallery/rasi-suolo1.jpg'
+            ],
+            'projects/compagnia-giro.html': [
+                'assets/gallery/compagnia-girogallery/giro1.jpg',
+                'assets/gallery/compagnia-girogallery/giro2.jpg',
+                'assets/gallery/compagnia-girogallery/giro3.jpg'
+            ],
+            'projects/cavalleria-rusticana.html': [
+                'assets/gallery/cavalleria-rusticanagallery/Cavalleria1.jpg',
+                'assets/gallery/cavalleria-rusticanagallery/Cavalleria2.jpg',
+                'assets/gallery/cavalleria-rusticanagallery/Cavalleria3.jpg',
+                'assets/gallery/cavalleria-rusticanagallery/Cavalleria4.jpg',
+                'assets/gallery/cavalleria-rusticanagallery/Cavalleria5.jpg',
+                'assets/gallery/cavalleria-rusticanagallery/Cavalleria6.png'
+            ],
+            'projects/gianni-schicchi.html': [
+                'assets/gallery/gianni-schicchigallery/giannischicchi1.JPG',
+                'assets/gallery/gianni-schicchigallery/giannischicchi.JPG',
+                'assets/gallery/gianni-schicchigallery/giannischicchi3.jpg'
+            ],
+            'projects/tosca-classica.html': [
+                'assets/gallery/tosca-classicagallery/toscaclassica2.jpg',
+                'assets/gallery/tosca-classicagallery/toscaclassica3.jpg',
+                'assets/gallery/tosca-classicagallery/toscaclassica4.jpg',
+                'assets/gallery/tosca-classicagallery/toscaclassica5.jpg',
+                'assets/gallery/tosca-classicagallery/toscaclassica6.jpg'
+            ],
+            'projects/tosca-dessai.html': [
+                'assets/gallery/tosca-dessaigallery/tosca1.png',
+                'assets/gallery/tosca-dessaigallery/tosca2.png',
+                'assets/gallery/tosca-dessaigallery/tosca3.png',
+                'assets/gallery/tosca-dessaigallery/tosca4.png',
+                'assets/gallery/tosca-dessaigallery/tosca5.png',
+                'assets/gallery/tosca-dessaigallery/tosca6.png'
+            ],
+            'projects/boheme.html': [
+                'assets/gallery/bohemegallery/boheme1.jpg',
+                'assets/gallery/bohemegallery/boheme2.jpg',
+                'assets/gallery/bohemegallery/boheme3.jpg',
+                'assets/gallery/bohemegallery/boheme4.jpg',
+                'assets/gallery/bohemegallery/boheme5.jpg'
+            ],
+            'projects/elisir-d-amore.html': [
+                'assets/gallery/elisir-damoregallery/elisir1.png',
+                'assets/gallery/elisir-damoregallery/elisir2.png'
+            ]
+        };
+
+        function pickRandomGalleryImage(projectHref, fallbackSrc, currentSrc) {
+            const images = projectGalleryImages[projectHref];
+            if (!images || !images.length) {
+                return fallbackSrc;
+            }
+
+            if (images.length === 1) {
+                return images[0];
+            }
+
+            let nextImage = currentSrc || fallbackSrc;
+            while (nextImage === currentSrc) {
+                nextImage = images[Math.floor(Math.random() * images.length)];
+            }
+
+            return nextImage;
+        }
+
+        function updateSlideImage(slide) {
+            const image = slide.querySelector('.carousel-link img');
+            const projectHref = slide.dataset.projectHref;
+            const fallbackSrc = slide.dataset.fallbackSrc;
+
+            if (!image || !projectHref || !fallbackSrc) {
+                return;
+            }
+
+            const nextImage = pickRandomGalleryImage(projectHref, fallbackSrc, image.getAttribute('src'));
+            image.setAttribute('src', nextImage);
+        }
 
         if (carouselTrack && portfolioItems.length) {
             const slides = [];
+            carouselTrack.innerHTML = '';
 
             portfolioItems.forEach((item, index) => {
                 const link = item.closest('a');
                 const img = item.querySelector('.portfolio-image');
                 const title = item.querySelector('.portfolio-title')?.textContent?.trim() || 'Project';
                 const kicker = item.querySelector('.portfolio-kicker')?.textContent?.trim() || '';
+                const projectHref = link?.getAttribute('href');
 
                 if (!link || !img) return;
 
+                const randomImageSrc = pickRandomGalleryImage(projectHref, img.getAttribute('src'));
+
                 const slide = document.createElement('article');
                 slide.className = `carousel-slide${index === 0 ? ' is-active' : ''}`;
+                slide.dataset.projectHref = projectHref || '';
+                slide.dataset.fallbackSrc = img.getAttribute('src') || '';
                 slide.innerHTML = `
                     <a href="${link.href}" class="carousel-link">
-                        <img src="${img.src}" alt="${title}">
+                        <img src="${randomImageSrc}" alt="${title}">
                         <div class="carousel-caption">
                             <span>${kicker}</span>
                             <h3>${title}</h3>
@@ -38,13 +176,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const progressBar = featuredCarousel.querySelector('.carousel-progress-bar');
             let activeIndex = 0;
-            let carouselTimer = null;
+            let carouselInterval = null;
             const autoplayDelay = 4500;
 
             function showSlide(index) {
                 activeIndex = (index + slides.length) % slides.length;
                 slides.forEach((slide, i) => {
                     slide.classList.toggle('is-active', i === activeIndex);
+                    if (i === activeIndex) {
+                        updateSlideImage(slide);
+                    }
                 });
                 featuredCarousel.classList.toggle('is-ending', activeIndex >= Math.max(slides.length - 2, 0));
             }
@@ -58,30 +199,31 @@ document.addEventListener('DOMContentLoaded', function() {
                 progressBar.style.width = '100%';
             }
 
+            function stopAutoCycle() {
+                if (carouselInterval !== null) {
+                    window.clearInterval(carouselInterval);
+                    carouselInterval = null;
+                }
+            }
+
             function startAutoCycle() {
-                clearTimeout(carouselTimer);
+                stopAutoCycle();
                 resetProgress();
-                carouselTimer = setTimeout(() => {
+                carouselInterval = window.setInterval(() => {
                     showSlide(activeIndex + 1);
-                    startAutoCycle();
+                    resetProgress();
                 }, autoplayDelay);
             }
 
-            prevBtn?.addEventListener('click', () => {
-                showSlide(activeIndex - 1);
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    stopAutoCycle();
+                    return;
+                }
                 startAutoCycle();
             });
 
-            nextBtn?.addEventListener('click', () => {
-                showSlide(activeIndex + 1);
-                startAutoCycle();
-            });
-
-            featuredCarousel.addEventListener('mouseenter', () => clearTimeout(carouselTimer));
-            featuredCarousel.addEventListener('mouseleave', () => {
-                startAutoCycle();
-            });
-
+            showSlide(0);
             startAutoCycle();
         }
     }
@@ -101,24 +243,6 @@ document.addEventListener('DOMContentLoaded', function() {
         projectCard.addEventListener('mouseleave', function() {
             video.pause();
             video.currentTime = 0;
-        });
-    });
-    
-    // Smooth scroll per i link di navigazione
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
         });
     });
     
@@ -242,46 +366,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Animazione sezione progetti e immagini gallery
-    function animateOnScroll() {
-        var elements = document.querySelectorAll('.project-container, .project-header, .project-description-full, .project-gallery, .project-navigation');
-        var images = document.querySelectorAll('.project-gallery img');
-        var windowHeight = window.innerHeight;
-        elements.forEach(function(el) {
-            var position = el.getBoundingClientRect().top;
-            if(position < windowHeight - 60) {
-                el.classList.add('visible');
-            }
-        });
-        images.forEach(function(img) {
-            var position = img.getBoundingClientRect().top;
-            if(position < windowHeight - 40) {
-                img.classList.add('visible');
-            }
-        });
-    }
-
-    animateOnScroll();
-    window.addEventListener('scroll', animateOnScroll);
-
-    // Reveal on scroll per le sezioni della homepage
-    function revealSectionsOnScroll() {
-        var sections = document.querySelectorAll('.reveal-on-scroll, .project-card');
-        var windowHeight = window.innerHeight;
-        sections.forEach(function(section) {
-            var position = section.getBoundingClientRect().top;
-            if(position < windowHeight - 60) {
-                section.classList.add('visible');
-            }
-        });
-    }
-    revealSectionsOnScroll();
-    window.addEventListener('scroll', revealSectionsOnScroll);
-
-    
     // --- Intersection Observer Scroll Reveal ---
     function scrollRevealInit() {
-        const revealEls = document.querySelectorAll('.reveal-on-scroll');
+        const revealEls = document.querySelectorAll('.reveal-on-scroll, .project-container, .project-header, .project-description-full, .project-gallery, .project-navigation');
         if (!('IntersectionObserver' in window)) {
             // fallback: show all
             revealEls.forEach(el => el.classList.add('visible'));
@@ -369,14 +456,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // INIZIALIZZARE AL CARICAMENTO
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-            animatePortfolioItems();
-            addPortfolioHoverEffects();
-        });
-    } else {
-        animatePortfolioItems();
-        addPortfolioHoverEffects();
-    }
+    animatePortfolioItems();
+    addPortfolioHoverEffects();
 });
