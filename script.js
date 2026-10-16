@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 slide.dataset.fallbackSrc = img.getAttribute('src') || '';
                 slide.innerHTML = `
                     <a href="${link.href}" class="carousel-link">
-                        <img src="${randomImageSrc}" alt="${title}">
+                        <img src="${randomImageSrc}" alt="${title}" style="aspect-ratio: 16 / 9; object-fit: cover;">
                         <div class="carousel-caption">
                             <span>${kicker}</span>
                             <h3>${title}</h3>
