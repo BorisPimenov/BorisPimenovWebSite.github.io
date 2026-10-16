@@ -18,11 +18,30 @@
   <meta name="twitter:title" content="Boris Pimenov - Multimedia Artist & Regista">
   <meta name="twitter:description" content="Esplorando il confine tra performance, tecnologia e narrazione visiva.">
   <meta name="twitter:image" content="https://borispimenov.com/assets/gallery/FiatVoluntasTua1.jpeg">
+    <link rel="preload" as="image" href="assets/logo/logo.png">
+    <style>
+        html.is-loading, html.is-loading body { overflow: hidden; }
+        #site-loader {
+            position: fixed; inset: 0; z-index: 99999; background: #000;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.6rem;
+            transition: opacity .7s ease, visibility .7s ease;
+        }
+        #site-loader.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
+        #site-loader img { width: clamp(70px, 14vw, 110px); height: auto; }
+        #site-loader .loader-line { width: clamp(90px, 14vw, 160px); height: 1px; background: rgba(255,255,255,.24); overflow: hidden; border-radius: 999px; }
+        #site-loader .loader-bar { display: block; width: 0%; height: 100%; background: rgba(255,255,255,.88); transition: width .35s ease; }
+    </style>
+    <script>document.documentElement.classList.add('is-loading');</script>
+    <noscript><style>#site-loader{display:none}html.is-loading,html.is-loading body{overflow:auto}</style></noscript>
     <link rel="stylesheet" href="style.css">
     <!-- Font Courier Prime - Solo regular e italic, NO grassetti -->
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="site-loader" role="status" aria-live="polite" aria-label="Caricamento">
+        <img src="assets/logo/logo.png" alt="Boris Pimenov">
+        <div class="loader-line"><span class="loader-bar"></span></div>
+    </div>
     <!-- Grain Overlay -->
     <div class="film-grain"></div>
     
@@ -216,16 +235,6 @@
                 <div class="portfolio-kicker">2026 · Performance</div>
                 <div class="portfolio-title">Stabat Mater</div>
                 <p class="portfolio-desc">Progetto performativo tra devozione, verticalita dell'immagine e drammaturgia sonora contemporanea.</p>
-              </div>
-            </a>
-            <a href="projects/morricone.html" class="portfolio-item">
-              <div class="portfolio-image-wrapper">
-                <img src="assets/covers/morricone-cover.jpg" alt="Sillabe di Ennio Morricone" class="portfolio-image">
-              </div>
-              <div class="portfolio-card-body">
-                <div class="portfolio-kicker">2025 · Video installazione</div>
-                <div class="portfolio-title">Sillabe di Ennio Morricone</div>
-                <p class="portfolio-desc">Installazione audiovisiva che attraversa la memoria musicale di Morricone con un linguaggio immersivo.</p>
               </div>
             </a>
             <a href="projects/rasi-suolo.html" class="portfolio-item">
@@ -451,5 +460,51 @@
 
     <!-- Scripts -->
     <script src="script.js"></script>
+    <script>
+    // Schermata di caricamento: attende immagini, font e video hero (con timeout di sicurezza)
+    document.addEventListener('DOMContentLoaded', function () {
+        var loader = document.getElementById('site-loader');
+        var bar = loader && loader.querySelector('.loader-bar');
+        var root = document.documentElement;
+        var finished = false;
+        function finish() {
+            if (finished) return;
+            finished = true;
+            if (bar) bar.style.width = '100%';
+            setTimeout(function () {
+                root.classList.remove('is-loading');
+                if (loader) {
+                    loader.classList.add('is-done');
+                    setTimeout(function () { loader.remove(); }, 800);
+                }
+            }, 350);
+        }
+        if (!loader) { root.classList.remove('is-loading'); return; }
+
+        var tasks = [];
+        document.querySelectorAll('img').forEach(function (img) {
+            if (loader.contains(img)) return;
+            tasks.push(new Promise(function (res) {
+                if (img.complete) return res();
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+            }).then(function () { return img.decode ? img.decode().catch(function () {}) : null; }));
+        });
+        if (document.fonts && document.fonts.ready) tasks.push(document.fonts.ready);
+        var hero = document.querySelector('.video-background iframe');
+        if (hero) tasks.push(new Promise(function (res) {
+            hero.addEventListener('load', res, { once: true });
+        }));
+
+        var done = 0, total = tasks.length || 1;
+        function tick() {
+            done++;
+            if (bar) bar.style.width = Math.min(95, Math.round(done / total * 100)) + '%';
+        }
+        tasks.forEach(function (t) { t.then(tick, tick); });
+        Promise.all(tasks.map(function (t) { return t.catch(function () {}); })).then(finish);
+        setTimeout(finish, 15000);
+    });
+    </script>
 </body>
 </html>

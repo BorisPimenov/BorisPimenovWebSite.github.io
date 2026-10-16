@@ -56,11 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 'assets/gallery/stabat-matergallery/Stabatmater12.png',
                 'assets/gallery/stabat-matergallery/Stabatmater13.png'
             ],
-            'projects/morricone.html': [
-                'assets/gallery/morriconegallery/morricone1.png',
-                'assets/gallery/morriconegallery/morricone2.png',
-                'assets/gallery/morriconegallery/morricone3.png'
-            ],
             'projects/rasi-suolo.html': [
                 'assets/gallery/rasi-suologallery/rasi-suolo1.jpg'
             ],
