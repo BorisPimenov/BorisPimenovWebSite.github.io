@@ -4,11 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Osculo d'Amore - Boris Pimenov</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="/assets/logo/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
     <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        .eb-label { font-family: 'Courier Prime', monospace; font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; color: #666; margin: 0 0 0.7rem 0; }
+        #lb-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.97); z-index: 9999; align-items: center; justify-content: center; }
+        #lb-overlay.active { display: flex; }
+        #lb-img { max-width: 88vw; max-height: 85vh; object-fit: contain; border-radius: 6px; box-shadow: 0 8px 60px rgba(0,0,0,0.8); display: block; }
+        #lb-close { position: fixed; top: 1.2rem; right: 1.6rem; color: #fff; font-size: 2rem; cursor: pointer; opacity: 0.6; transition: opacity 0.2s; font-family: 'Courier Prime', monospace; line-height: 1; }
+        #lb-close:hover { opacity: 1; }
+        .lb-arrow { position: fixed; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 1.8rem; cursor: pointer; padding: 0.6rem 1rem; border-radius: 4px; transition: background 0.2s; user-select: none; line-height: 1; }
+        .lb-arrow:hover { background: rgba(255,255,255,0.18); }
+        #lb-prev { left: 1.2rem; }
+        #lb-next { right: 1.2rem; }
+        #lb-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.45); font-size: 0.8rem; font-family: 'Courier Prime', monospace; letter-spacing: 0.1em; }
+    </style>
 </head>
 <body style="padding-top: 4.5rem;">
     <div class="film-grain"></div>
+
+    <div id="lb-overlay">
+        <span id="lb-close" onclick="closeLB()">&#x2715;</span>
+        <span class="lb-arrow" id="lb-prev" onclick="lbNav(-1)">&#8592;</span>
+        <img id="lb-img" src="" alt="">
+        <span class="lb-arrow" id="lb-next" onclick="lbNav(1)">&#8594;</span>
+        <div id="lb-counter"></div>
+    </div>
 
     <nav class="navbar">
         <div class="nav-container">
@@ -48,6 +72,8 @@
                 </p>
             </header>
 
+            <div style="padding:56.25% 0 0 0;position:relative;margin-bottom:2.5rem;"><iframe src="https://player.vimeo.com/video/1240011763?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Osculo d'amore – Reportage, studio al Teatro di Lari (2026) – (RAT)"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+
             <section class="project-description-full">
                 <p><strong>Osculo d’amore</strong> nasce da <em>Il Libro d’Ore</em> di Rainer Maria Rilke e dal tema del contatto tra l’Anima e Dio. L’espressione “Osculum amoris” rinvia a un bacio dell’amore, un gesto intimo e puro, lontano da ogni dimensione carnale: un incontro spirituale, pudico e radicale.</p>
                 <p>Il progetto ricerca la trama di quella presenza divina che si può trovare nella miseria, nella terra, nella vita quotidiana e nelle sue ferite. In Rilke, il divino non è né dogmatico né colpevolizzante: è un Dio popolare, personale, esile e concreto, che attraversa il mondo e la materia con una tensione mistica continua.</p>
@@ -62,6 +88,19 @@
                 <p>In questo lavoro il suono e l’immagine cercano di mettere in scena una “mistica attesa”: un percorso tra delicatezza, umiltà e povertà, costruito come esperienza viva di ascolto, silenzio e resa del reale. Il linguaggio visivo e cinematografico si appoggia a una dimensione generativa, in cui il video-arte e l’immagine diventano strumenti per decostruire il tempo e per tessere una cariatide di luoghi e sensazioni.</p>
                 <p>L’obiettivo è una ricerca sul sacro come esperienza dell’inconoscibile, non come dogma: qualcosa che non può essere posseduto, ma solo attraversato, cercato e accolto attraverso la povertà, la solitudine e la grazia.</p>
             </section>
+
+            <p class="eb-label">Galleria</p>
+            <div class="eb-gallery-grid" id="gallery">
+                <div class="eb-thumb" onclick="openLB(0)"><img src="../assets/gallery/osculo-d-amoregallery/osculo1.jpg" alt="Osculo d'Amore 1"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+                <div class="eb-thumb" onclick="openLB(1)"><img src="../assets/gallery/osculo-d-amoregallery/osculo2.jpg" alt="Osculo d'Amore 2"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+                <div class="eb-thumb" onclick="openLB(2)"><img src="../assets/gallery/osculo-d-amoregallery/osculo3.jpg" alt="Osculo d'Amore 3"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+                <div class="eb-thumb" onclick="openLB(3)"><img src="../assets/gallery/osculo-d-amoregallery/osculo4.jpg" alt="Osculo d'Amore 4"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+                <div class="eb-thumb" onclick="openLB(4)"><img src="../assets/gallery/osculo-d-amoregallery/osculo5.jpg" alt="Osculo d'Amore 5"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+                <div class="eb-thumb" onclick="openLB(5)"><img src="../assets/gallery/osculo-d-amoregallery/osculo6.jpg" alt="Osculo d'Amore 6"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+                <div class="eb-thumb" onclick="openLB(6)"><img src="../assets/gallery/osculo-d-amoregallery/osculo7.jpg" alt="Osculo d'Amore 7"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+                <div class="eb-thumb" onclick="openLB(7)"><img src="../assets/gallery/osculo-d-amoregallery/osculo10.png" alt="Osculo d'Amore 8"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+                <div class="eb-thumb" onclick="openLB(8)"><img src="../assets/gallery/osculo-d-amoregallery/osculo11.png" alt="Osculo d'Amore 9"><div class="eb-thumb-overlay"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+            </div>
 
             <div class="project-details">
                 <div class="detail-item">
@@ -96,5 +135,50 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        var osculoImages = [
+            '../assets/gallery/osculo-d-amoregallery/osculo1.jpg',
+            '../assets/gallery/osculo-d-amoregallery/osculo2.jpg',
+            '../assets/gallery/osculo-d-amoregallery/osculo3.jpg',
+            '../assets/gallery/osculo-d-amoregallery/osculo4.jpg',
+            '../assets/gallery/osculo-d-amoregallery/osculo5.jpg',
+            '../assets/gallery/osculo-d-amoregallery/osculo6.jpg',
+            '../assets/gallery/osculo-d-amoregallery/osculo7.jpg',
+            '../assets/gallery/osculo-d-amoregallery/osculo8.jpg',
+            '../assets/gallery/osculo-d-amoregallery/osculo9.jpg'
+        ];
+        var lbIdx = 0;
+
+        function openLB(i) {
+            lbIdx = i;
+            showLBImg();
+            document.getElementById('lb-overlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLB() {
+            document.getElementById('lb-overlay').classList.remove('active');
+            document.getElementById('lb-img').src = '';
+            document.body.style.overflow = '';
+        }
+        function lbNav(d) {
+            lbIdx = (lbIdx + d + osculoImages.length) % osculoImages.length;
+            showLBImg();
+        }
+        function showLBImg() {
+            var img = document.getElementById('lb-img');
+            img.src = osculoImages[lbIdx];
+            img.alt = "Osculo d'Amore " + (lbIdx + 1);
+            document.getElementById('lb-counter').textContent = (lbIdx + 1) + ' / ' + osculoImages.length;
+        }
+        document.getElementById('lb-overlay').addEventListener('click', function(e) {
+            if (e.target === this) closeLB();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (!document.getElementById('lb-overlay').classList.contains('active')) return;
+            if (e.key === 'Escape') closeLB();
+            if (e.key === 'ArrowLeft') lbNav(-1);
+            if (e.key === 'ArrowRight') lbNav(1);
+        });
+    </script>
 </body>
 </html>
