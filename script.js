@@ -1,16 +1,31 @@
 // In script.js
 // script.js
+
+// Le card dei progetti vivono nelle pagine Authorial e Commissioned
+async function loadPortfolioItems() {
+    const pages = ['authorial.html', 'commissioned.html'];
+    try {
+        const docs = await Promise.all(pages.map(async function (page) {
+            const response = await fetch(page);
+            const html = await response.text();
+            return new DOMParser().parseFromString(html, 'text/html');
+        }));
+        return docs.flatMap(function (doc) {
+            return Array.from(doc.querySelectorAll('.portfolio-item'));
+        });
+    } catch (error) {
+        return [];
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Carosello progetti in evidenza: usa TUTTI i progetti del portfolio
     const featuredCarousel = document.querySelector('.featured-carousel');
     if (featuredCarousel && featuredCarousel.dataset.initialized !== 'true') {
         featuredCarousel.dataset.initialized = 'true';
-        const portfolioItems = Array.from(document.querySelectorAll('#portfolio .portfolio-item'));
         const carouselTrack = featuredCarousel.querySelector('.carousel-track');
+        loadPortfolioItems().then(function (portfolioItems) {
         const projectGalleryImages = {
-            'osculo-avviso.html': [
-                'assets/gallery/osculo-d-amoregallery/osculo-d-amore1.png'
-            ],
             'projects/eburnea-teatro.html': [
                 'assets/gallery/eburnea-teatrogallery/FiatVoluntasTua1.jpeg',
                 'assets/gallery/eburnea-teatrogallery/FiatVoluntasTua2.png',
@@ -133,7 +148,22 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             const nextImage = pickRandomGalleryImage(projectHref, fallbackSrc, image.getAttribute('src'));
-            image.setAttribute('src', nextImage);
+            if (nextImage === image.getAttribute('src')) {
+                image.pendingCarouselImage = null;
+                return;
+            }
+
+            const preload = new Image();
+            image.pendingCarouselImage = preload;
+            preload.onload = function () {
+                if (image.pendingCarouselImage === preload) {
+                    image.setAttribute('src', nextImage);
+                }
+            };
+            preload.onerror = function () {
+                console.warn('Impossibile caricare l’immagine del carosello:', nextImage);
+            };
+            preload.src = nextImage;
         }
 
         if (carouselTrack && portfolioItems.length) {
@@ -149,15 +179,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (!link || !img) return;
 
-                const randomImageSrc = pickRandomGalleryImage(projectHref, img.getAttribute('src'));
-
                 const slide = document.createElement('article');
                 slide.className = `carousel-slide${index === 0 ? ' is-active' : ''}`;
                 slide.dataset.projectHref = projectHref || '';
                 slide.dataset.fallbackSrc = img.getAttribute('src') || '';
                 slide.innerHTML = `
                     <a href="${link.href}" class="carousel-link">
-                        <img src="${randomImageSrc}" alt="${title}" style="aspect-ratio: 16 / 9; object-fit: cover;">
+                        <img src="${img.getAttribute('src')}" alt="${title}" style="aspect-ratio: 16 / 9; object-fit: cover;">
                         <div class="carousel-caption">
                             <span>${kicker}</span>
                             <h3>${title}</h3>
@@ -221,6 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showSlide(0);
             startAutoCycle();
         }
+        });
     }
 
     // Funzione per i video del portfolio

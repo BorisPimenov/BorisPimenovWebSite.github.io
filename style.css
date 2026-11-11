@@ -567,6 +567,103 @@ section {
     color: #d1ccc3;
 }
 
+.portfolio-entries {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.portfolio-entry {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    border: 1px solid rgba(255,255,255,0.14);
+    overflow: hidden;
+    background: linear-gradient(180deg, #040404 0%, #000 58%, #000 100%);
+    transition: transform 0.28s ease, border-color 0.28s ease;
+}
+
+.portfolio-entry:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,255,255,0.35);
+}
+
+.portfolio-entry-media {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #000;
+}
+
+.portfolio-entry-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.portfolio-entry:hover .portfolio-entry-image {
+    transform: scale(1.04);
+    filter: brightness(0.85);
+}
+
+.portfolio-entry-body {
+    padding: 1.4rem 1.5rem 1.6rem;
+}
+
+.portfolio-entry-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 0.6rem;
+    line-height: 1.15;
+}
+
+.portfolio-entry-cta {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.2rem;
+}
+
+.portfolio-entry:hover .portfolio-entry-cta {
+    border-color: var(--ink);
+}
+
+@media (max-width: 700px) {
+    .portfolio-entries { grid-template-columns: 1fr; }
+}
+
+.portfolio-page-showreel {
+    padding-top: clamp(7rem, 14vw, 9rem);
+}
+
+.portfolio-back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.portfolio-back-link:hover {
+    color: var(--ink);
+}
+
+.portfolio-page-projects {
+    padding-top: 3rem;
+}
+
 /* -------------------- FEATURED PROJECTS CAROUSEL -------------------- */
 .featured-carousel {
     background: #000;
@@ -862,6 +959,30 @@ section {
 .about-text strong {
     color: var(--ink);
     font-weight: 400;
+}
+
+.biography-link {
+    margin-bottom: 2rem;
+}
+
+.biography-page {
+    padding-top: clamp(7rem, 14vw, 9rem);
+}
+
+@media (min-width: 1025px) {
+    .biography-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+@media (max-width: 1024px) {
+    .biography-grid .about-image {
+        order: -1;
+    }
+}
+
+.biography-text {
+    max-width: var(--max-text);
 }
 
 .technologies h4 {
@@ -1688,4 +1809,3 @@ body *:not(svg):not(path):not(line):not(circle):not(polyline):not(polygon):not(r
         font-size: 1.25rem !important;
     }
 }
-
